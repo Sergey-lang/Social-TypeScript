@@ -2,5 +2,24 @@
     grid-area: post_wrapper;
     display: grid;
     background-color: coral;
-    grid-template-areas: "my_posts" "add_new_posts";
+    grid-template-columns: 0.5fr 1fr;
+    grid-gap: 10px;
+}
+
+.any {
+    display: grid;
+    background-color: rgb(99, 95, 95);
+}
+
+.wall_posts {
+    display: grid;
+    background-color: lightseagreen;
+    padding: 5px;
+}
+
+.add_new_posts {
+    display: grid;
+    grid-template-rows: 1fr 0.5fr;
+    grid-template-areas: "text_wrapper" "add_post_button";
+    height: 100px;
 }
