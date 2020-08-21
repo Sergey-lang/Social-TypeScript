@@ -1,0 +1,18 @@
+.navbar_wrapper {
+    background: rgba(248, 248, 248, 0.83);
+    padding: 10px;
+}
+
+.link_wrapper {
+    padding: 5px 0 5px 0;
+}
+
+.link_wrapper a {
+    text-decoration: none;
+    color: #2a5885;
+}
+
+.link_wrapper:hover {
+    background-color: #3d79b62c;
+    cursor: pointer;
+}

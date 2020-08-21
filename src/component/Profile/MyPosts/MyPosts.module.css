@@ -1,0 +1,6 @@
+.post_wrapper {
+    grid-area: post_wrapper;
+    display: grid;
+    background-color: coral;
+    grid-template-areas: "my_posts" "add_new_posts";
+}

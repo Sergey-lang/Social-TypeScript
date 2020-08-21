@@ -1,0 +1,44 @@
+.header {
+    display: grid;
+    grid-area: header;
+    align-self: center;
+    grid-template-columns: 0.5fr 1fr 5fr;
+    background: #4a76a8;
+    width: 100%;
+}
+
+.header img {
+    width: 50px;
+    padding: 0 10px 0 20px;
+}
+
+.header .logo_name {
+    padding: 0 5px 0 5px;
+    display: inline;
+    justify-content: start;
+    align-self: center;
+    font-size: 22px;
+    font-weight: 800;
+    color: rgb(255, 255, 255);
+    transition: all 200ms;
+}
+
+.header .logo_explanation {
+    font-size: 12px;
+    font-weight: normal;
+    display: inline;
+}
+
+.header .login {
+    display: grid;
+    justify-content: end;
+    align-self: center;
+    font-size: 16px;
+    margin-right: 30px;
+    color: rgb(255, 255, 255);
+}
+
+.header .login a {
+    color: white;
+    text-decoration: none;
+}
