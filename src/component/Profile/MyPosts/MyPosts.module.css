@@ -1,25 +1,26 @@
 .post_wrapper {
-    grid-area: post_wrapper;
     display: grid;
-    background-color: coral;
-    grid-template-columns: 0.5fr 1fr;
+    grid-template-areas: "user_photo" "message" "likes";
+    grid-template-rows: auto auto;
     grid-gap: 10px;
 }
 
-.any {
-    display: grid;
-    background-color: rgb(99, 95, 95);
+.area {
+    min-width: 500px;
+    max-width: 500px;
+    min-height: 100px;
+    max-height: 300px;
 }
 
-.wall_posts {
-    display: grid;
-    background-color: lightseagreen;
-    padding: 5px;
+.add_post_button {
+    border: none;
+    background-color: #5181b8;
+    border-radius: 4px;
+    padding: 7px 16px 8px;
+    color: white;
 }
 
-.add_new_posts {
-    display: grid;
-    grid-template-rows: 1fr 0.5fr;
-    grid-template-areas: "text_wrapper" "add_post_button";
-    height: 100px;
+.add_post_button:hover {
+    cursor: pointer;
+    background-color: #5f90dc;
 }

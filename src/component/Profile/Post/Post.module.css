@@ -1,0 +1,43 @@
+.post {
+    display: grid;
+    grid-template-areas: "user_photo" "message" "likes";
+    grid-template-rows: 50px 100px 15px;
+    font-size: 13px;
+    line-height: 1.5;
+    background-color: rgba(255, 255, 255, 0.62);
+    border-radius: 5px;
+    border: 1px solid #a1a1a1;
+    padding-bottom: 10px;
+}
+
+.post img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.post_user_photo img {
+    grid-area: user_photo;
+    display: grid;
+    justify-content: start;
+    align-self: center;
+}
+
+.post_message {
+    grid-area: message;
+    display: grid;
+    padding: 5px;
+    max-height: 150px;
+    justify-content: start;
+    align-self: center;
+}
+
+.likes_count {
+    grid-area: likes;
+    display: grid;
+    padding: 5px;
+    align-self: center;
+    justify-content: start;
+    font-weight: 600;
+}

@@ -1,24 +1,24 @@
 import React from 'react';
 import style from './MyPosts.module.css';
+import Post from '../Post/Post';
 
 function MyPosts() {
-  return (
-    <div className={style.post_wrapper}>
-      <div className={style.any}></div>
-      <div className={style.wall_posts}>
-
-        <div className={style.add_new_posts}>
-          <div className={style.text_wrapper}>
-            <div className={style.small_user_photo}>img</div>
-            <textarea></textarea>
-          </div>
-            <button className={style.add_post_button}>Published</button>
+    return (
+        <div className={style.post_wrapper}>
+            <h4 className={style.my_posts_headline}>My posts</h4>
+            <div className={style.add_new_posts}>
+                <div>
+                    <textarea placeholder='What is new?' className={style.area}></textarea>
+                </div>
+                <div>
+                    <button className={style.add_post_button}>Add post</button>
+                </div>
+            </div>
+            <Post/>
+            <Post/>
+            <Post/>
         </div>
-
-        <div className={style.my_posts}>my_posts</div>
-      </div>
-    </div>
-  )
+    )
 }
 
 export default MyPosts;

@@ -1,11 +1,12 @@
 import React from 'react';
 import style from './MyProfileInfo.module.css';
+import avatar from './../../../asets/images/avatar.jpg';
 
 function MyProfileInfo() {
   return (
     <div className={style.profile_wrapper}>
       <div className={style.profile_photo}>
-        user photo
+          <img src={avatar}/>
           </div>
       <div className={style.profile_info}>
         <div className={style.status}>status</div>

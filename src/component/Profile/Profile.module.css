@@ -2,7 +2,7 @@
     display: grid;
     grid-area: content;
     grid-template-areas: "profile_wrapper" "post_wrapper";
-    grid-template-rows: 280px auto;
+    grid-template-rows: 350px auto;
     grid-gap: 10px;
     width: 100%;
     background: rgba(248, 248, 248, 0.83);

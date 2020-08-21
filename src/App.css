@@ -16,7 +16,7 @@
     display: grid;
     grid-template-areas: "navbar content";
     grid-template-columns: 2fr 10fr;
-    grid-gap: 10px;
+    grid-gap: 5px;
     margin: 0 auto;
     max-width: 1024px;
     width: 100%;
