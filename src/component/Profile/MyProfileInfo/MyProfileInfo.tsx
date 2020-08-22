@@ -12,7 +12,7 @@ function MyProfileInfo() {
         <div className={style.status}>status</div>
         <div className={style.descriptions_wrapper}>
           <div className={style.description}>ID</div>
-          <div className={style.description}>Countru</div>
+          <div className={style.description}>Country</div>
           <div className={style.description}>City</div>
         </div>
       </div>

@@ -14,9 +14,9 @@ function MyPosts() {
                     <button className={style.add_post_button}>Add post</button>
                 </div>
             </div>
-            <Post/>
-            <Post/>
-            <Post/>
+            <Post message={'Hello I am props and I went to this component right now'} likeCount={21}/>
+            <Post message={'I am very handsome props'} likeCount={10}/>
+            <Post message={'I go out from mypost component'} likeCount={5}/>
         </div>
     )
 }

@@ -1,0 +1,20 @@
+.message_wrapper {
+    display: grid;
+    grid-template-areas: "dialogs messages";
+    grid-template-columns: 0.3fr 1fr;
+    background: #fcfcfc;
+    padding: 10px;
+}
+
+.dialogs_container {
+    grid-area: dialogs;
+    display: grid;
+}
+
+.messages_container {
+    grid-area: messages;
+    display: grid;
+    grid-gap: 10px;
+    align-self: start;
+}
+

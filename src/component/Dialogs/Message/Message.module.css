@@ -1,0 +1,45 @@
+.dialog_block {
+    display: grid;
+    grid-template-areas: "user_avatar_name message";
+    grid-template-columns: 0.3fr 1fr;
+    background: #f3f3f3;
+    font-size: 13px;
+    height: auto;
+    min-height: 50px;
+    min-width: 300px;
+    width: 100%;
+}
+
+.user_avatar_name {
+    grid-area: user_avatar_name;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.avatar {
+    display: grid;
+    justify-content: center;
+    align-self: center;
+    padding: 5px;
+}
+.avatar img {
+    width: 50px;
+}
+
+.user_name {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+    height: auto;
+    padding: 5px;
+}
+
+.message {
+    display: grid;
+    justify-content: start;
+    align-self: center;
+    padding: 5px 20px;
+    height: auto;
+}
+
