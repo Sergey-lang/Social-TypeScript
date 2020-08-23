@@ -3,7 +3,11 @@
 }
 
 .link_wrapper {
-    padding: 5px 0 5px 0;
+    padding: 5px 0 5px 5px;
+}
+
+.link_wrapper a.activeLink {
+    padding-left: 6px;
 }
 
 .link_wrapper a {

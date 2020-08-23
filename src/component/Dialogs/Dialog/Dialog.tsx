@@ -3,8 +3,10 @@ import style from './Dialog.module.css';
 
 function Dialog() {
     return (
-        <div>
-            user
+        <div className={style.dialog_block}>
+            <div className={style.username}>
+                <span>Sergey Ivanov</span>
+            </div>
         </div>
     )
 }

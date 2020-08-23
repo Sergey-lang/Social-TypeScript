@@ -3,14 +3,16 @@
     display: grid;
     grid-template-areas: "profile_photo profile_info";
     grid-template-columns: 0.5fr 1fr;
-    grid-gap: 10px;
+    grid-gap: 15px;
 }
 
 .profile_photo {
     grid-area: profile_photo;
     display: grid;
-    background-color: crimson;
     overflow: hidden;
+    background: white;
+    padding: 10px;
+    box-shadow: 0px 4px 5px -2px rgba(0,0,0,0.22);
 }
 
 .profile_photo img {
@@ -25,6 +27,9 @@
     grid-template-areas: "status" "descriptions-wrapper";
     display: grid;
     grid-gap: 5px;
+    padding: 10px;
+    background: white;
+    box-shadow: 0px 4px 5px -2px rgba(0,0,0,0.22);
 }
 
 .profile_wrapper .profile_info .status {
@@ -36,7 +41,7 @@
 .profile_wrapper .profile_info .descriptions_wrapper {
     grid-area: descriptions-wrapper;
     display: grid;
-    grid-template-rows: repeat(0.5fr);
+    grid-template-rows: auto;
     grid-gap: 5px;
 }
 

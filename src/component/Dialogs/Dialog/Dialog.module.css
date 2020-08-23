@@ -1,0 +1,20 @@
+.dialog_block {
+    display: grid;
+    min-height: 35px;
+    max-height: 50px;
+    height: 40px;
+    font-size: 13px;
+    background: #f1f1f1;
+}
+
+.dialog_block:hover {
+    cursor: pointer;
+    background-color: rgba(86, 131, 188, 0.17);
+}
+
+.username {
+    display: grid;
+    align-self: center;
+    padding: 5px 0px 0px 25px;
+    height: auto;
+}

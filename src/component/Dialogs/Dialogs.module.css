@@ -1,20 +1,31 @@
 .message_wrapper {
     display: grid;
-    grid-template-areas: "dialogs messages";
-    grid-template-columns: 0.3fr 1fr;
+    grid-template-areas: "dialogs_headline dialogs_headline" "dialogs messages";
+    grid-template-columns: 0.2fr 1fr;
+    grid-template-rows: 35px auto;
     background: #fcfcfc;
-    padding: 10px;
+    width: 100%;
+}
+
+.my_dialogs_headline {
+    grid-area: dialogs_headline;
+    display: grid;
+    align-self: center;
+    height: auto;
+    border-bottom: 1px solid #aeaeae;
+    padding: 5px 5px 5px 15px;
 }
 
 .dialogs_container {
     grid-area: dialogs;
     display: grid;
+    height: auto;
+    align-self: start;
 }
 
 .messages_container {
     grid-area: messages;
     display: grid;
-    grid-gap: 10px;
     align-self: start;
 }
 

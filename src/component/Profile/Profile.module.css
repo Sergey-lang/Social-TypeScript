@@ -3,15 +3,12 @@
     grid-area: content;
     grid-template-areas: "profile_wrapper" "post_wrapper";
     grid-template-rows: 350px auto;
-    grid-gap: 10px;
+    grid-gap: 15px;
     width: 100%;
-    background: rgba(248, 248, 248, 0.83);
-    padding: 10px;
 }
 
 .app_wrapper_content .post_wrapper {
     grid-area: post_wrapper;
     display: grid;
-    background-color: coral;
     grid-template-areas: "my_posts" "add_new_posts";
 }
