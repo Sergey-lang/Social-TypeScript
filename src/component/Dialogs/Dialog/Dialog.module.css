@@ -18,3 +18,8 @@
     padding: 5px 0px 0px 25px;
     height: auto;
 }
+
+.username a {
+    text-decoration: none;
+    color: #1d1f21;
+}

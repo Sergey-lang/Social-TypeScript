@@ -9,11 +9,12 @@ function MyProfileInfo() {
           <img src={avatar}/>
           </div>
       <div className={style.profile_info}>
-        <div className={style.status}>status</div>
+          <div className={style.user_name}>Sergey Kyharonak</div>
+        <div className={style.status}>"Не бойтесь проигрывать. Победители не боятся проигрывать. Неудача—это часть дороги к успеху. Люди, избегающие неудач—избегают и успехов"</div>
         <div className={style.descriptions_wrapper}>
-          <div className={style.description}>ID</div>
-          <div className={style.description}>Country</div>
-          <div className={style.description}>City</div>
+          <div className={style.description}>'Мой порядковый номер,на рукаве...' - 548616</div>
+          <div className={style.description}>USA</div>
+          <div className={style.description}>Los Angeles</div>
         </div>
       </div>
     </div>

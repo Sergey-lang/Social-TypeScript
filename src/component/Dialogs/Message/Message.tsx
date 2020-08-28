@@ -2,8 +2,11 @@ import React from 'react';
 import style from './Message.module.css';
 import avatar from './../../../asets/images/user_photo.png'
 
+type MessageType = {
+    message:string
+}
 
-function Message() {
+function Message(props:MessageType) {
     return (
         <div className={style.message_block}>
             <div className={style.user_avatar_name}>
@@ -11,7 +14,7 @@ function Message() {
                 <div className={style.user_name}>user name</div>
             </div>
             <div className={style.message}>
-                <p>Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consectetur, cupiditate iste nostrum recusandae voluptatem?
+                <p>{props.message}
                 </p>
             </div>
         </div>

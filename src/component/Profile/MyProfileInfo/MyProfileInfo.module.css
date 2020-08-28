@@ -2,8 +2,9 @@
     grid-area: profile_wrapper;
     display: grid;
     grid-template-areas: "profile_photo profile_info";
-    grid-template-columns: 0.5fr 1fr;
+    grid-template-columns: auto 1fr;
     grid-gap: 15px;
+    font-size: 13px;
 }
 
 .profile_photo {
@@ -11,31 +12,48 @@
     display: grid;
     overflow: hidden;
     background: white;
+    align-self: center;
+    justify-content: center;
     padding: 10px;
     box-shadow: 0px 4px 5px -2px rgba(0,0,0,0.22);
+    width: auto;
 }
 
 .profile_photo img {
-    box-sizing: unset;
-    border-radius: 2px;
-    width: 100%;
-    height: auto;
+    max-height: 400px;
 }
 
 .profile_wrapper .profile_info {
     grid-area: profile_info;
-    grid-template-areas: "status" "descriptions-wrapper";
+    grid-template-areas: "user_name" "status" "descriptions-wrapper";
     display: grid;
     grid-gap: 5px;
     padding: 10px;
+    align-self: start;
     background: white;
+    height: auto;
     box-shadow: 0px 4px 5px -2px rgba(0,0,0,0.22);
+}
+
+.profile_wrapper .profile_info .user_name {
+    grid-area: user_name ;
+    display: grid;
+    font-size: 20px;
+    padding: 5px;
+    max-height: 25px;
+    justify-content: start;
+    align-self: center;
 }
 
 .profile_wrapper .profile_info .status {
     grid-area: status;
     display: grid;
-    background-color: darkred;
+    height: auto;
+    max-height: 50px;
+    margin: 5px;
+    padding: 5px 0 5px 0;
+    align-self: center;
+    border-bottom: 1px solid #aeaeae;
 }
 
 .profile_wrapper .profile_info .descriptions_wrapper {
@@ -43,6 +61,8 @@
     display: grid;
     grid-template-rows: auto;
     grid-gap: 5px;
+    padding: 5px;
+    max-height: 80px;
 }
 
 .profile_info .descriptions_wrapper .description {
