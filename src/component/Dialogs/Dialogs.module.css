@@ -1,4 +1,4 @@
-.message_wrapper {
+.dialogs_container {
     display: grid;
     grid-template-areas: "dialogs_headline dialogs_headline" "dialogs messages";
     grid-template-columns: 0.2fr 1fr;
@@ -16,16 +16,55 @@
     padding: 5px 5px 5px 15px;
 }
 
-.dialogs_container {
+.dialogs_wrapper {
     grid-area: dialogs;
     display: grid;
     height: auto;
     align-self: start;
 }
 
-.messages_container {
+.messages_wrapper {
     grid-area: messages;
     display: grid;
+    grid-template-rows: auto auto;
     align-self: start;
+}
+
+.message_block {
+    overflow-y: scroll;
+    height: auto;
+    max-height: 350px;
+}
+
+.add_message_block {
+    display: flex;
+    flex-direction: column;
+}
+.area {
+    min-width: 680px;
+    width: 95%;
+    max-width: 680px;
+    min-height: 100px;
+    max-height: 100px;
+    margin: 10px 10px 0 10px;
+}
+
+.button_wrapper {
+    display: grid;
+    justify-content: end;
+    margin: 0 10px 0 10px;
+}
+
+.add_message_button {
+    border: none;
+    background-color: #5181b8;
+    border-radius: 4px;
+    padding: 7px 16px 8px;
+    color: white;
+}
+
+.add_message_button:hover {
+    cursor: pointer;
+    background-color: #5f90dc;
 }
 

@@ -3,10 +3,11 @@ import style from './Message.module.css';
 import avatar from './../../../asets/images/user_photo.png'
 
 type MessageType = {
-    message:string
+    message: string
+    id: number
 }
 
-function Message(props:MessageType) {
+function Message(props: MessageType) {
     return (
         <div className={style.message_block}>
             <div className={style.user_avatar_name}>
