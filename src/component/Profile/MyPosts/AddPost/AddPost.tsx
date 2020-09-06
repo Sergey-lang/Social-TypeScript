@@ -1,16 +1,21 @@
 import React from 'react';
 import style from './AddPost.module.css';
 
-function AddPost() {
-    let newPost:React.RefObject<HTMLTextAreaElement> = React.createRef()
+type AddPostType = {
+    addNewPost: (postText: string) => void
+}
+
+function AddPost(props: AddPostType) {
+    let newPostRef = React.createRef<HTMLTextAreaElement>()
     let addPost = () => {
-        let text = newPost.currentTarget.value
-        alert(text)
+        if (newPostRef.current) {
+            props.addNewPost(newPostRef.current.value)
+        }
     }
     return (
         <div className={style.add_new_posts}>
             <div>
-                <textarea ref={newPost} placeholder='What is new?' className={style.area}></textarea>
+                <textarea ref={newPostRef} placeholder='What is new?' className={style.area}></textarea>
             </div>
             <div>
                 <button className={style.add_post_button} onClick={addPost}>Add post</button>

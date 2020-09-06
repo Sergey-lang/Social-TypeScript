@@ -7,6 +7,7 @@ import AddPost from './AddPost/AddPost';
 
 type MyPostsType = {
     posts: Array<PostType>
+    addNewPost: (postText: string) => void
 }
 
 function MyPosts(props: MyPostsType) {
@@ -14,7 +15,7 @@ function MyPosts(props: MyPostsType) {
     return (
         <div className={style.post_wrapper}>
             <h4 className={style.my_posts_headline}>My posts</h4>
-            <AddPost/>
+            <AddPost  addNewPost={props.addNewPost}/>
             {postElements}
         </div>
     )

@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import state from './Redux/State';
+import state, {addNewMessage, addNewPost} from './Redux/State';
 
 ReactDOM.render(
     <React.StrictMode>
-        <App state={state}/>
+        <App state={state}
+             addNewPost={addNewPost}
+             addNewMessage={addNewMessage}
+        />
     </React.StrictMode>,
     document.getElementById('root')
 );

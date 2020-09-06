@@ -30,8 +30,8 @@ let state: RootStateType = {
         posts: [
             {id: 1, message: 'Hello I am props', likeCount: 21},
             {id: 2, message: 'I am very handsome props', likeCount: 10},
-            {id: 3, message: 'I go out from mypost component', likeCount: 5}
-        ]
+            {id: 3, message: 'I go out from mypost component', likeCount: 5},
+        ],
     },
     dialogPage: {
         dialogs: [
@@ -53,4 +53,20 @@ let state: RootStateType = {
     }
 }
 
+
+export const addNewPost = (postText: string) => {
+    const newPost: PostType = {
+        id: 5,
+        message: postText,
+        likeCount: 0
+    }
+    state.profilePage.posts.push(newPost)
+}
+
+export const addNewMessage = (messageText: string) => {
+    const newMessage: MessageType = {
+        id: 5,
+        message: messageText
+    }
+}
 export default state
