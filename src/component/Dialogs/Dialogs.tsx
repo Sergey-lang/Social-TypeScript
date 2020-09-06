@@ -2,39 +2,15 @@ import React from 'react';
 import style from './Dialogs.module.css';
 import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
+import {DialogPageType} from '../../Redux/State';
 
-type DialogsDataType = {
-    id: number
-    name: string
-}
-type MessagesDataType = {
-    id: number
-    messages: string
+type DialogsPropsType = {
+    dialogPage: DialogPageType
 }
 
-function Dialogs() {
-    const dialogs: Array<DialogsDataType> = [
-        {id: 1, name: 'Dima Ivanov'},
-        {id: 2, name: 'Egor Andreev'},
-        {id: 3, name: 'Sergey Titov'},
-        {id: 4, name: 'Anton Serov'},
-        {id: 5, name: 'Mariya Vinogradova'},
-        {id: 6, name: 'Alex Moroz'},
-    ]
-
-    const messages: Array<MessagesDataType> = [
-        {id: 1, messages: 'Detract yet delight written farther his general. Bed uncommonly his discovered for estimating            far.Now summer who day looked our behind moment coming.'
-        },
-        {id: 2, messages: ' An stairs as be lovers uneasy. Painful so he an comfort is manners. Strictly numerous outlived          kindness whatever on we no on addi.'
-        },
-        {id: 3, messages: 'Unpleasant in in insensible favourable. Called though excuse length ye needed it he ha'},
-        {id: 4, messages: 'Called though excuse length ye needed it he ha.'},
-        {id: 5, messages: 'Called though.'},
-        {id: 6, messages: 'Ha-ha-ha...come on.'},
-    ]
-
-    let dialogsElement = dialogs.map(d => <Dialog id={d.id} name={d.name} key={d.id}/>)
-    let messagesElement = messages.map(m => <Message id={m.id} message={m.messages} key={m.id}/>)
+function Dialogs(props: DialogsPropsType) {
+    let dialogsElement = props.dialogPage.dialogs.map(d => <Dialog id={d.id} name={d.name} key={d.id}/>)
+    let messagesElement = props.dialogPage.messages.map(m => <Message id={m.id} message={m.message} key={m.id}/>)
 
     return (
         <div className={style.dialogs_container}>

@@ -2,12 +2,12 @@ import React from 'react';
 import style from './Dialog.module.css';
 import {NavLink} from 'react-router-dom';
 
-type DialogType = {
-    name: string
+type DialogPropsType = {
     id: number
+    name: string
 }
 
-function Dialog(props: DialogType) {
+function Dialog(props: DialogPropsType) {
     return (
         <div className={style.dialog_block}>
             <div className={style.username}>
