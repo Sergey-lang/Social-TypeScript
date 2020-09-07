@@ -17,6 +17,7 @@ function Dialogs(props: DialogsPropsType) {
     let addMessage = () => {
         if (newMessageRef.current) {
             props.addNewMessage(newMessageRef.current.value)
+            newMessageRef.current.value = '';
         }
     }
 

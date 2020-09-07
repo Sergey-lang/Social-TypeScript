@@ -7,12 +7,13 @@ import {ProfilePageType} from '../../Redux/State';
 type ProfilePagePropsType = {
     profilePage: ProfilePageType
     addNewPost: (postText: string) => void
+    sidebar:any
 }
 
 function Profile(props: ProfilePagePropsType) {
     return (
         <div className={style.app_wrapper_content}>
-            <MyProfileInfo/>
+            <MyProfileInfo sidebar={props.sidebar}/>
             <MyPosts posts={props.profilePage.posts}
                      addNewPost={props.addNewPost}
             />

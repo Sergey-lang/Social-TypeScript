@@ -1,4 +1,5 @@
 import React from 'react';
+import {rerenderEntireTree} from '../render';
 
 export type MessageType = {
     id: number
@@ -23,6 +24,7 @@ export type DialogPageType = {
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogPage: DialogPageType
+    sidebar:any
 }
 
 let state: RootStateType = {
@@ -50,7 +52,8 @@ let state: RootStateType = {
             {id: 5, message: 'Called though.'},
             {id: 6, message: 'Ha-ha-ha...come on.'},
         ]
-    }
+    },
+    sidebar:{}
 }
 
 
@@ -61,6 +64,7 @@ export const addNewPost = (postText: string) => {
         likeCount: 0
     }
     state.profilePage.posts.push(newPost)
+    rerenderEntireTree(state)
 }
 
 export const addNewMessage = (messageText: string) => {
@@ -68,5 +72,7 @@ export const addNewMessage = (messageText: string) => {
         id: 5,
         message: messageText
     }
+    state.dialogPage.messages.push(newMessage)
+    rerenderEntireTree(state)
 }
 export default state

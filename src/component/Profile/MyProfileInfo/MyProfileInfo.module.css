@@ -1,7 +1,9 @@
 .profile_wrapper {
     grid-area: profile_wrapper;
     display: grid;
-    grid-template-areas: "profile_photo profile_info";
+    grid-template-areas:
+            "profile_photo profile_info"
+            "profile_photo sidebar";
     grid-template-columns: auto 1fr;
     grid-gap: 15px;
     font-size: 13px;
@@ -15,7 +17,7 @@
     align-self: center;
     justify-content: center;
     padding: 10px;
-    box-shadow: 0px 4px 5px -2px rgba(0,0,0,0.22);
+    box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.22);
     width: auto;
 }
 
@@ -25,18 +27,18 @@
 
 .profile_wrapper .profile_info {
     grid-area: profile_info;
-    grid-template-areas: "user_name" "status" "descriptions-wrapper";
+    grid-template-areas: "user_name" "status" "descriptions-wrapper" "friends";
     display: grid;
     grid-gap: 5px;
     padding: 10px;
     align-self: start;
     background: white;
     height: auto;
-    box-shadow: 0px 4px 5px -2px rgba(0,0,0,0.22);
+    box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.22);
 }
 
 .profile_wrapper .profile_info .user_name {
-    grid-area: user_name ;
+    grid-area: user_name;
     display: grid;
     font-size: 20px;
     padding: 5px;
@@ -62,7 +64,7 @@
     grid-template-rows: auto;
     grid-gap: 5px;
     padding: 5px;
-    max-height: 80px;
+    /*max-height: 80px;*/
 }
 
 .profile_info .descriptions_wrapper .description {

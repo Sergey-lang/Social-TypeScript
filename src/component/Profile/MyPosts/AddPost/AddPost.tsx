@@ -10,7 +10,9 @@ function AddPost(props: AddPostType) {
     let addPost = () => {
         if (newPostRef.current) {
             props.addNewPost(newPostRef.current.value)
+            newPostRef.current.value = '';
         }
+
     }
     return (
         <div className={style.add_new_posts}>
