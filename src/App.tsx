@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import Header from './component/Header/Header';
-import Navbar from './component/Navbar/Navbar';
+import {Header} from './component/Header/Header';
+import {Navbar} from './component/Navbar/Navbar';
 import Profile from './component/Profile/Profile';
-import Dialogs from './component/Dialogs/Dialogs';
+import {Dialogs} from './component/Dialogs/Dialogs';
 import {Route} from 'react-router-dom';
 import {RootStateType} from './Redux/State';
 
@@ -13,7 +13,7 @@ type AppPropsType = {
     addNewMessage: (messageText: string) => void
 }
 
-function App(props: AppPropsType) {
+export function App(props: AppPropsType) {
     return (
         <div className='all_wrapper'>
             <Header/>
@@ -37,4 +37,3 @@ function App(props: AppPropsType) {
     );
 }
 
-export default App;

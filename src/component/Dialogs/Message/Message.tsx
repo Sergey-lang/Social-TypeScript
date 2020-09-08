@@ -7,7 +7,7 @@ type MessageType = {
     id: number
 }
 
-function Message(props: MessageType) {
+export function Message(props: MessageType) {
     return (
         <div className={style.message_block}>
             <div className={style.user_avatar_name}>
@@ -21,5 +21,3 @@ function Message(props: MessageType) {
         </div>
     )
 }
-
-export default Message;

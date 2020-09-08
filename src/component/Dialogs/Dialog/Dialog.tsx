@@ -7,7 +7,7 @@ type DialogPropsType = {
     name: string
 }
 
-function Dialog(props: DialogPropsType) {
+export function Dialog(props: DialogPropsType) {
     return (
         <div className={style.dialog_block}>
             <div className={style.username}>
@@ -16,5 +16,3 @@ function Dialog(props: DialogPropsType) {
         </div>
     )
 }
-
-export default Dialog;

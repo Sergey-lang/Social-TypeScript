@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Navbar.module.css'
 import {NavLink} from 'react-router-dom';
 
-function Navbar() {
+export function Navbar() {
     return (
         <div className={style.navbar_wrapper}>
             <div className={style.link_wrapper}>
@@ -20,5 +20,3 @@ function Navbar() {
         </div>
     )
 }
-
-export default Navbar;

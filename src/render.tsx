@@ -2,7 +2,7 @@ import {addNewMessage, addNewPost, RootStateType} from './Redux/State';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
-import App from './App';
+import {App} from './App';
 
 export const rerenderEntireTree = (state: RootStateType) => {
     ReactDOM.render(

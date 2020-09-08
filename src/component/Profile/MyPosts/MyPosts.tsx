@@ -3,7 +3,7 @@ import style from './MyPosts.module.css';
 import Post from '../Post/Post';
 
 import {PostType} from '../../../Redux/State';
-import AddPost from './AddPost/AddPost';
+import { AddPost } from './AddPost/AddPost';
 
 type MyPostsType = {
     posts: Array<PostType>

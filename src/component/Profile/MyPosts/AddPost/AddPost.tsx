@@ -5,7 +5,7 @@ type AddPostType = {
     addNewPost: (postText: string) => void
 }
 
-function AddPost(props: AddPostType) {
+export function AddPost(props: AddPostType) {
     let newPostRef = React.createRef<HTMLTextAreaElement>()
     let addPost = () => {
         if (newPostRef.current) {
@@ -25,5 +25,3 @@ function AddPost(props: AddPostType) {
         </div>
     )
 }
-
-export default AddPost;
