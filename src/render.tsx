@@ -1,17 +1,18 @@
-import { addNewMessage, updateNewPostText, addNewPost, RootStateType } from './Redux/State';
+import {addNewMessage, updateNewPostText, addNewPost, RootStateType, updateNewMessageText} from './Redux/State';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { App } from './App';
+import {BrowserRouter} from 'react-router-dom';
+import {App} from './App';
 
 export const rerenderEntireTree = (state: RootStateType) => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
                 <App state={state}
-                    addNewPost={addNewPost}
-                    updateNewPostText={updateNewPostText}
-                    addNewMessage={addNewMessage}
+                     addNewPost={addNewPost}
+                     addNewMessage={addNewMessage}
+                     updateNewPostText={updateNewPostText}
+                     updateNewMessageText={updateNewMessageText}
                 />
             </BrowserRouter>
         </React.StrictMode>,

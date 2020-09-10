@@ -2,12 +2,13 @@ import React from 'react';
 import style from './Dialogs.module.css';
 import { Dialog } from './Dialog/Dialog';
 import { Message } from './Message/Message';
-import { DialogPageType } from '../../Redux/State';
+import {DialogPageType, updateNewPostText} from '../../Redux/State';
 import { AddMessage } from './AddMessage/AddMessage';
 
 type DialogsPropsType = {
     dialogPage: DialogPageType
-    addNewMessage: (messageText: string) => void
+    addNewMessage: () => void
+    updateNewMessageText: (changedMessageText: string) => void
 }
 
 export function Dialogs(props: DialogsPropsType) {
@@ -25,7 +26,10 @@ export function Dialogs(props: DialogsPropsType) {
                 <div className={style.message_block}>
                     {messagesElement}
                 </div>
-                <AddMessage addNewMessage={props.addNewMessage} />
+                <AddMessage newMessageText={props.dialogPage.newMessageText}
+                    addNewMessage={props.addNewMessage}
+                            updateNewMessageText={props.updateNewMessageText}
+                />
             </div>
         </div>
     )
