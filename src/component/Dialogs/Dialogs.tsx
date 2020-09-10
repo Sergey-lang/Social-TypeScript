@@ -1,8 +1,9 @@
 import React from 'react';
 import style from './Dialogs.module.css';
-import {Dialog} from './Dialog/Dialog';
-import {Message} from './Message/Message';
-import {DialogPageType} from '../../Redux/State';
+import { Dialog } from './Dialog/Dialog';
+import { Message } from './Message/Message';
+import { DialogPageType } from '../../Redux/State';
+import { AddMessage } from './AddMessage/AddMessage';
 
 type DialogsPropsType = {
     dialogPage: DialogPageType
@@ -10,16 +11,9 @@ type DialogsPropsType = {
 }
 
 export function Dialogs(props: DialogsPropsType) {
-    let dialogsElement = props.dialogPage.dialogs.map(d => <Dialog id={d.id} name={d.name} key={d.id}/>)
-    let messagesElement = props.dialogPage.messages.map(m => <Message id={m.id} message={m.message} key={m.id}/>)
 
-    let newMessageRef = React.createRef<HTMLTextAreaElement>()
-    let addMessage = () => {
-        if (newMessageRef.current) {
-            props.addNewMessage(newMessageRef.current.value)
-            newMessageRef.current.value = '';
-        }
-    }
+    let dialogsElement = props.dialogPage.dialogs.map(d => <Dialog id={d.id} name={d.name} key={d.id} />)
+    let messagesElement = props.dialogPage.messages.map(m => <Message id={m.id} message={m.message} key={m.id} />)
 
     return (
         <div className={style.dialogs_container}>
@@ -31,14 +25,7 @@ export function Dialogs(props: DialogsPropsType) {
                 <div className={style.message_block}>
                     {messagesElement}
                 </div>
-                <div className={style.add_message_block}>
-                    <div>
-                        <textarea ref={newMessageRef} placeholder='What is new?' className={style.area}></textarea>
-                    </div>
-                    <div className={style.button_wrapper}>
-                        <button onClick={addMessage} className={style.add_message_button}>Send message</button>
-                    </div>
-                </div>
+                <AddMessage addNewMessage={props.addNewMessage} />
             </div>
         </div>
     )

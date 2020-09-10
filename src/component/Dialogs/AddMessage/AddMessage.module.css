@@ -1,30 +1,33 @@
-.add_new_posts {
+.add_new_message {
     display: flex;
     flex-direction: column;
-    align-self: flex-start;
-    width: 350px;
+    align-self: center;
+    justify-content: center;
+    margin-top: 10px;
+    width: 97%;
 }
 
 .area_wrapper {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
 }
 
 .area {
-    min-width: 98%;
-    max-width: 98%;
+    display: flex;
+    min-width: 99%;
+    max-width: 99%;
     min-height: 80px;
     max-height: 80px;
+    width: 100%;
 }
 
 .button_wrapper {
     display: flex;
-    text-align: center;
     flex-direction: column;
-    padding-top: 5px;
+    padding: 5px 0 5px 0;
 }
 
-.add_post_button {
+.add_message_button {
     display: flex;
     align-self: flex-end;
     justify-content: center;
@@ -35,7 +38,7 @@
     color: white;
 }
 
-.add_post_button:hover {
+.add_message_button:hover {
     cursor: pointer;
     background-color: #5f90dc;
 }
