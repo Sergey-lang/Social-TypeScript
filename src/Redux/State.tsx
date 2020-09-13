@@ -40,7 +40,7 @@ export const store: StoreType = {
     _state: {
         profilePage: {
             posts: [
-                {id: 1, message: 'Hello I am props', likeCount: 21},
+                {id: 1, message: 'Hello I am props.', likeCount: 21},
                 {id: 2, message: 'I am very handsome props', likeCount: 10},
                 {id: 3, message: 'I go out from mypost component', likeCount: 5},
             ],
