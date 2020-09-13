@@ -1,5 +1,10 @@
-import React from 'react';
-import {rerenderEntireTree} from '../render';
+let rerenderEntireTree = () => {
+    console.log('rerender')
+}
+
+export const subscriber = (observer: () => void) => {
+    rerenderEntireTree = observer
+}
 
 export type MessageType = {
     id: number
@@ -68,11 +73,11 @@ export const addNewPost = () => {
     }
     state.profilePage.posts.push(newPost)
     state.profilePage.newPostText = ''
-    rerenderEntireTree(state)
+    rerenderEntireTree()
 }
 export const updateNewPostText = (changedPostText: string) => {
     state.profilePage.newPostText = changedPostText
-    rerenderEntireTree(state)
+    rerenderEntireTree()
 }
 //dialog
 export const addNewMessage = () => {
@@ -82,9 +87,11 @@ export const addNewMessage = () => {
     }
     state.dialogPage.messages.push(newMessage)
     state.dialogPage.newMessageText = ''
-    rerenderEntireTree(state)
+    rerenderEntireTree()
 }
 export const updateNewMessageText = (changedMessageText: string) => {
     state.dialogPage.newMessageText = changedMessageText
-    rerenderEntireTree(state)
+    rerenderEntireTree()
 }
+
+

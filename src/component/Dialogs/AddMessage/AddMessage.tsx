@@ -25,7 +25,7 @@ export function AddMessage(props: AddMessageType) {
                           className={style.area}></textarea>
             </div>
             <div className={style.button_wrapper}>
-                <button className={style.add_message_button} onClick={addMessage}>Add post</button>
+                <button className={style.add_message_button} onClick={addMessage}>Send message</button>
             </div>
         </div>
     )

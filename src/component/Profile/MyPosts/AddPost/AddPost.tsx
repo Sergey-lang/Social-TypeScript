@@ -1,13 +1,13 @@
 import React, {ChangeEvent} from 'react';
 import style from './AddPost.module.css';
 
-type AddPostType = {
+export type AddPostPropsType = {
     newPostText: string
     addNewPost: () => void
     updateNewPostText: (changedPostText: string) => void
 }
 
-export function AddPost(props: AddPostType) {
+export function AddPost(props: AddPostPropsType) {
 
     const addPost = () => {
         props.addNewPost()
@@ -25,7 +25,7 @@ export function AddPost(props: AddPostType) {
                           className={style.area}></textarea>
             </div>
             <div className={style.button_wrapper}>
-                <button className={style.add_post_button} onClick={addPost}>Add post</button>
+                <button className={style.add_post_button} onClick={props.addNewPost}>Add post</button>
             </div>
         </div>
     )

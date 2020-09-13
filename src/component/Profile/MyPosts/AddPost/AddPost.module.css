@@ -11,12 +11,9 @@
 }
 
 .area {
-    max-width: 98%;
-    min-width: 98%;
     width: 98%;
     height: 80px;
-    max-height: 80px;
-    min-height: 80px;
+    resize: none;
 }
 
 .button_wrapper {

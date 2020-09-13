@@ -14,11 +14,9 @@
 
 .area {
     display: flex;
-    min-width: 99%;
-    max-width: 99%;
-    min-height: 80px;
-    max-height: 80px;
-    width: 100%;
+    width: 99%;
+    height: 80px;
+    resize: none;
 }
 
 .button_wrapper {
