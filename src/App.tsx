@@ -5,17 +5,14 @@ import {Navbar} from './component/Navbar/Navbar';
 import {Profile} from './component/Profile/Profile';
 import {Dialogs} from './component/Dialogs/Dialogs';
 import {Route} from 'react-router-dom';
-import {RootStateType, updateNewPostText} from './Redux/State';
+import {store, StoreType} from './Redux/State';
 
 type AppPropsType = {
-    state: RootStateType
-    addNewPost: () => void
-    addNewMessage: () => void
-    updateNewPostText: (changedPostText: string) => void
-    updateNewMessageText: (changedMessageText: string) => void
+    store: StoreType
 }
 
-export function App(props: AppPropsType) {
+export const App: React.FC<AppPropsType> = (props) => {
+    const state = store.getState()
     return (
         <div className='all_wrapper'>
             <Header/>
@@ -23,17 +20,17 @@ export function App(props: AppPropsType) {
                 <Navbar/>
                 <Route path='/profile'
                        render={() => <Profile
-                           profilePage={props.state.profilePage}
-                           addNewPost={props.addNewPost}
-                           updateNewPostText={updateNewPostText}
-                           sidebar={props.state.sidebar}
+                           profilePage={state.profilePage}
+                           addNewPost={props.store.addNewPost.bind(props.store)}
+                           updateNewPostText={props.store.updateNewPostText.bind(props.store)}
+                           sidebar={state.sidebar}
                        />}
                 />
                 <Route path='/dialogs'
                        render={() => <Dialogs
-                           dialogPage={props.state.dialogPage}
-                           addNewMessage={props.addNewMessage}
-                           updateNewMessageText={props.updateNewMessageText}
+                           dialogPage={state.dialogPage}
+                           addNewMessage={props.store.addNewMessage.bind(props.store)}
+                           updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}
                        />}/>
             </div>
         </div>

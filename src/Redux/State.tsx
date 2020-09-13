@@ -1,11 +1,3 @@
-let rerenderEntireTree = () => {
-    console.log('rerender')
-}
-
-export const subscriber = (observer: () => void) => {
-    rerenderEntireTree = observer
-}
-
 export type MessageType = {
     id: number
     message: string
@@ -33,65 +25,84 @@ export type RootStateType = {
     dialogPage: DialogPageType
     sidebar: any
 }
+export type StoreType = {
+    _state: RootStateType
+    getState: () => RootStateType
+    addNewPost: () => void
+    updateNewPostText: (changedPostText: string) => void
+    addNewMessage: () => void
+    updateNewMessageText: (changedMessageText: string) => void
+    subscriber: (observerCallback: () => void) => void
+    _callSubscriber: () => void
+}
 
-export let state: RootStateType = {
-    profilePage: {
-        posts: [
-            {id: 1, message: 'Hello I am props', likeCount: 21},
-            {id: 2, message: 'I am very handsome props', likeCount: 10},
-            {id: 3, message: 'I go out from mypost component', likeCount: 5},
-        ],
-        newPostText: '',
+export const store: StoreType = {
+    _state: {
+        profilePage: {
+            posts: [
+                {id: 1, message: 'Hello I am props', likeCount: 21},
+                {id: 2, message: 'I am very handsome props', likeCount: 10},
+                {id: 3, message: 'I go out from mypost component', likeCount: 5},
+            ],
+            newPostText: '',
+        },
+        dialogPage: {
+            dialogs: [
+                {id: 1, name: 'Dima Ivanov'},
+                {id: 2, name: 'Egor Andreev'},
+                {id: 3, name: 'Sergey Titov'},
+                {id: 4, name: 'Anton Serov'},
+                {id: 5, name: 'Mariya Vinogradova'},
+                {id: 6, name: 'Alex Moroz'},
+            ],
+            messages: [
+                {id: 1, message: 'Detract yet delight written farther'},
+                {id: 2, message: 'An stairs as be lovers'},
+                {id: 3, message: 'Unpleasant in in insensible favourable'},
+                {id: 4, message: 'Called though excuse'},
+                {id: 5, message: 'Called though.'},
+                {id: 6, message: 'Ha-ha-ha...come on.'},],
+            newMessageText: ''
+        },
+        sidebar: {}
     },
-    dialogPage: {
-        dialogs: [
-            {id: 1, name: 'Dima Ivanov'},
-            {id: 2, name: 'Egor Andreev'},
-            {id: 3, name: 'Sergey Titov'},
-            {id: 4, name: 'Anton Serov'},
-            {id: 5, name: 'Mariya Vinogradova'},
-            {id: 6, name: 'Alex Moroz'},
-        ],
-        messages: [
-            {id: 1, message: 'Detract yet delight written farther'},
-            {id: 2, message: 'An stairs as be lovers'},
-            {id: 3, message: 'Unpleasant in in insensible favourable'},
-            {id: 4, message: 'Called though excuse'},
-            {id: 5, message: 'Called though.'},
-            {id: 6, message: 'Ha-ha-ha...come on.'},
-        ],
-        newMessageText: ''
+    getState() {
+        return this._state
     },
-    sidebar: {}
-}
-//post
-export const addNewPost = () => {
-    const newPost: PostType = {
-        id: 5,
-        message: state.profilePage.newPostText,
-        likeCount: 0
+    addNewPost() {
+        const newPost: PostType = {
+            id: 5,
+            message: this._state.profilePage.newPostText,
+            likeCount: 0
+        }
+        this._state.profilePage.posts.push(newPost)
+        this._state.profilePage.newPostText = ''
+        this._callSubscriber()
+    },
+    updateNewPostText(changedPostText: string) {
+        this._state.profilePage.newPostText = changedPostText
+        this._callSubscriber()
+    },
+    addNewMessage() {
+        const newMessage: MessageType = {
+            id: 5,
+            message: this._state.dialogPage.newMessageText
+        }
+        this._state.dialogPage.messages.push(newMessage)
+        this._state.dialogPage.newMessageText = ''
+        this._callSubscriber()
+    },
+    updateNewMessageText(changedMessageText: string) {
+        this._state.dialogPage.newMessageText = changedMessageText
+        this._callSubscriber()
+    },
+    subscriber(observerCallback) {
+        this._callSubscriber = observerCallback
+    },
+    _callSubscriber() {
+        console.log('state changed')
     }
-    state.profilePage.posts.push(newPost)
-    state.profilePage.newPostText = ''
-    rerenderEntireTree()
 }
-export const updateNewPostText = (changedPostText: string) => {
-    state.profilePage.newPostText = changedPostText
-    rerenderEntireTree()
-}
-//dialog
-export const addNewMessage = () => {
-    const newMessage: MessageType = {
-        id: 5,
-        message: state.dialogPage.newMessageText
-    }
-    state.dialogPage.messages.push(newMessage)
-    state.dialogPage.newMessageText = ''
-    rerenderEntireTree()
-}
-export const updateNewMessageText = (changedMessageText: string) => {
-    state.dialogPage.newMessageText = changedMessageText
-    rerenderEntireTree()
-}
+
 
 
