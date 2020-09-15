@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Navbar.module.css'
 import {NavLink} from 'react-router-dom';
 
-export function Navbar() {
+export const Navbar: React.FC = () => {
     return (
         <div className={style.navbar_wrapper}>
             <div className={style.link_wrapper}>

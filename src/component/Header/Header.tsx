@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Header.module.css';
 
-export const Header = () => {
+export const Header: React.FC = () => {
     return (
         <header className={style.header}>
             <img src="https://img.icons8.com/carbon-copy/100/000000/minecraft-logo.png" />

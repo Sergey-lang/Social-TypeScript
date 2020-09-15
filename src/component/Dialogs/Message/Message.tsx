@@ -7,7 +7,7 @@ type MessageType = {
     id: number
 }
 
-export function Message(props: MessageType) {
+export const Message: React.FC<MessageType> = (props) => {
     return (
         <div className={style.message_block}>
             <div className={style.user_avatar_name}>

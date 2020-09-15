@@ -7,7 +7,7 @@ type DialogPropsType = {
     name: string
 }
 
-export function Dialog(props: DialogPropsType) {
+export const Dialog: React.FC<DialogPropsType> = (props) => {
     return (
         <div className={style.dialog_block}>
             <div className={style.username}>

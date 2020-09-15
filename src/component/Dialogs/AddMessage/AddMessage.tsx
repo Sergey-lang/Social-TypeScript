@@ -7,7 +7,7 @@ type AddMessageType = {
     updateNewMessageText: (changedMessageText: string) => void
 }
 
-export function AddMessage(props: AddMessageType) {
+export const AddMessage: React.FC<AddMessageType> = (props) => {
 
     const addMessage = () => {
         props.addNewMessage()

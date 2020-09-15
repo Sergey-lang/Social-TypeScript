@@ -7,7 +7,7 @@ export type AddPostPropsType = {
     updateNewPostText: (changedPostText: string) => void
 }
 
-export function AddPost(props: AddPostPropsType) {
+export const AddPost: React.FC<AddPostPropsType> = (props) => {
 
     const addPost = () => {
         props.addNewPost()

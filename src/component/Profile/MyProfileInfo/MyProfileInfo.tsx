@@ -7,7 +7,7 @@ type MyProfileInfoType = {
     sidebar: any
 }
 
-function MyProfileInfo(props: MyProfileInfoType) {
+const MyProfileInfo: React.FC< MyProfileInfoType> = (props) => {
     return (
         <div className={style.profile_wrapper}>
             <div className={style.profile_photo}>

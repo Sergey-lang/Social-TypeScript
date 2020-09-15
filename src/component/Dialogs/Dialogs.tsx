@@ -11,10 +11,10 @@ type DialogsPropsType = {
     updateNewMessageText: (changedMessageText: string) => void
 }
 
-export function Dialogs(props: DialogsPropsType) {
+export const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
-    let dialogsElement = props.dialogPage.dialogs.map(d => <Dialog id={d.id} name={d.name} key={d.id} />)
-    let messagesElement = props.dialogPage.messages.map(m => <Message id={m.id} message={m.message} key={m.id} />)
+    let dialogsElement = props.dialogPage.dialogs.map(d => <Dialog id={d.id} name={d.name} key={d.id}/>)
+    let messagesElement = props.dialogPage.messages.map(m => <Message id={m.id} message={m.message} key={m.id}/>)
 
     return (
         <div className={style.dialogs_container}>
@@ -27,7 +27,7 @@ export function Dialogs(props: DialogsPropsType) {
                     {messagesElement}
                 </div>
                 <AddMessage newMessageText={props.dialogPage.newMessageText}
-                    addNewMessage={props.addNewMessage}
+                            addNewMessage={props.addNewMessage}
                             updateNewMessageText={props.updateNewMessageText}
                 />
             </div>

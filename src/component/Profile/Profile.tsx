@@ -11,7 +11,7 @@ type ProfilePagePropsType = {
     sidebar: any
 }
 
-export function Profile(props: ProfilePagePropsType) {
+export const Profile: React.FC<ProfilePagePropsType> = (props) => {
     return (
         <div className={style.app_wrapper_content}>
             <MyProfileInfo sidebar={props.sidebar}/>

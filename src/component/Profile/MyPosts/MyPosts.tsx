@@ -12,7 +12,7 @@ type MyPostsType = {
     updateNewPostText: (changedPostText: string) => void
 }
 
-function MyPosts(props: MyPostsType) {
+const MyPosts: React.FC<MyPostsType> = (props) => {
     let postElements = props.posts.map(p => <Post message={p.message} likeCount={p.likeCount} key={p.id}/>)
     return (
         <div className={style.post_wrapper}>
