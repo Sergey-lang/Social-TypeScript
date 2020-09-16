@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/GitHubTest/static/css/main.bb369493.chunk.css",
+    "main.js": "/GitHubTest/static/js/main.97ff7936.chunk.js",
+    "main.js.map": "/GitHubTest/static/js/main.97ff7936.chunk.js.map",
+    "runtime-main.js": "/GitHubTest/static/js/runtime-main.0e0c48b5.js",
+    "runtime-main.js.map": "/GitHubTest/static/js/runtime-main.0e0c48b5.js.map",
+    "static/js/2.50a6e549.chunk.js": "/GitHubTest/static/js/2.50a6e549.chunk.js",
+    "static/js/2.50a6e549.chunk.js.map": "/GitHubTest/static/js/2.50a6e549.chunk.js.map",
+    "index.html": "/GitHubTest/index.html",
+    "precache-manifest.016ffca2fd33845d141ec3c5e6c1c9a9.js": "/GitHubTest/precache-manifest.016ffca2fd33845d141ec3c5e6c1c9a9.js",
+    "service-worker.js": "/GitHubTest/service-worker.js",
+    "static/css/main.bb369493.chunk.css.map": "/GitHubTest/static/css/main.bb369493.chunk.css.map",
+    "static/js/2.50a6e549.chunk.js.LICENSE.txt": "/GitHubTest/static/js/2.50a6e549.chunk.js.LICENSE.txt",
+    "static/media/avatar.jpg": "/GitHubTest/static/media/avatar.62013650.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0e0c48b5.js",
+    "static/js/2.50a6e549.chunk.js",
+    "static/css/main.bb369493.chunk.css",
+    "static/js/main.97ff7936.chunk.js"
+  ]
+}
