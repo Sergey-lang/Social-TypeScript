@@ -21,16 +21,14 @@ export const App: React.FC<AppPropsType> = (props) => {
                 <Route path='/profile'
                        render={() => <Profile
                            profilePage={state.profilePage}
-                           addNewPost={props.store.addNewPost.bind(props.store)}
-                           updateNewPostText={props.store.updateNewPostText.bind(props.store)}
+                           dispatch={store.dispatch.bind(store)}
                            sidebar={state.sidebar}
                        />}
                 />
                 <Route path='/dialogs'
                        render={() => <Dialogs
                            dialogPage={state.dialogPage}
-                           addNewMessage={props.store.addNewMessage.bind(props.store)}
-                           updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}
+                           dispatch={store.dispatch.bind(store)}
                        />}/>
             </div>
         </div>
