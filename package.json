@@ -2,6 +2,7 @@
   "name": "social_typescript",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://sergey-lang.github.io/Social-TypeScript",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -20,6 +21,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -50,6 +53,7 @@
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.0.21",
     "babel-loader": "^8.1.0",
+    "gh-pages": "^3.1.0",
     "react-is": "^16.13.1"
   }
 }

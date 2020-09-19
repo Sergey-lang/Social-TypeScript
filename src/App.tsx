@@ -34,7 +34,6 @@ export const App: React.FC<AppPropsType> = (props) => {
                        />}/>
             </div>
         </div>
-
     );
 }
 
