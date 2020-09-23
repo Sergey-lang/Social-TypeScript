@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import style from './AddPost.module.css';
-import {ActionsTypes} from '../../../../Redux/State';
+import {ActionsTypes, AddPostAC, UpdateNewPostTextAC} from '../../../../Redux/State';
 
 export type AddPostPropsType = {
     newPostText: string
@@ -10,10 +10,10 @@ export type AddPostPropsType = {
 export const AddPost: React.FC<AddPostPropsType> = (props) => {
 
     const addPost = () => {
-        props.dispatch({type: 'ADD-POST'})
+        props.dispatch(AddPostAC())
     }
     const changingPostText = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newPostText: e.currentTarget.value})
+        props.dispatch(UpdateNewPostTextAC(e.currentTarget.value))
     }
 
     return (
