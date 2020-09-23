@@ -10,7 +10,7 @@ export type AddPostPropsType = {
 export const AddPost: React.FC<AddPostPropsType> = (props) => {
 
     const addPost = () => {
-         props.addNewPost()
+        props.addNewPost()
     }
     const changingPostText = (e: ChangeEvent<HTMLTextAreaElement>) => {
         props.updateNewPostText(e.currentTarget.value)
@@ -25,7 +25,7 @@ export const AddPost: React.FC<AddPostPropsType> = (props) => {
                           className={style.area}></textarea>
             </div>
             <div className={style.button_wrapper}>
-                <button className={style.add_post_button} onClick={addPost}>Add post</button>
+                <button className={style.add_post_button} onClick={props.addNewPost}>Add post</button>
             </div>
         </div>
     )

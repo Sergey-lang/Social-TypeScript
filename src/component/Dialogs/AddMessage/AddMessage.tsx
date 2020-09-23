@@ -10,7 +10,7 @@ type AddMessageType = {
 export const AddMessage: React.FC<AddMessageType> = (props) => {
 
     const addMessage = () => {
-         props.addNewMessage()
+        props.addNewMessage()
     }
     const changingMessageText = (e: ChangeEvent<HTMLTextAreaElement>) => {
         props.updateNewMessageText(e.currentTarget.value)
