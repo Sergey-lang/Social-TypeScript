@@ -1,42 +1,36 @@
-.add_new_message {
+.add_new_message
+{
     display: flex;
-    flex-direction: column;
     align-self: center;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 10px;
+
     width: 97%;
+    margin-top: 10px;
 }
 
-.area_wrapper {
+.area_wrapper
+{
     display: flex;
     justify-content: center;
 }
 
-.area {
-    display: flex;
+.area
+{
     width: 99%;
-    height: 80px;
-    resize: none;
+
+    composes: area from './../../../index.css';
 }
 
-.button_wrapper {
+.button_wrapper
+{
     display: flex;
     flex-direction: column;
+
     padding: 5px 0 5px 0;
 }
 
-.add_message_button {
-    display: flex;
-    align-self: flex-end;
-    justify-content: center;
-    border: none;
-    background-color: #5181b8;
-    border-radius: 4px;
-    padding: 7px 16px 8px;
-    color: white;
-}
-
-.add_message_button:hover {
-    cursor: pointer;
-    background-color: #5f90dc;
+.add_message_button
+{
+    composes: btn from './../../../index.css';
 }

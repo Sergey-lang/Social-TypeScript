@@ -1,37 +1,52 @@
-.dialogs_container {
+.dialogs_container
+{
     display: grid;
-    grid-template-areas: "dialogs_headline dialogs_headline" "dialogs messages";
-    grid-template-columns: 0.2fr 1fr;
-    grid-template-rows: 35px auto;
-    background: #fcfcfc;
+
     width: 100%;
+
+    background: #fcfcfc;
+
+    grid-template-areas: 'dialogs_headline dialogs_headline' 'dialogs messages';
+    grid-template-columns: .2fr 1fr;
+    grid-template-rows: 35px auto;
 }
 
-.my_dialogs_headline {
-    grid-area: dialogs_headline;
+.my_dialogs_headline
+{
     display: grid;
     align-self: center;
+
     height: auto;
-    border-bottom: 1px solid #aeaeae;
     padding: 5px 5px 5px 15px;
+
+    border-bottom: 1px solid #aeaeae;
+
+    grid-area: dialogs_headline;
 }
 
-.dialogs_wrapper {
-    grid-area: dialogs;
+.dialogs_wrapper
+{
     display: grid;
+    align-self: start;
+
     height: auto;
-    align-self: start;
+
+    grid-area: dialogs;
 }
 
-.messages_wrapper {
-    grid-area: messages;
+.messages_wrapper
+{
     display: grid;
-    grid-template-rows: auto auto;
     align-self: start;
+
+    grid-area: messages;
+    grid-template-rows: auto auto;
 }
 
-.message_block {
+.message_block
+{
     overflow-y: scroll;
+
     height: auto;
     max-height: 350px;
 }

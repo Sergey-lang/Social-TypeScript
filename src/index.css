@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.btn {
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+
+  padding: 7px 16px 8px;
+
+  color: white;
+  border: none;
+  border-radius: 4px;
+  background-color: #5181b8;
+}
+
+.btn:hover {
+  cursor: pointer;
+
+  background-color: #5f90dc;
+}
+
+.area {
+  display: flex;
+
+  width: 98%;
+  height: 80px;
+
+  resize: none;
+}
+

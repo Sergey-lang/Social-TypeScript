@@ -1,29 +1,29 @@
 .message_block {
-    display: grid;
-    grid-template-areas: "user_avatar_name message";
-    grid-template-columns: 0.2fr 1fr;
     font-size: 13px;
+    display: grid;
+    width: 100%;
+    min-width: 300px;
     height: auto;
     min-height: 50px;
-    min-width: 300px;
-    width: 100%;
+    grid-template-areas: 'user_avatar_name message';
+    grid-template-columns: .2fr 1fr;
 }
 
 .message_block:hover {
     cursor: pointer;
-    background-color: rgba(86, 131, 188, 0.17);
+    background-color: rgba(86, 131, 188, .17);
 }
 
 .user_avatar_name {
-    grid-area: user_avatar_name;
     display: grid;
+    grid-area: user_avatar_name;
     grid-template-rows: 1fr auto;
 }
 
 .avatar {
     display: grid;
-    justify-content: center;
     align-self: center;
+    justify-content: center;
     padding: 2px;
 }
 
@@ -33,17 +33,17 @@
 
 .user_name {
     display: grid;
-    justify-content: center;
     align-self: center;
+    justify-content: center;
     max-height: 10px;
     padding: 8px;
 }
 
 .message {
     display: grid;
-    justify-content: start;
     align-self: center;
-    padding: 5px 20px;
+    justify-content: start;
     height: auto;
+    padding: 5px 20px;
 }
 

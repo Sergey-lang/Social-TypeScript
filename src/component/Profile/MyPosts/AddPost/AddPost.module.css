@@ -1,40 +1,36 @@
-.add_new_posts {
+.add_new_posts
+{
     display: flex;
-    flex-direction: column;
     align-self: flex-start;
+    flex-direction: column;
+
     width: 350px;
 }
 
-.area_wrapper {
+.area_wrapper
+{
     display: flex;
     flex-direction: column;
 }
 
-.area {
+.area
+{
     width: 98%;
-    height: 80px;
-    resize: none;
+
+    composes: area from './../../../../index.css';
 }
 
-.button_wrapper {
+.button_wrapper
+{
     display: flex;
-    text-align: center;
     flex-direction: column;
+
     padding-top: 5px;
+
+    text-align: center;
 }
 
-.add_post_button {
-    display: flex;
-    align-self: flex-end;
-    justify-content: center;
-    border: none;
-    background-color: #5181b8;
-    border-radius: 4px;
-    padding: 7px 16px 8px;
-    color: white;
-}
-
-.add_post_button:hover {
-    cursor: pointer;
-    background-color: #5f90dc;
+.add_post_button
+{
+    composes: btn from './../../../../index.css';
 }

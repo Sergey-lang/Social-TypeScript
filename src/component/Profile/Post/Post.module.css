@@ -1,42 +1,58 @@
-.post {
-    display: grid;
-    grid-template-areas: "user_photo" "message" "likes";
-    grid-template-rows: 50px auto 15px;
+.post
+{
     font-size: 13px;
     line-height: 1.5;
-    background-color: rgba(255, 255, 255, 0.62);
-    border: 1px solid #a1a1a1;
+
+    display: grid;
+
     padding-bottom: 10px;
+
+    border: 1px solid #a1a1a1;
+    background-color: rgba(255, 255, 255, .62);
+
+    grid-template-areas: 'user_photo' 'message' 'likes';
+    grid-template-rows: 50px auto 15px;
 }
 
-.post img {
+.post img
+{
     width: 50px;
     height: 50px;
+    padding: 5px;
+
     border-radius: 50%;
-    padding: 5px;
 }
 
-.post_user_photo img {
+.post_user_photo img
+{
+    display: grid;
+    align-self: center;
+    justify-content: start;
+
     grid-area: user_photo;
-    display: grid;
-    justify-content: start;
-    align-self: center;
 }
 
-.post_message {
-    grid-area: message;
+.post_message
+{
     display: grid;
-    padding: 5px;
+    align-self: center;
+    justify-content: start;
+
     max-height: 150px;
-    justify-content: start;
-    align-self: center;
+    padding: 5px;
+
+    grid-area: message;
 }
 
-.likes_count {
-    grid-area: likes;
+.likes_count
+{
+    font-weight: 600;
+
     display: grid;
-    padding: 5px;
     align-self: center;
     justify-content: start;
-    font-weight: 600;
+
+    padding: 5px;
+
+    grid-area: likes;
 }

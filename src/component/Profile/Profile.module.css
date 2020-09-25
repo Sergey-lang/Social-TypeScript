@@ -1,14 +1,19 @@
-.app_wrapper_content {
+.app_wrapper_content
+{
     display: grid;
+
+    width: 100%;
+
     grid-area: content;
-    grid-template-areas: "profile_wrapper" "post_wrapper";
+    grid-template-areas: 'profile_wrapper' 'post_wrapper';
     grid-template-rows: auto auto;
     grid-gap: 15px;
-    width: 100%;
 }
 
-.app_wrapper_content .post_wrapper {
-    grid-area: post_wrapper;
+.app_wrapper_content .post_wrapper
+{
     display: grid;
-    grid-template-areas: "my_posts" "add_new_posts";
+
+    grid-area: post_wrapper;
+    grid-template-areas: 'my_posts' 'add_new_posts';
 }

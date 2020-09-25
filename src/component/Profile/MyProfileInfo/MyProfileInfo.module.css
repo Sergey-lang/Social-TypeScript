@@ -1,72 +1,94 @@
-.profile_wrapper {
-    grid-area: profile_wrapper;
+.profile_wrapper
+{
+    font-size: 13px;
+
     display: grid;
-    grid-template-areas:
-            "profile_photo profile_info"
-            "profile_photo sidebar";
+
+    grid-area: profile_wrapper;
+    grid-template-areas: 'profile_photo profile_info'
+    'profile_photo sidebar';
     grid-template-columns: auto 1fr;
     grid-gap: 15px;
-    font-size: 13px;
 }
 
-.profile_photo {
-    grid-area: profile_photo;
+.profile_photo
+{
     display: grid;
     overflow: hidden;
-    background: white;
     align-self: center;
     justify-content: center;
-    padding: 10px;
-    box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.22);
+
     width: auto;
+    padding: 10px;
+
+    background: white;
+    box-shadow: 0 4px 5px -2px rgba(0, 0, 0, .22);
+
+    grid-area: profile_photo;
 }
 
-.profile_photo img {
+.profile_photo img
+{
     max-height: 400px;
 }
 
-.profile_wrapper .profile_info {
-    grid-area: profile_info;
-    grid-template-areas: "user_name" "status" "descriptions-wrapper" "friends";
+.profile_wrapper .profile_info
+{
     display: grid;
-    grid-gap: 5px;
-    padding: 10px;
     align-self: start;
-    background: white;
+
     height: auto;
-    box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.22);
+    padding: 10px;
+
+    background: white;
+    box-shadow: 0 4px 5px -2px rgba(0, 0, 0, .22);
+
+    grid-area: profile_info;
+    grid-template-areas: 'user_name' 'status' 'descriptions-wrapper' 'friends';
+    grid-gap: 5px;
 }
 
-.profile_wrapper .profile_info .user_name {
-    grid-area: user_name;
-    display: grid;
+.profile_wrapper .profile_info .user_name
+{
     font-size: 20px;
-    padding: 5px;
-    max-height: 25px;
-    justify-content: start;
+
+    display: grid;
     align-self: center;
+    justify-content: start;
+
+    max-height: 25px;
+    padding: 5px;
+
+    grid-area: user_name;
 }
 
-.profile_wrapper .profile_info .status {
-    grid-area: status;
+.profile_wrapper .profile_info .status
+{
     display: grid;
+    align-self: center;
+
     height: auto;
     max-height: 50px;
     margin: 5px;
     padding: 5px 0 5px 0;
-    align-self: center;
+
     border-bottom: 1px solid #aeaeae;
+
+    grid-area: status;
 }
 
-.profile_wrapper .profile_info .descriptions_wrapper {
-    grid-area: descriptions-wrapper;
+.profile_wrapper .profile_info .descriptions_wrapper
+{
     display: grid;
+
+    padding: 5px;
+
+    grid-area: descriptions-wrapper;
     grid-template-rows: auto;
     grid-gap: 5px;
-    padding: 5px;
-    /*max-height: 80px;*/
 }
 
-.profile_info .descriptions_wrapper .description {
+.profile_info .descriptions_wrapper .description
+{
     background-color: goldenrod;
 }

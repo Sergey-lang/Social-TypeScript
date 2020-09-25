@@ -127,7 +127,6 @@ export const UpdateNewPostTextAC = (text: string) => {
         newPostText: text
     } as const
 }
-
 export const AddMessageAC = () => {
     return {
         type: ADD_NEW_MESSAGE

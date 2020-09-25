@@ -1,12 +1,17 @@
-.post_wrapper {
+.post_wrapper
+{
     display: flex;
     flex-direction: column;
-    grid-gap: 10px;
+
     padding: 10px;
+
     background: white;
-    box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 4px 5px -2px rgba(0, 0, 0, .22);
+
+    grid-gap: 10px;
 }
 
-.my_posts_headline {
+.my_posts_headline
+{
     color: #1d1f21;
 }

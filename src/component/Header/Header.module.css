@@ -1,44 +1,62 @@
-.header {
+.header
+{
     display: grid;
-    grid-area: header;
     align-self: center;
-    grid-template-columns: 0.5fr 1fr 5fr;
-    background: #4a76a8;
+
     width: 100%;
+
+    background: #4a76a8;
+
+    grid-area: header;
+    grid-template-columns: .5fr 1fr 5fr;
 }
 
-.header img {
+.header img
+{
     width: 50px;
     padding: 0 10px 0 20px;
 }
 
-.header .logo_name {
-    padding: 0 5px 0 5px;
-    display: inline;
-    justify-content: start;
-    align-self: center;
+.header .logo_name
+{
     font-size: 22px;
     font-weight: 800;
-    color: rgb(255, 255, 255);
+
+    display: inline;
+    align-self: center;
+    justify-content: start;
+
+    padding: 0 5px 0 5px;
+
     transition: all 200ms;
+
+    color: rgb(255, 255, 255);
 }
 
-.header .logo_explanation {
+.header .logo_explanation
+{
     font-size: 12px;
     font-weight: normal;
+
     display: inline;
 }
 
-.header .login {
-    display: grid;
-    justify-content: end;
-    align-self: center;
+.header .login
+{
     font-size: 16px;
+
+    display: grid;
+    align-self: center;
+    justify-content: end;
+
     margin-right: 30px;
+
     color: rgb(255, 255, 255);
 }
 
-.header .login a {
-    color: white;
+.header .login a
+{
     text-decoration: none;
+
+    color: white;
 }

@@ -1,21 +1,25 @@
-.navbar_wrapper {
+.navbar_wrapper
+{
     padding: 10px;
 }
 
-.link_wrapper {
+.link_wrapper
+{
     padding: 5px 0 5px 5px;
 }
 
-.link_wrapper a.activeLink {
+.link_wrapper a.activeLink
+{
     padding-left: 6px;
 }
 
-.link_wrapper a {
-    text-decoration: none;
-    color: #2a5885;
+.link_wrapper a
+{
+    text-decoration: none;  color: #2a5885;
 }
 
-.link_wrapper:hover {
-    background-color: #3d79b62c;
-    cursor: pointer;
+.link_wrapper:hover
+{ cursor: pointer;
+
+    background-color: #3d79b62c; 
 }
