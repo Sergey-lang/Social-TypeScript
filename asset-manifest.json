@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/Social-TypeScript/static/css/main.f10f9548.chunk.css",
-    "main.js": "/Social-TypeScript/static/js/main.27bef3e0.chunk.js",
-    "main.js.map": "/Social-TypeScript/static/js/main.27bef3e0.chunk.js.map",
+    "main.js": "/Social-TypeScript/static/js/main.6fe77b43.chunk.js",
+    "main.js.map": "/Social-TypeScript/static/js/main.6fe77b43.chunk.js.map",
     "runtime-main.js": "/Social-TypeScript/static/js/runtime-main.18e493ad.js",
     "runtime-main.js.map": "/Social-TypeScript/static/js/runtime-main.18e493ad.js.map",
-    "static/js/2.50a6e549.chunk.js": "/Social-TypeScript/static/js/2.50a6e549.chunk.js",
-    "static/js/2.50a6e549.chunk.js.map": "/Social-TypeScript/static/js/2.50a6e549.chunk.js.map",
+    "static/js/2.d47043bc.chunk.js": "/Social-TypeScript/static/js/2.d47043bc.chunk.js",
+    "static/js/2.d47043bc.chunk.js.map": "/Social-TypeScript/static/js/2.d47043bc.chunk.js.map",
     "index.html": "/Social-TypeScript/index.html",
-    "precache-manifest.13c1e10241fd4850528415e671e8b780.js": "/Social-TypeScript/precache-manifest.13c1e10241fd4850528415e671e8b780.js",
+    "precache-manifest.4613f9d1771bd05b6561c9bfe1dd9c8a.js": "/Social-TypeScript/precache-manifest.4613f9d1771bd05b6561c9bfe1dd9c8a.js",
     "service-worker.js": "/Social-TypeScript/service-worker.js",
     "static/css/main.f10f9548.chunk.css.map": "/Social-TypeScript/static/css/main.f10f9548.chunk.css.map",
-    "static/js/2.50a6e549.chunk.js.LICENSE.txt": "/Social-TypeScript/static/js/2.50a6e549.chunk.js.LICENSE.txt",
+    "static/js/2.d47043bc.chunk.js.LICENSE.txt": "/Social-TypeScript/static/js/2.d47043bc.chunk.js.LICENSE.txt",
     "static/media/avatar.jpg": "/Social-TypeScript/static/media/avatar.62013650.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.18e493ad.js",
-    "static/js/2.50a6e549.chunk.js",
+    "static/js/2.d47043bc.chunk.js",
     "static/css/main.f10f9548.chunk.css",
-    "static/js/main.27bef3e0.chunk.js"
+    "static/js/main.6fe77b43.chunk.js"
   ]
 }
