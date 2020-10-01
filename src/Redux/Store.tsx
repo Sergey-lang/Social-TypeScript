@@ -1,46 +1,6 @@
 import {profileReducer} from './profile-reducer';
 import {dialogsReducer} from './dialogs-reducer';
-
-export type MessageType = {
-    id: number
-    message: string
-}
-export type DialogType = {
-    id: number
-    name: string
-}
-export type PostType = {
-    id: number
-    message: string
-    likeCount: number
-}
-export type ProfilePageType = {
-    posts: Array<PostType>
-    newPostText: string
-}
-export type DialogPageType = {
-    dialogs: Array<DialogType>
-    messages: Array<MessageType>
-    newMessageText: string
-}
-export type RootStateType = {
-    profilePage: ProfilePageType
-    dialogPage: DialogPageType
-    sidebar: any
-}
-
-export type ActionsTypes = ReturnType<typeof AddPostAC>
-    | ReturnType<typeof UpdateNewPostTextAC>
-    | ReturnType<typeof AddMessageAC>
-    | ReturnType<typeof UpdateNewMessageTextAC>
-
-export type StoreType = {
-    _state: RootStateType
-    getState: () => RootStateType
-    subscriber: (observerCallback: () => void) => void
-    _callSubscriber: () => void
-    dispatch: (action: ActionsTypes) => void
-}
+import {StoreType} from '../essences/essences';
 
 export const store: StoreType = {
     _state: {
@@ -70,7 +30,6 @@ export const store: StoreType = {
                 {id: 6, message: 'Ha-ha-ha...come on.'},],
             newMessageText: ''
         },
-        sidebar: {}
     },
     _callSubscriber() {
         console.log('state changed')
@@ -87,9 +46,10 @@ export const store: StoreType = {
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogPage = dialogsReducer(this._state.dialogPage, action)
 
-        this._callSubscriber(this._state)//say about changing
+        this._callSubscriber()
     },
 }
+
 
 
 

@@ -4,14 +4,14 @@ import avatar from './../../../asets/images/avatar.jpg';
 import Sidebar from './Sidebar/Sidebar';
 
 type MyProfileInfoType = {
-    sidebar: any
+    sidebar?: any
 }
 
 const MyProfileInfo: React.FC< MyProfileInfoType> = (props) => {
     return (
         <div className={style.profile_wrapper}>
             <div className={style.profile_photo}>
-                <img src={avatar}/>
+                <img alt={'avatar'} src={avatar}/>
             </div>
             <div className={style.profile_info}>
                 <div className={style.user_name}>Sergey Kyharonak</div>

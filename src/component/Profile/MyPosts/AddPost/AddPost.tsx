@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import style from './AddPost.module.css';
-import {ActionsTypes} from '../../../../Redux/State';
 import {AddPostAC, UpdateNewPostTextAC} from '../../../../Redux/profile-reducer';
+import {ActionsTypes} from '../../../../essences/essences';
 
 export type AddPostPropsType = {
     newPostText: string

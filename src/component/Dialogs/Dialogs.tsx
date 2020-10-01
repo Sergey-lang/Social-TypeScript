@@ -2,8 +2,8 @@ import React from 'react';
 import style from './Dialogs.module.css';
 import {Dialog} from './Dialog/Dialog';
 import {Message} from './Message/Message';
-import {ActionsTypes, DialogPageType} from '../../Redux/State';
 import {AddMessage} from './AddMessage/AddMessage';
+import {ActionsTypes, DialogPageType} from '../../essences/essences';
 
 type DialogsPropsType = {
     dialogPage: DialogPageType

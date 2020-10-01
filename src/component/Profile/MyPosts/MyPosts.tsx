@@ -2,8 +2,8 @@ import React from 'react';
 import style from './MyPosts.module.css';
 import Post from '../Post/Post';
 
-import {ActionsTypes, PostType} from '../../../Redux/State';
 import {AddPost} from './AddPost/AddPost';
+import {ActionsTypes, PostType} from '../../../essences/essences';
 
 type MyPostsType = {
     posts: Array<PostType>

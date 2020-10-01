@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import style from './AddMessage.module.css';
-import {ActionsTypes} from '../../../Redux/State';
 import {AddMessageAC, UpdateNewMessageTextAC} from '../../../Redux/dialogs-reducer';
+import {ActionsTypes} from '../../../essences/essences';
 
 type AddMessageType = {
     newMessageText: string
