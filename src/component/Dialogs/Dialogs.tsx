@@ -1,19 +1,27 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import style from './Dialogs.module.css';
 import {Dialog} from './Dialog/Dialog';
 import {Message} from './Message/Message';
-import {AddMessage} from './AddMessage/AddMessage';
-import {ActionsTypes, DialogPageType} from '../../essences/essences';
+import {DialogPageType} from '../../essences/essences';
 
 type DialogsPropsType = {
-    dialogPage: DialogPageType
-    dispatch: (action: ActionsTypes) => void
+    dialogsPage: DialogPageType
+    sendMessageCallback: () => void
+    changingMessageTextCallback: (newMessageText:string) => void
+
 }
 
 export const Dialogs: React.FC<DialogsPropsType> = (props) => {
+    let dialogsElement = props.dialogsPage.dialogs.map(d => <Dialog id={d.id} name={d.name} key={d.id}/>)
+    let messagesElement = props.dialogsPage.messages.map(m => <Message id={m.id} message={m.message} key={m.id}/>)
 
-    let dialogsElement = props.dialogPage.dialogs.map(d => <Dialog id={d.id} name={d.name} key={d.id}/>)
-    let messagesElement = props.dialogPage.messages.map(m => <Message id={m.id} message={m.message} key={m.id}/>)
+    const sendMessage = () => {
+        props.sendMessageCallback()
+    }
+    const changingMessageText = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        let newMessageText = e.currentTarget.value
+        props.changingMessageTextCallback(newMessageText)
+    }
 
     return (
         <div className={style.dialogs_container}>
@@ -25,9 +33,17 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
                 <div className={style.message_block}>
                     {messagesElement}
                 </div>
-                <AddMessage newMessageText={props.dialogPage.newMessageText}
-                            dispatch={props.dispatch}
-                />
+                <div className={style.add_new_message}>
+                    <div className={style.area_wrapper}>
+                <textarea value={props.dialogsPage.newMessageText}
+                          onChange={changingMessageText}
+                          placeholder='What is new?'
+                          className={style.area}></textarea>
+                    </div>
+                    <div className={style.button_wrapper}>
+                        <button className={style.add_message_button} onClick={sendMessage}>Send message</button>
+                    </div>
+                </div>
             </div>
         </div>
     )
