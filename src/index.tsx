@@ -1,16 +1,19 @@
 import React from 'react';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom';
-import {store, AppStateType} from './Redux/redux-store';
+import {AppStateType, store} from './Redux/redux-store';
 import ReactDOM from 'react-dom';
 import {App} from './App';
+import {Provider} from './StoreContext';
 import './index.css';
 
 export const rerenderEntireTree = (state: AppStateType) => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App store={store}/>
+                <Provider store={store}>
+                    <App/>
+                </Provider>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')

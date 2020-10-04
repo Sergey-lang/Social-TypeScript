@@ -40,3 +40,4 @@ export type StoreType = {
     _callSubscriber: () => void
     dispatch: (action: ActionsTypes) => void
 }
+

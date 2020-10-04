@@ -8,10 +8,10 @@ type DialogsPropsType = {
     dialogsPage: DialogPageType
     sendMessageCallback: () => void
     changingMessageTextCallback: (newMessageText:string) => void
-
 }
 
 export const Dialogs: React.FC<DialogsPropsType> = (props) => {
+
     let dialogsElement = props.dialogsPage.dialogs.map(d => <Dialog id={d.id} name={d.name} key={d.id}/>)
     let messagesElement = props.dialogsPage.messages.map(m => <Message id={m.id} message={m.message} key={m.id}/>)
 

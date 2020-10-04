@@ -15,11 +15,10 @@ const MyProfileInfo: React.FC< MyProfileInfoType> = (props) => {
             </div>
             <div className={style.profile_info}>
                 <div className={style.user_name}>Sergey Kyharonak</div>
-                <div className={style.status}>"Не бойтесь проигрывать. Победители не боятся проигрывать. Неудача—это
-                    часть дороги к успеху. Люди, избегающие неудач—избегают и успехов"
+                <div className={style.status}>"Ученье свет, а за свет надо платить!"
                 </div>
                 <div className={style.descriptions_wrapper}>
-                    <div className={style.description}>'Мой порядковый номер,на рукаве...' - 548616</div>
+                    <div className={style.description}>'Тут какое-то описание страницы</div>
                     <div className={style.description}>USA</div>
                     <div className={style.description}>Los Angeles</div>
                 </div>
