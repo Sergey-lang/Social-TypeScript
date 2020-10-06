@@ -12,7 +12,7 @@ type UpdateNewMessageTextACType = {
     newMessageText: string
 }
 
-type DialogsInitializeStateType = typeof dialogsInitializeState
+export type DialogsInitializeStateType = typeof dialogsInitializeState
 
 let dialogsInitializeState = {
     dialogs: [

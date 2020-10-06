@@ -12,7 +12,7 @@ type UpdateNewPostTextACType = {
     newPostText: string
 }
 
-type ProfileInitializeStateType = typeof profileInitializeState
+export type ProfileInitializeStateType = typeof profileInitializeState
 
 let profileInitializeState = {
     posts: [
