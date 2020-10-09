@@ -6,8 +6,7 @@ import {Profile} from './component/Profile/Profile';
 import {Route} from 'react-router-dom';
 import {DialogsContainer} from './component/Dialogs/DialogsContainer';
 
-
-export const App: React.FC = (props) => {
+export const App: React.FC = () => {
     return (
         <div className='all_wrapper'>
             <Header/>
@@ -17,7 +16,8 @@ export const App: React.FC = (props) => {
                        render={() => <Profile/>}
                 />
                 <Route path='/dialogs'
-                       render={() => <DialogsContainer/>}/>
+                       render={() => <DialogsContainer/>}
+                />
             </div>
         </div>
     );

@@ -6,21 +6,21 @@ import {DialogPageType} from '../../essences/essences';
 
 type DialogsPropsType = {
     dialogsPage: DialogPageType
-    sendMessageCallback: () => void
-    changingMessageTextCallback: (newMessageText:string) => void
+    sendMessage: () => void
+    changingMessageText: (newMessageText: string) => void
 }
 
-export const Dialogs: React.FC<DialogsPropsType> = (props) => {
+export const Dialogs: React.FC<DialogsPropsType> = ({dialogsPage, sendMessage, changingMessageText}) => {
 
-    let dialogsElement = props.dialogsPage.dialogs.map(d => <Dialog id={d.id} name={d.name} key={d.id}/>)
-    let messagesElement = props.dialogsPage.messages.map(m => <Message id={m.id} message={m.message} key={m.id}/>)
+    let dialogsElement = dialogsPage.dialogs.map(d => <Dialog id={d.id} name={d.name} key={d.id}/>)
+    let messagesElement = dialogsPage.messages.map(m => <Message id={m.id} message={m.message} key={m.id}/>)
 
-    const sendMessage = () => {
-        props.sendMessageCallback()
+    const sendMessageCallback = () => {
+        sendMessage()
     }
-    const changingMessageText = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const changingMessageTextCallback = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let newMessageText = e.currentTarget.value
-        props.changingMessageTextCallback(newMessageText)
+        changingMessageText(newMessageText)
     }
 
     return (
@@ -35,13 +35,13 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
                 </div>
                 <div className={style.add_new_message}>
                     <div className={style.area_wrapper}>
-                <textarea value={props.dialogsPage.newMessageText}
-                          onChange={changingMessageText}
+                <textarea value={dialogsPage.newMessageText}
+                          onChange={changingMessageTextCallback}
                           placeholder='What is new?'
                           className={style.area}></textarea>
                     </div>
                     <div className={style.button_wrapper}>
-                        <button className={style.add_message_button} onClick={sendMessage}>Send message</button>
+                        <button className={style.add_message_button} onClick={sendMessageCallback}>Send message</button>
                     </div>
                 </div>
             </div>

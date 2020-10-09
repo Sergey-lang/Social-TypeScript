@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActionsTypes, DialogType, MessageType} from '../essences/essences';
+import {ActionsTypes, DialogPageType, MessageType} from '../essences/essences';
 
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE'
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
@@ -12,24 +12,22 @@ type UpdateNewMessageTextACType = {
     newMessageText: string
 }
 
-export type DialogsInitializeStateType = typeof dialogsInitializeState
-
-let dialogsInitializeState = {
+let dialogsInitializeState: DialogPageType = {
     dialogs: [
         {id: 1, name: 'Dima Ivanov'},
         {id: 2, name: 'Egor Andreev'},
         {id: 3, name: 'Sergey Titov'},
-    ] as Array<DialogType>,
+    ],
     messages: [
         {id: 1, message: 'Detract yet delight written farther'},
         {id: 2, message: 'An stairs as be lovers'},
         {id: 3, message: 'Unpleasant in in insensible favourable'},
-    ] as Array<MessageType>,
+    ],
     newMessageText: ''
 }
 
-export const dialogsReducer = (state: DialogsInitializeStateType = dialogsInitializeState,
-                               action: ActionsTypes): DialogsInitializeStateType => {
+export const dialogsReducer = (state: DialogPageType = dialogsInitializeState,
+                               action: ActionsTypes): DialogPageType => {
     switch (action.type) {
         case ADD_NEW_MESSAGE:
             const newMessage: MessageType = {

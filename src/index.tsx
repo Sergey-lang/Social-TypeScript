@@ -1,10 +1,10 @@
-import React from 'react';
+import {AppStateType, store} from './Redux/redux-store';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom';
-import {AppStateType, store} from './Redux/redux-store';
+import {Provider} from 'react-redux';
 import ReactDOM from 'react-dom';
 import {App} from './App';
-import {Provider} from './StoreContext';
+import React from 'react';
 import './index.css';
 
 export const rerenderEntireTree = (state: AppStateType) => {

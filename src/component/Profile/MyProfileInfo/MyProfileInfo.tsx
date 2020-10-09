@@ -7,14 +7,14 @@ type MyProfileInfoType = {
     sidebar?: any
 }
 
-const MyProfileInfo: React.FC< MyProfileInfoType> = (props) => {
+export const MyProfileInfo: React.FC<MyProfileInfoType> = (props) => {
     return (
         <div className={style.profile_wrapper}>
             <div className={style.profile_photo}>
                 <img alt={'avatar'} src={avatar}/>
             </div>
             <div className={style.profile_info}>
-                <div className={style.user_name}>Sergey Kyharonak</div>
+                <div className={style.user_name}>Sergey Kyharyonok</div>
                 <div className={style.status}>"Ученье свет, а за свет надо платить!"
                 </div>
                 <div className={style.descriptions_wrapper}>
@@ -27,5 +27,3 @@ const MyProfileInfo: React.FC< MyProfileInfoType> = (props) => {
         </div>
     )
 }
-
-export default MyProfileInfo;

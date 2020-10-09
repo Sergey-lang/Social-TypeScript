@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActionsTypes, PostType} from '../essences/essences';
+import {ActionsTypes, PostType, ProfilePageType} from '../essences/essences';
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
@@ -12,19 +12,17 @@ type UpdateNewPostTextACType = {
     newPostText: string
 }
 
-export type ProfileInitializeStateType = typeof profileInitializeState
-
-let profileInitializeState = {
+let profileInitializeState: ProfilePageType = {
     posts: [
         {id: 1, message: 'Hello I am props.', likeCount: 21},
         {id: 2, message: 'I am very handsome props', likeCount: 10},
         {id: 3, message: 'I go out from my post component', likeCount: 5},
-    ] as Array<PostType>,
+    ],
     newPostText: '',
 }
 
-export const profileReducer = (state: ProfileInitializeStateType = profileInitializeState,
-                               action: ActionsTypes): ProfileInitializeStateType => {
+export const profileReducer = (state: ProfilePageType = profileInitializeState,
+                               action: ActionsTypes): ProfilePageType => {
     switch (action.type) {
         case ADD_POST:
             const newPost: PostType = {

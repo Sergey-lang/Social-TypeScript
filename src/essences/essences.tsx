@@ -1,6 +1,7 @@
 import {AddPostAC, UpdateNewPostTextAC} from '../Redux/profile-reducer';
 import {AddMessageAC, UpdateNewMessageTextAC} from '../Redux/dialogs-reducer';
 
+//state
 export type MessageType = {
     id: number
     message: string
