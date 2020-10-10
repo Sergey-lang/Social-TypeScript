@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {Dialogs} from './Dialogs';
 import React from 'react';
 import {DialogPageType} from '../../essences/essences';
+import {Dispatch} from 'redux';
 
 type MapStateType = {
     dialogsPage: DialogPageType
@@ -19,7 +20,7 @@ let mapState = (state: AppStateType): MapStateType => {
     }
 }
 
-let mapDispatch = (dispatch: any): mapDispatchType => {
+let mapDispatch = (dispatch: Dispatch): mapDispatchType => {
     return {
         sendMessage: () => {
             dispatch(AddMessageAC())

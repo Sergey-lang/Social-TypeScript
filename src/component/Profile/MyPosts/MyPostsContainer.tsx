@@ -4,6 +4,7 @@ import {MyPosts} from './MyPosts';
 import {connect} from 'react-redux';
 import {AppStateType} from '../../../Redux/redux-store';
 import {ProfilePageType} from '../../../essences/essences';
+import {Dispatch} from 'redux';
 
 type MapStateType = {
     profilePage: ProfilePageType
@@ -19,7 +20,7 @@ const mapState = (state: AppStateType): MapStateType => {
     }
 }
 
-const mapDispatch = (dispatch: any): MapDispatchType => {
+const mapDispatch = (dispatch: Dispatch): MapDispatchType => {
     return {
         addPost: () => {
             dispatch(AddPostAC())

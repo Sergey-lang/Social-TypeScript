@@ -1,5 +1,5 @@
 import React, {ChangeEvent} from 'react';
-import style from './Dialogs.module.css';
+import s from './Dialogs.module.css';
 import {Dialog} from './Dialog/Dialog';
 import {Message} from './Message/Message';
 import {DialogPageType} from '../../essences/essences';
@@ -24,24 +24,26 @@ export const Dialogs: React.FC<DialogsPropsType> = ({dialogsPage, sendMessage, c
     }
 
     return (
-        <div className={style.dialogs_container}>
-            <h4 className={style.my_dialogs_headline}>Dialogs</h4>
-            <div className={style.dialogs_wrapper}>
-                {dialogsElement}
-            </div>
-            <div className={style.messages_wrapper}>
-                <div className={style.message_block}>
-                    {messagesElement}
+        <div className={s.dialogs_container}>
+            <div className={s.my_dialogs_headline}>Dialogs</div>
+            <div className={s.message_page}>
+                <div className={s.dialogs_wrapper}>
+                    {dialogsElement}
                 </div>
-                <div className={style.add_new_message}>
-                    <div className={style.area_wrapper}>
+                <div className={s.messages_wrapper}>
+                    <div className={s.message_block}>
+                        {messagesElement}
+                    </div>
+                    <div className={s.add_new_message}>
+                        <div className={s.area_wrapper}>
                 <textarea value={dialogsPage.newMessageText}
                           onChange={changingMessageTextCallback}
                           placeholder='What is new?'
-                          className={style.area}></textarea>
-                    </div>
-                    <div className={style.button_wrapper}>
-                        <button className={style.add_message_button} onClick={sendMessageCallback}>Send message</button>
+                          className={s.area}></textarea>
+                        </div>
+                        <div className={s.button_wrapper}>
+                            <button className={s.add_message_button} onClick={sendMessageCallback}>Send message</button>
+                        </div>
                     </div>
                 </div>
             </div>

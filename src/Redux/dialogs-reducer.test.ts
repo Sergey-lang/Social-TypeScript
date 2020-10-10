@@ -1,10 +1,9 @@
-import {AddMessageAC, DialogsInitializeStateType, dialogsReducer} from './dialogs-reducer';
+import {AddMessageAC, dialogsReducer} from './dialogs-reducer';
+import {DialogPageType} from '../essences/essences';
 
 test('reducer should be add new message', () => {
 
-    type StartStateType = DialogsInitializeStateType
-
-    const startState: StartStateType = {
+    const startState: DialogPageType = {
         dialogs: [
             {id: 1, name: 'Dima Ivanov'},
         ],
@@ -21,8 +20,6 @@ test('reducer should be add new message', () => {
 
 test('reducer should be change new message', () => {
 
-    type StartSateType = DialogsInitializeStateType
-
     const newTestMessageText: string = 'New text added to new state'
     const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 
@@ -30,7 +27,7 @@ test('reducer should be change new message', () => {
         ({type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: newTestMessageText}) as const
 
 
-    const startState: StartSateType = {
+    const startState: DialogPageType = {
         dialogs: [
             {id: 1, name: 'Dima Ivanov'},
         ],

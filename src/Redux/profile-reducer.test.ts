@@ -1,11 +1,9 @@
-import {AddMessageAC, DialogsInitializeStateType, dialogsReducer} from './dialogs-reducer';
-import {AddPostAC, ProfileInitializeStateType, profileReducer} from './profile-reducer';
+import {AddPostAC, profileReducer} from './profile-reducer';
+import {ProfilePageType} from '../essences/essences';
 
 test('reducer should be add new post', () => {
 
-    type StartStateType = ProfileInitializeStateType
-
-    const startState: ProfileInitializeStateType = {
+    const startState: ProfilePageType = {
         posts: [
             {id: 1, message: 'Hello I am props.', likeCount: 21}
         ],
@@ -20,12 +18,11 @@ test('reducer should be change post message', () => {
 
     const newTestPostText: string = 'New post text here'
     const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-    type StartStateType = ProfileInitializeStateType
 
     const UpdateNewPostTextAC = (newTestPostText: string) =>
         ({type: UPDATE_NEW_POST_TEXT, newPostText: newTestPostText}) as const
 
-    const startState: ProfileInitializeStateType = {
+    const startState: ProfilePageType = {
         posts: [
             {id: 1, message: 'Hello I am props.', likeCount: 21}
         ],

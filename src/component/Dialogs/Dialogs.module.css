@@ -1,46 +1,47 @@
 .dialogs_container
 {
-    display: grid;
+    display: flex;
+    flex-direction: column;
 
     width: 100%;
 
     background: #fcfcfc;
-
-    grid-template-areas: 'dialogs_headline dialogs_headline' 'dialogs messages';
-    grid-template-columns: .2fr 1fr;
-    grid-template-rows: 35px auto;
 }
 
 .my_dialogs_headline
 {
-    display: grid;
+    display: flex;
     align-self: center;
 
+    width: 98%;
     height: auto;
-    padding: 5px 5px 5px 15px;
+    padding: 5px 5px 5px 10px;
 
     border-bottom: 1px solid #aeaeae;
+}
 
-    grid-area: dialogs_headline;
+.message_page
+{
+    display: flex;
+    flex-direction: row;
 }
 
 .dialogs_wrapper
 {
-    display: grid;
+    display: flex;
     align-self: start;
+    flex-direction: column;
 
+    width: 20%;
     height: auto;
-
-    grid-area: dialogs;
 }
 
 .messages_wrapper
 {
-    display: grid;
-    align-self: start;
+    display: flex;
+    flex-direction: column;
 
-    grid-area: messages;
-    grid-template-rows: auto auto;
+    width: 80%;
 }
 
 .message_block
@@ -70,10 +71,14 @@
 
 .area
 {
-    width: 99%;
+    display: flex;
 
-    composes: area from './../../index.css';
+    width: 97%;
+    height: 80px;
+
+    resize: none;
 }
+
 
 .button_wrapper
 {
@@ -87,4 +92,3 @@
 {
     composes: btn from './../../index.css';
 }
-
