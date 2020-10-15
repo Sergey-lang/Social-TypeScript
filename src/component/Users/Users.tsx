@@ -1,7 +1,8 @@
 import React from 'react';
 import s from './Users.module.css'
-import avatar from '../../asets/images/user_photo.png';
+import avatar from '../../asets/images/icons8_user.png';
 import {UsersType} from '../../Redux/users-reducer';
+import axios from 'axios'
 
 
 type UsersPageType = {
@@ -13,28 +14,10 @@ type UsersPageType = {
 
 export const Users: React.FC<UsersPageType> = ({users, follow, unfollow, setUsers}) => {
     if (users.length === 0) {
-        setUsers(
-            [{
-                id: 1,
-                name: 'Stanislav Ivanov',
-                status: 'To be or not to be?',
-                photos: {
-                    small: 'url',
-                    large: 'https://escworks.co.in/wp-content/uploads/2012/07/user-icon-6.png'
-                },
-                followed: true
-            },
-                {
-                    id: 2,
-                    name: 'Den Ivanov',
-                    status: 'I am ...',
-                    photos: {
-                        small: 'url',
-                        large: 'https://escworks.co.in/wp-content/uploads/2012/07/user-icon-6.png'
-                    },
-                    followed: false
-                }]
-        )
+        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+            .then(response => {
+                setUsers(response.data.items)
+            })
     }
     return (
         <div className={s.users_container}>
@@ -43,7 +26,11 @@ export const Users: React.FC<UsersPageType> = ({users, follow, unfollow, setUser
                 <span className={s.users_page_num}>1 2 3 4 5 6</span>
                 <div className={s.users_page}>
                     {users.map(u => <div className={s.user} key={u.id}>
-                            <div className={s.avatar}><img alt={'avatar'} src={u.photos.large}/></div>
+                            <div className={s.avatar}>
+                                <img alt={'avatar'} src={u.photos.large != null
+                                    ? u.photos.large
+                                    : avatar}/>
+                            </div>
                             <div className={s.description}>
                                 <div className={s.user_name}>{u.name}</div>
                                 <div className={s.status}>{u.status}</div>
