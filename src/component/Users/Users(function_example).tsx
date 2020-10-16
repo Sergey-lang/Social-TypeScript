@@ -1,8 +1,9 @@
 import React from 'react';
 import s from './Users.module.css'
 import avatar from '../../asets/images/icons8_user.png';
-import { UsersType } from '../../Redux/users-reducer';
+import {UsersType} from '../../Redux/users-reducer';
 import axios from 'axios'
+
 
 type UsersPageType = {
     users: Array<UsersType>
@@ -11,29 +12,27 @@ type UsersPageType = {
     setUsers: (users: Array<UsersType>) => void
 }
 
-export class Users extends React.Component<UsersPageType> {
-
-    constructor(props: UsersPageType) {
-        super(props)
-        alert('new')
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
-            .then(response => {
-                this.props.setUsers(response.data.items)
-            })
+export const UsersExample: React.FC<UsersPageType> = ({users, follow, unfollow, setUsers}) => {
+    let getUsers = () => {
+        if (users.length === 0) {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users')
+                .then(response => {
+                    setUsers(response.data.items)
+                })
+        }
     }
 
-    render() {
-        return (
-            <div className={s.users_container}>
-                <div className={s.users_headline}>Users</div>
-                <div>
-                    <span className={s.users_page_num}>1 2 3 4 5 6</span>
-                    <div className={s.users_page}>
-                        {this.props.users.map(u => <div className={s.user} key={u.id}>
+    return (
+        <div className={s.users_container}>
+            <div className={s.users_headline}>Users</div>
+            <div>
+                <span className={s.users_page_num}>1 2 3 4 5 6</span>
+                <div className={s.users_page}>
+                    {users.map(u => <div className={s.user} key={u.id}>
                             <div className={s.avatar}>
                                 <img alt={'avatar'} src={u.photos.large != null
                                     ? u.photos.large
-                                    : avatar} />
+                                    : avatar}/>
                             </div>
                             <div className={s.description}>
                                 <div className={s.user_name}>{u.name}</div>
@@ -41,21 +40,20 @@ export class Users extends React.Component<UsersPageType> {
                             </div>
                             {
                                 u.followed ? <button
-                                    onClick={(e) => {
-                                        this.props.follow(u.id)
-                                    }}
-                                    className={s.btn}>follow</button>
+                                        onClick={(e) => {
+                                            follow(u.id)
+                                        }}
+                                        className={s.btn}>follow</button>
                                     : <button
                                         onClick={(e) => {
-                                            this.props.unfollow(u.id)
+                                            unfollow(u.id)
                                         }}
                                         className={` ${s.btn} ${s.unfollow}`}>unfollow</button>
                             }
                         </div>
-                        )}
-                    </div>
+                    )}
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }

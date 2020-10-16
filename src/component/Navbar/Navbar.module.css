@@ -10,7 +10,7 @@
 
 .link_wrapper a.activeLink
 {
-    padding-left: 6px;
+    font-weight: 500;
 }
 
 .link_wrapper a
@@ -19,7 +19,7 @@
 }
 
 .link_wrapper:hover
-{ cursor: pointer;
-
+{ 
+    cursor: pointer;
     background-color: #3d79b62c; 
 }
