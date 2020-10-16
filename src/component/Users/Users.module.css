@@ -29,7 +29,7 @@
     display: flex;
     justify-content: center;
 
-    width: 98%;
+    width: content-box;
     padding: 5px;
 }
 
@@ -40,8 +40,9 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    padding: 0 20px;
 
-    width: 98%;
+    width: content-box;
 }
 
 .user
@@ -50,8 +51,9 @@
     flex-direction: row;
     justify-content: flex-start;
 
-    width: 100%;
+    width: content-box;
     padding: 10px;
+    box-sizing: border-box;
 }
 
 .avatar
@@ -74,7 +76,8 @@
     align-self: flex-start;
     flex-direction: column;
 
-    width: 70%;
+    width: 500px;
+    padding-left: 20px;
     height: 150px;
 }
 
@@ -84,6 +87,7 @@
     align-self: center;
     flex-direction: row;
     justify-content: flex-start;
+    font-weight: 500;
 
     width: 100%;
 }
