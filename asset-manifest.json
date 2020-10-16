@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/Social-TypeScript/static/css/main.efb1c621.chunk.css",
-    "main.js": "/Social-TypeScript/static/js/main.edd95e8f.chunk.js",
-    "main.js.map": "/Social-TypeScript/static/js/main.edd95e8f.chunk.js.map",
+    "main.css": "/Social-TypeScript/static/css/main.23d201fe.chunk.css",
+    "main.js": "/Social-TypeScript/static/js/main.5a9c906d.chunk.js",
+    "main.js.map": "/Social-TypeScript/static/js/main.5a9c906d.chunk.js.map",
     "runtime-main.js": "/Social-TypeScript/static/js/runtime-main.18e493ad.js",
     "runtime-main.js.map": "/Social-TypeScript/static/js/runtime-main.18e493ad.js.map",
-    "static/js/2.b947ce52.chunk.js": "/Social-TypeScript/static/js/2.b947ce52.chunk.js",
-    "static/js/2.b947ce52.chunk.js.map": "/Social-TypeScript/static/js/2.b947ce52.chunk.js.map",
+    "static/js/2.df86a177.chunk.js": "/Social-TypeScript/static/js/2.df86a177.chunk.js",
+    "static/js/2.df86a177.chunk.js.map": "/Social-TypeScript/static/js/2.df86a177.chunk.js.map",
     "index.html": "/Social-TypeScript/index.html",
-    "precache-manifest.b574f765c79a4f0cd7928e09d94439a0.js": "/Social-TypeScript/precache-manifest.b574f765c79a4f0cd7928e09d94439a0.js",
+    "precache-manifest.d0a1cb8729577aafc892027397079f37.js": "/Social-TypeScript/precache-manifest.d0a1cb8729577aafc892027397079f37.js",
     "service-worker.js": "/Social-TypeScript/service-worker.js",
-    "static/css/main.efb1c621.chunk.css.map": "/Social-TypeScript/static/css/main.efb1c621.chunk.css.map",
-    "static/js/2.b947ce52.chunk.js.LICENSE.txt": "/Social-TypeScript/static/js/2.b947ce52.chunk.js.LICENSE.txt",
-    "static/media/avatar.jpg": "/Social-TypeScript/static/media/avatar.62013650.jpg"
+    "static/css/main.23d201fe.chunk.css.map": "/Social-TypeScript/static/css/main.23d201fe.chunk.css.map",
+    "static/js/2.df86a177.chunk.js.LICENSE.txt": "/Social-TypeScript/static/js/2.df86a177.chunk.js.LICENSE.txt",
+    "static/media/avatar.jpg": "/Social-TypeScript/static/media/avatar.62013650.jpg",
+    "static/media/icons8_user.png": "/Social-TypeScript/static/media/icons8_user.9dc38257.png"
   },
   "entrypoints": [
     "static/js/runtime-main.18e493ad.js",
-    "static/js/2.b947ce52.chunk.js",
-    "static/css/main.efb1c621.chunk.css",
-    "static/js/main.edd95e8f.chunk.js"
+    "static/js/2.df86a177.chunk.js",
+    "static/css/main.23d201fe.chunk.css",
+    "static/js/main.5a9c906d.chunk.js"
   ]
 }
