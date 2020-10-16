@@ -1,6 +1,6 @@
-import {AppStateType, store} from './Redux/redux-store';
+import {store} from './Redux/redux-store';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter} from 'react-router-dom';
+import {HashRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import ReactDOM from 'react-dom';
 import {App} from './App';
@@ -9,11 +9,11 @@ import './index.css';
 
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserRouter>
+        <HashRouter>
             <Provider store={store}>
                 <App/>
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     </React.StrictMode>,
     document.getElementById('root')
 );
