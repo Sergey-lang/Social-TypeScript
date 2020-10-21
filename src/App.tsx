@@ -5,7 +5,7 @@ import {Navbar} from './component/Navbar/Navbar';
 import {Profile} from './component/Profile/Profile';
 import {Route} from 'react-router-dom';
 import {DialogsContainer} from './component/Dialogs/DialogsContainer';
-import {UsersContainer} from './component/Users/UsersContainer';
+import UsersContainer from './component/Users/UsersContainer';
 
 export const App: React.FC = () => {
     return (
