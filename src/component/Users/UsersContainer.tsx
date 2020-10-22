@@ -2,33 +2,17 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {AppStateType} from '../../Redux/redux-store';
 import {
-    followAC,
-    setCurrentPageAC,
-    setUsersAC,
-    setUsersTotalContAC,
-    toggleIsFetchingAC,
-    unfollowAC,
+    follow,
+    setCurrentPage,
+    setUsers,
+    setUsersTotalCount,
+    toggleIsFetching,
+    unfollow,
     UsersType
 } from '../../Redux/users-reducer';
-import {Dispatch} from 'redux';
 import axios from 'axios';
 import {Users} from './Users';
 import {Preloader} from '../../common/Preloader/Preloader';
-
-type UsersAPIComponentType = {
-    users: Array<UsersType>
-    totalUsersCount: number
-    pageSize: number
-    currentPage: number
-    isFetching: boolean
-
-    follow: (userID: number) => void
-    unfollow: (userID: number) => void
-    setUsers: (users: Array<UsersType>) => void
-    setCurrentPage: (currentPage: number) => void
-    setUsersTotalCount: (totalCount: number) => void
-    toggleIsFetching: (isFetching: boolean) => void
-} //data from connect
 
 type GetUsersResponseType = {
     items: Array<UsersType>
@@ -36,13 +20,15 @@ type GetUsersResponseType = {
     error: string | null
 }
 
+type UsersAPIComponentType = MapStateType & MapDispatchType
+
 export class UsersContainer extends React.Component<UsersAPIComponentType> {
 
     componentDidMount() {
         this.props.toggleIsFetching(true)
         axios.get<GetUsersResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
-                this.props.toggleIsFetching(true)
+                this.props.toggleIsFetching(false)
                 this.props.setUsers(response.data.items)
                 this.props.setUsersTotalCount(response.data.totalCount)
             })
@@ -53,7 +39,7 @@ export class UsersContainer extends React.Component<UsersAPIComponentType> {
         this.props.toggleIsFetching(true)
         axios.get<GetUsersResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`)
             .then(response => {
-                this.props.toggleIsFetching(true)
+                this.props.toggleIsFetching(false)
                 this.props.setUsers(response.data.items)
             })
     }
@@ -100,27 +86,5 @@ const mapState = (state: AppStateType): MapStateType => {
     }
 }
 
-const mapDispatch = (dispatch: Dispatch): MapDispatchType => {
-    return {
-        follow: (userID: number) => {
-            dispatch(followAC(userID))
-        },
-        unfollow: (userID: number) => {
-            dispatch(unfollowAC(userID))
-        },
-        setUsers: (users: Array<UsersType>) => {
-            dispatch(setUsersAC(users))
-        },
-        setCurrentPage: (currentPage: number) => {
-            dispatch(setCurrentPageAC(currentPage))
-        },
-        setUsersTotalCount: (totalCount: number) => {
-            dispatch(setUsersTotalContAC(totalCount))
-        },
-        toggleIsFetching: (isFetching: boolean) => {
-            dispatch(toggleIsFetchingAC(isFetching))
-        },
-    }
-}
-
-export default connect(mapState, mapDispatch)(UsersContainer)
+export default connect<MapStateType, MapDispatchType, {}, AppStateType>(mapState,
+    {follow, unfollow, setUsers, setCurrentPage, setUsersTotalCount, toggleIsFetching})(UsersContainer)

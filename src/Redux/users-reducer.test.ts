@@ -1,4 +1,4 @@
-import {followAC, unfollowAC, UsersInitializeStateType, usersReducer} from './users-reducer';
+import {follow, unfollow, UsersInitializeStateType, usersReducer} from './users-reducer';
 
 let startState: UsersInitializeStateType
 
@@ -35,12 +35,12 @@ beforeEach(() => {
 
 test('check user follow', () => {
 
-    const endState = usersReducer(startState, followAC(1))
+    const endState = usersReducer(startState, follow(1))
     expect(endState.users[0].followed).toBeTruthy()
 });
 
 test('check user unfollow', () => {
 
-    const endState = usersReducer(startState, unfollowAC(1))
+    const endState = usersReducer(startState, unfollow(1))
     expect(endState.users[1].followed).toBeTruthy()
 });

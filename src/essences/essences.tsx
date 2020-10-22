@@ -1,12 +1,12 @@
 import {AddPostAC, UpdateNewPostTextAC} from '../Redux/profile-reducer';
 import {AddMessageAC, UpdateNewMessageTextAC} from '../Redux/dialogs-reducer';
 import {
-    followAC,
-    toggleIsFetchingAC,
-    setCurrentPageAC,
-    setUsersAC,
-    setUsersTotalContAC,
-    unfollowAC
+    follow,
+    toggleIsFetching,
+    setCurrentPage,
+    setUsers,
+    setUsersTotalCount,
+    unfollow
 } from '../Redux/users-reducer';
 
 //state
@@ -41,12 +41,12 @@ export type ActionsTypes = ReturnType<typeof AddPostAC>
     | ReturnType<typeof UpdateNewPostTextAC>
     | ReturnType<typeof AddMessageAC>
     | ReturnType<typeof UpdateNewMessageTextAC>
-    | ReturnType<typeof followAC>
-    | ReturnType<typeof unfollowAC>
-    | ReturnType<typeof setUsersAC>
-    | ReturnType<typeof setCurrentPageAC>
-    | ReturnType<typeof setUsersTotalContAC>
-    | ReturnType<typeof toggleIsFetchingAC>
+    | ReturnType<typeof follow>
+    | ReturnType<typeof unfollow>
+    | ReturnType<typeof setUsers>
+    | ReturnType<typeof setCurrentPage>
+    | ReturnType<typeof setUsersTotalCount>
+    | ReturnType<typeof toggleIsFetching>
 
 export type StoreType = {
     _state: RootStateType
