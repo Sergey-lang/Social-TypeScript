@@ -1,43 +1,46 @@
 import {followAC, unfollowAC, UsersInitializeStateType, usersReducer} from './users-reducer';
 
-test('check user follow', () => {
+let startState: UsersInitializeStateType
 
-    const startState: UsersInitializeStateType = {
+beforeEach(() => {
+    startState = {
         users: [
             {
                 id: 1,
-                name: 'Dima Ivanov',
-                status: 'I am a bos',
+                name: 'David Ivanov',
+                status: 'I am test men',
                 photos: {
-                    small: 'sdsd',
+                    small: 'image',
                     large: 'https://escworks.co.in/wp-content/uploads/2012/07/user-icon-6.png'
                 },
                 followed: false
-            }
-        ]
+            },
+            {
+                id: 2,
+                name: 'Bob Ivanov',
+                status: 'I am test men',
+                photos: {
+                    small: 'image',
+                    large: 'https://escworks.co.in/wp-content/uploads/2012/07/user-icon-6.png'
+                },
+                followed: true
+            },
+        ],
+        totalUsersCount: 0,
+        pageSize: 5,
+        currentPage: 5,
+        isFetching: false,
     }
+})
+
+test('check user follow', () => {
 
     const endState = usersReducer(startState, followAC(1))
-    expect(endState.users[0].followed).toBe(false)
+    expect(endState.users[0].followed).toBeTruthy()
 });
 
 test('check user unfollow', () => {
 
-    const startState: UsersInitializeStateType = {
-        users: [
-            {
-                id: 1,
-                name: 'Anna Ivanova',
-                status: 'I am a girl',
-                photos: {
-                    small: 'sdsd',
-                    large: 'https://escworks.co.in/wp-content/uploads/2012/07/user-icon-6.png'
-                },
-                followed: true
-            }
-        ]
-    }
-
     const endState = usersReducer(startState, unfollowAC(1))
-    expect(endState.users[0].followed).toBe(true)
+    expect(endState.users[1].followed).toBeTruthy()
 });

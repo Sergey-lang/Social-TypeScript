@@ -47,12 +47,12 @@ export const Users: React.FC<UsersPageType> = ({totalUsersCount, pageSize, curre
                         {
                             u.followed ? <button
                                     onClick={() => {
-                                        follow(u.id)
+                                        unfollow(u.id)
                                     }}
                                     className={s.btn}>follow</button>
                                 : <button
                                     onClick={() => {
-                                        unfollow(u.id)
+                                        follow(u.id)
                                     }}
                                     className={` ${s.btn} ${s.unfollow}`}>unfollow</button>
                         }
