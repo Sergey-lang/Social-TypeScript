@@ -42,7 +42,7 @@ export class UsersContainer extends React.Component<UsersAPIComponentType> {
         this.props.toggleIsFetching(true)
         axios.get<GetUsersResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
-                this.props.toggleIsFetching(false)
+                this.props.toggleIsFetching(true)
                 this.props.setUsers(response.data.items)
                 this.props.setUsersTotalCount(response.data.totalCount)
             })
@@ -53,7 +53,7 @@ export class UsersContainer extends React.Component<UsersAPIComponentType> {
         this.props.toggleIsFetching(true)
         axios.get<GetUsersResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`)
             .then(response => {
-                this.props.toggleIsFetching(false)
+                this.props.toggleIsFetching(true)
                 this.props.setUsers(response.data.items)
             })
     }
