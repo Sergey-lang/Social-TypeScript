@@ -1,13 +1,15 @@
 import React from 'react';
-import style from './Header.module.css';
+import s from './Header.module.css';
 
 export const Header: React.FC = () => {
     return (
-        <header className={style.header}>
-            <div className={style.logo_name}>SW<span className={style.logo_explanation}>social network</span></div>
-            <div className={style.login}>
-                Login
+        <header className={s.header}>
+          <div className={s.container}>
+            <div className={s.logo_name}>SW<span className={s.logo_explanation}>social network</span></div>
+            <div className={s.login}>
+              Login
             </div>
+          </div>
         </header>
     )
 }

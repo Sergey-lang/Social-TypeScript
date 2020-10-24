@@ -1,19 +1,7 @@
-.app_wrapper_content
+.mainProfileWrapper
 {
-    display: grid;
-
+    display: flex;
+    flex-direction: column;
     width: 100%;
-
-    grid-area: content;
-    grid-template-areas: 'profile_wrapper' 'post_wrapper';
-    grid-template-rows: auto auto;
-    grid-gap: 15px;
-}
-
-.app_wrapper_content .post_wrapper
-{
-    display: grid;
-
-    grid-area: post_wrapper;
-    grid-template-areas: 'my_posts' 'add_new_posts';
+    justify-content: flex-start;
 }

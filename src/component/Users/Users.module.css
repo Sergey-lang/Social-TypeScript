@@ -3,6 +3,7 @@
     flex-direction: column;
     width: 100%;
     background: #fcfcfc;
+    box-shadow: 0 0 1px 0;
 }
 
 .users_headline {

@@ -4,14 +4,6 @@ import {ActionsTypes} from '../essences/essences';
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE'
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 
-type AddMessageACType = {
-    type: typeof ADD_NEW_MESSAGE
-}
-type UpdateNewMessageTextACType = {
-    type: typeof UPDATE_NEW_MESSAGE_TEXT,
-    newMessageText: string
-}
-
 export type DialogType = {
     id: number
     name: string
@@ -63,9 +55,15 @@ export const dialogsReducer = (state: DialogInitPageType = initializeState,
     }
 }
 
+type AddMessageACType = {
+    type: typeof ADD_NEW_MESSAGE
+}
 export const addMessage = (): AddMessageACType =>
     ({type: ADD_NEW_MESSAGE}) as const
-
+type UpdateNewMessageTextACType = {
+    type: typeof UPDATE_NEW_MESSAGE_TEXT,
+    newMessageText: string
+}
 export const updateNewMessageText = (text: string): UpdateNewMessageTextACType =>
     ({type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: text}) as const
 

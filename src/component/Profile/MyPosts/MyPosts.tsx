@@ -1,15 +1,10 @@
 import style from './MyPosts.module.css';
 import React, {ChangeEvent} from 'react';
 import Post from '../Post/Post';
-import {ProfilePageInitType} from '../../../Redux/profile-reducer';
+import {MapDispatchType, MapStateType} from './MyPostsContainer';
 
-type MyPostsType = {
-  profilePage: ProfilePageInitType
-  addPost: () => void
-  changingPostText: (postText: string) => void
-}
-
-export const MyPosts: React.FC<MyPostsType> = ({profilePage, addPost, changingPostText}) => {
+type OwnPropsType = MapStateType & MapDispatchType
+export const MyPosts: React.FC<OwnPropsType> = ({profilePage, addPost, changingPostText}) => {
   let postElements = profilePage.posts
     .map(p => <Post message={p.message} likeCount={p.likeCount} key={p.id}/>)
 

@@ -2,25 +2,20 @@ import React, {ChangeEvent} from 'react';
 import s from './Dialogs.module.css';
 import {Dialog} from './Dialog/Dialog';
 import {Message} from './Message/Message';
-import {DialogInitPageType} from '../../Redux/dialogs-reducer';
+import {mapDispatchType, MapStateType} from './DialogsContainer';
 
-type DialogsPropsType = {
-  dialogsPage: DialogInitPageType
-  sendMessage: () => void
-  changingMessageText: (newMessageText: string) => void
-}
-
-export const Dialogs: React.FC<DialogsPropsType> = ({dialogsPage, sendMessage, changingMessageText}) => {
+type OwnPropsType = MapStateType & mapDispatchType
+export const Dialogs: React.FC<OwnPropsType> = ({dialogsPage, addMessage, updateNewMessageText}) => {
 
   let dialogsElement = dialogsPage.dialogs.map(d => <Dialog id={d.id} name={d.name} key={d.id}/>)
   let messagesElement = dialogsPage.messages.map(m => <Message id={m.id} message={m.message} key={m.id}/>)
 
   const sendMessageCallback = () => {
-    sendMessage()
+    addMessage()
   }
   const changingMessageTextCallback = (e: ChangeEvent<HTMLTextAreaElement>) => {
     let newMessageText = e.currentTarget.value
-    changingMessageText(newMessageText)
+    updateNewMessageText(newMessageText)
   }
 
   return (

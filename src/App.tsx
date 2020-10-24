@@ -9,11 +9,11 @@ import ProfileContainer from './component/Profile/ProfileContainer';
 
 export const App: React.FC = () => {
     return (
-        <div className='all_wrapper'>
+        <div className='app'>
             <Header/>
-            <div className='app_wrapper'>
+            <div className='appContainer'>
                 <Navbar/>
-                <Route path='/profile'
+                <Route path='/profile/:userid?'
                        render={() => <ProfileContainer/>}
                 />
                 <Route path='/dialogs'

@@ -1,71 +1,58 @@
 .profile_wrapper
 {
     font-size: 13px;
+    display: flex;
+}
 
-    display: grid;
-
-    grid-area: profile_wrapper;
-    grid-template-areas: 'profile_photo profile_info'
-    'profile_photo sidebar';
-    grid-template-columns: auto 1fr;
-    grid-gap: 15px;
+.left_block {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
 }
 
 .profile_photo
 {
-    display: grid;
-    overflow: hidden;
-    align-self: center;
-    justify-content: center;
-
-    width: auto;
-    padding: 10px;
-
+    display: flex;
+    padding: 15px;
+    height: auto;
     background: white;
     box-shadow: 0 4px 5px -2px rgba(0, 0, 0, .22);
-
-    grid-area: profile_photo;
+    box-shadow: 0 0 1px 0;
 }
 
 .profile_photo img
 {
-    max-height: 400px;
+    width: 100%;
+    position: relative; /* If you want text inside of it */
 }
 
 .profile_wrapper .profile_info
 {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     align-self: start;
-
+    margin-left: 10px;
     height: auto;
     padding: 10px;
-
+    width: 70%;
     background: white;
-    box-shadow: 0 4px 5px -2px rgba(0, 0, 0, .22);
-
-    grid-area: profile_info;
-    grid-template-areas: 'user_name' 'status' 'descriptions-wrapper' 'friends';
-    grid-gap: 5px;
+    /*box-shadow: 0 4px 5px -2px rgba(0, 0, 0, .22);*/
+    box-shadow: 0 0 1px 0;
 }
 
 .profile_wrapper .profile_info .user_name
 {
     font-size: 20px;
 
-    display: grid;
-    align-self: center;
-    justify-content: start;
+    display: flex;
 
     max-height: 25px;
     padding: 5px;
-
-    grid-area: user_name;
 }
 
 .profile_wrapper .profile_info .status
 {
-    display: grid;
-    align-self: center;
+    display: flex;
 
     height: auto;
     max-height: 50px;
@@ -74,21 +61,13 @@
 
     border-bottom: 1px solid #aeaeae;
 
-    grid-area: status;
 }
 
 .profile_wrapper .profile_info .descriptions_wrapper
 {
-    display: grid;
-
+    display: flex;
+    flex-direction: column;
     padding: 5px;
-
-    grid-area: descriptions-wrapper;
-    grid-template-rows: auto;
-    grid-gap: 5px;
 }
 
-.profile_info .descriptions_wrapper .description
-{
-    background-color: goldenrod;
-}
+

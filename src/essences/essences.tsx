@@ -1,9 +1,9 @@
-import {addPost, setUserProfile, updateNewPostText} from '../Redux/profile-reducer';
+import {addPost, changingPostText, setUserProfile} from '../Redux/profile-reducer';
 import {addMessage, updateNewMessageText} from '../Redux/dialogs-reducer';
 import {follow, setCurrentPage, setUsers, setUsersTotalCount, toggleIsFetching, unfollow} from '../Redux/users-reducer';
 
 export type ActionsTypes = ReturnType<typeof addPost>
-    | ReturnType<typeof updateNewPostText>
+    | ReturnType<typeof changingPostText>
     | ReturnType<typeof addMessage>
     | ReturnType<typeof updateNewMessageText>
     | ReturnType<typeof follow>

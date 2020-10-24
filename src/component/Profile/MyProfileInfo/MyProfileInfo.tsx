@@ -1,9 +1,10 @@
 import React from 'react';
-import style from './MyProfileInfo.module.css';
+import s from './MyProfileInfo.module.css';
 import avatar from './../../../asets/images/avatar.jpg';
 import Sidebar from './Sidebar/Sidebar';
 import {Preloader} from '../../../common/Preloader/Preloader';
 import {ProfileType} from '../../../Redux/profile-reducer';
+import {Description} from '../../../common/Description/Description';
 
 type MyProfileInfoType = {
   profile: ProfileType | null
@@ -15,21 +16,25 @@ export const MyProfileInfo: React.FC<MyProfileInfoType> = ({profile, sidebar}) =
     return <Preloader/>
   }
   return (
-    <div className={style.profile_wrapper}>
-      <div className={style.profile_photo}>
-        <img alt={'avatar'} src={profile ? profile.photos.large! : ''}/>
-      </div>
-      <div className={style.profile_info}>
-        <div className={style.user_name}>{profile.fullName}</div>
-        <div className={style.status}>"Ученье свет, а за свет надо платить!"
+    <div className={s.profile_wrapper}>
+      <div className={s.left_block}>
+        <div className={s.profile_photo}>
+          <img alt={'avatar'} src={profile ? profile.photos.large! : ''}/>
         </div>
-        <div className={style.descriptions_wrapper}>
-          <div className={style.description}>About me: {profile.aboutMe}</div>
-          <div className={style.description}>Looking for a job: {profile.lookingForAJob ? 'Yes' : 'No'}</div>
-          <div className={style.description}>{profile.contacts.github}</div>
+        <Sidebar sidebar={sidebar}/>
+      </div>
+
+      <div className={s.profile_info}>
+        <div className={s.user_name}>{profile.fullName}</div>
+        <div className={s.status}>"Ученье свет, а за свет надо платить!"
+        </div>
+        <div className={s.descriptions_wrapper}>
+          <Description aboutMe={profile.aboutMe}
+                       contacts={profile.contacts}
+                       lookingForAJob={profile.lookingForAJob}
+                       lookingForAJobDescription={profile.lookingForAJobDescription}/>
         </div>
       </div>
-      <Sidebar sidebar={sidebar}/>
     </div>
   )
 }

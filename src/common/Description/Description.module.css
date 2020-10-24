@@ -1,0 +1,15 @@
+.description
+{
+  margin-top: 10px;
+  display: flex;
+}
+
+.title {
+  display: flex;
+  width: 40%;
+}
+.inform {
+  display: flex;
+  justify-content: flex-start;
+}
+

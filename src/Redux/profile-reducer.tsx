@@ -28,7 +28,7 @@ export type PhotosType = {
   large: string | null
 }
 export type ProfileType = {
-  aboutMe: Array<UsersType>
+  aboutMe: UsersType
   contacts: ContactType
   lookingForAJob: boolean
   lookingForAJobDescription: string
@@ -81,7 +81,6 @@ export const profileReducer = (state: ProfilePageInitType = initializeState,
   }
 }
 
-
 type AddPostACType = {
   type: ActionType.ADD_POST
 }
@@ -91,7 +90,7 @@ type UpdateNewPostTextACType = {
   type: ActionType.UPDATE_NEW_POST_TEXT
   newPostText: string
 }
-export const updateNewPostText = (text: string): UpdateNewPostTextACType =>
+export const changingPostText = (text: string): UpdateNewPostTextACType =>
   ({type: ActionType.UPDATE_NEW_POST_TEXT, newPostText: text})
 type SetUserProfile = {
   type: ActionType.SET_USER_PROFILE

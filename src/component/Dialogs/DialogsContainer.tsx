@@ -3,31 +3,16 @@ import {AppStateType} from '../../Redux/redux-store';
 import {connect} from 'react-redux';
 import {Dialogs} from './Dialogs';
 import React from 'react';
-import {Dispatch} from 'redux';
 
-type MapStateType = {
+export type MapStateType = {
   dialogsPage: DialogInitPageType
 }
-type mapDispatchType = {
-  sendMessage: () => void
-  changingMessageText: (newMessageText: string) => void
+export type mapDispatchType = {
+  addMessage: () => void
+  updateNewMessageText: (newMessageText: string) => void
 }
 
-let mapState = (state: AppStateType): MapStateType => {
-  return {
-    dialogsPage: state.dialogsState
-  }
-}
+let mapState = (state: AppStateType): MapStateType => ({dialogsPage: state.dialogsState})
 
-let mapDispatch = (dispatch: Dispatch): mapDispatchType => {
-  return {
-    sendMessage: () => {
-      dispatch(addMessage())
-    },
-    changingMessageText: (newMessageText: string) => {
-      dispatch(updateNewMessageText(newMessageText))
-    }
-  }
-}
-
-export const DialogsContainer = connect(mapState, mapDispatch)(Dialogs)
+export const DialogsContainer = connect<MapStateType, mapDispatchType, {}, AppStateType>
+(mapState, {addMessage,updateNewMessageText})(Dialogs)

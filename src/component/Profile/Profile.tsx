@@ -10,7 +10,7 @@ type ProfileProps = {
 
 export const Profile: React.FC<ProfileProps> = (props) => {
   return (
-    <div className={s.app_wrapper_content}>
+    <div className={s.mainProfileWrapper}>
       <MyProfileInfo profile={props.profile}/>
       <MyPostsContainer/>
     </div>
