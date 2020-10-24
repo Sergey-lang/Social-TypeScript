@@ -101,3 +101,7 @@
 .unfollow {
     opacity: .8;
 }
+
+.link_to_profile {
+    cursor: pointer;
+}

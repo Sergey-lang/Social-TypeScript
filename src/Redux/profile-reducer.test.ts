@@ -1,4 +1,4 @@
-import {AddPostAC, profileReducer} from './profile-reducer';
+import {addPost, profileReducer} from './profile-reducer';
 import {ProfilePageType} from '../essences/essences';
 
 test('reducer should be add new post', () => {
@@ -10,7 +10,7 @@ test('reducer should be add new post', () => {
         newPostText: '',
     }
 
-    const endState = profileReducer(startState, AddPostAC())
+    const endState = profileReducer(startState, addPost())
     expect(endState.posts.length).toBe(2)
 });
 

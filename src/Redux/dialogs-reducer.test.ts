@@ -1,4 +1,4 @@
-import {AddMessageAC, dialogsReducer} from './dialogs-reducer';
+import {addMessage, dialogsReducer} from './dialogs-reducer';
 import {DialogPageType} from '../essences/essences';
 
 test('reducer should be add new message', () => {
@@ -13,7 +13,7 @@ test('reducer should be add new message', () => {
         newMessageText: ''
     }
 
-    const endState = dialogsReducer(startState, AddMessageAC())
+    const endState = dialogsReducer(startState, addMessage())
 
     expect(endState.messages.length).toBe(2)
 });

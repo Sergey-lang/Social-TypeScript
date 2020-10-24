@@ -1,8 +1,21 @@
-import {profileReducer} from './profile-reducer';
-import {dialogsReducer} from './dialogs-reducer';
-import {StoreType} from '../essences/essences';
+import {ProfilePageInitType, profileReducer} from '../Redux/profile-reducer';
+import {DialogInitPageType, dialogsReducer} from '../Redux/dialogs-reducer';
+import {ActionsTypes} from '../essences/essences';
 
-export const store: StoreType = {
+
+export type RootStateType = {
+    profilePage: ProfilePageInitType
+    dialogPage: DialogInitPageType
+}
+export type StoreType = {
+    _state: RootStateType
+    getState: () => RootStateType
+    subscriber: (observerCallback: () => void) => void
+    _callSubscriber: () => void
+    dispatch: (action: ActionsTypes) => void
+}
+
+export const store = {
     _state: {
         profilePage: {
             posts: [
@@ -11,6 +24,7 @@ export const store: StoreType = {
                 {id: 3, message: 'I go out from mypost component', likeCount: 5},
             ],
             newPostText: '',
+            profile: {}
         },
         dialogPage: {
             dialogs: [
@@ -38,12 +52,12 @@ export const store: StoreType = {
     getState() {
         return this._state
     },
-    subscriber(observerCallback) {
+    subscriber(observerCallback:any) {
         this._callSubscriber = observerCallback
     },
 
-    dispatch(action) {
-        this._state.profilePage = profileReducer(this._state.profilePage, action)
+    dispatch(action:any) {
+        // this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogPage = dialogsReducer(this._state.dialogPage, action)
 
         this._callSubscriber()

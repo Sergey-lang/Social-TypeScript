@@ -2,10 +2,10 @@ import React from 'react';
 import './App.css';
 import {Header} from './component/Header/Header';
 import {Navbar} from './component/Navbar/Navbar';
-import {Profile} from './component/Profile/Profile';
 import {Route} from 'react-router-dom';
 import {DialogsContainer} from './component/Dialogs/DialogsContainer';
 import UsersContainer from './component/Users/UsersContainer';
+import ProfileContainer from './component/Profile/ProfileContainer';
 
 export const App: React.FC = () => {
     return (
@@ -14,7 +14,7 @@ export const App: React.FC = () => {
             <div className='app_wrapper'>
                 <Navbar/>
                 <Route path='/profile'
-                       render={() => <Profile/>}
+                       render={() => <ProfileContainer/>}
                 />
                 <Route path='/dialogs'
                        render={() => <DialogsContainer/>}

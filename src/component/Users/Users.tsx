@@ -2,6 +2,7 @@ import s from './Users.module.css';
 import avatar from '../../asets/images/icons8_user.png';
 import React from 'react';
 import {UsersType} from '../../Redux/users-reducer';
+import {NavLink} from 'react-router-dom';
 
 type UsersPageType = {
     totalUsersCount: number
@@ -35,9 +36,11 @@ export const Users: React.FC<UsersPageType> = ({totalUsersCount, pageSize, curre
                 <div className={s.users_page}>
                     {users.map(u => <div className={s.user} key={u.id}>
                         <div className={s.avatar}>
-                            <img alt={'avatar'} src={u.photos.large != null
-                                ? u.photos.large
-                                : avatar}/>
+                            <NavLink to={'/profile/' + u.id}  className={s.link_to_profile}>
+                                <img alt={'avatar'} src={u.photos.large != null
+                                    ? u.photos.large
+                                    : avatar}/>
+                            </NavLink>
                         </div>
                         <div className={s.description}>
                             <div className={s.user_name}>{u.name}</div>

@@ -1,34 +1,33 @@
 import React from 'react';
-import {AddPostAC, UpdateNewPostTextAC} from '../../../Redux/profile-reducer';
+import {addPost, ProfilePageInitType, updateNewPostText} from '../../../Redux/profile-reducer';
 import {MyPosts} from './MyPosts';
 import {connect} from 'react-redux';
 import {AppStateType} from '../../../Redux/redux-store';
-import {ProfilePageType} from '../../../essences/essences';
 import {Dispatch} from 'redux';
 
 type MapStateType = {
-    profilePage: ProfilePageType
+  profilePage: ProfilePageInitType
 }
 type MapDispatchType = {
-    addPost: () => void
-    changingPostText: (postText: string) => void
+  addPost: () => void
+  changingPostText: (postText: string) => void
 }
 
 const mapState = (state: AppStateType): MapStateType => {
-    return {
-        profilePage: state.profileReducer
-    }
+  return {
+    profilePage: state.profileState
+  }
 }
 
 const mapDispatch = (dispatch: Dispatch): MapDispatchType => {
-    return {
-        addPost: () => {
-            dispatch(AddPostAC())
-        },
-        changingPostText: (postText: string) => {
-            dispatch(UpdateNewPostTextAC(postText))
-        }
+  return {
+    addPost: () => {
+      dispatch(addPost())
+    },
+    changingPostText: (postText: string) => {
+      dispatch(updateNewPostText(postText))
     }
+  }
 }
 
 export const MyPostsContainer = connect(mapState, mapDispatch)(MyPosts)

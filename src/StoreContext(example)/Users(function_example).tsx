@@ -1,9 +1,8 @@
 import React from 'react';
-import s from './Users.module.css'
-import avatar from '../../asets/images/icons8_user.png';
-import {UsersType} from '../../Redux/users-reducer';
+import s from '../component/Users/Users.module.css'
+import avatar from '../asets/images/icons8_user.png';
+import {UsersType} from '../Redux/users-reducer';
 import axios from 'axios'
-
 
 type UsersPageType = {
     users: Array<UsersType>

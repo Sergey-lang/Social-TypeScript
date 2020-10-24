@@ -14,19 +14,19 @@ import axios from 'axios';
 import {Users} from './Users';
 import {Preloader} from '../../common/Preloader/Preloader';
 
-type GetUsersResponseType = {
+type UsersResponseType = {
     items: Array<UsersType>
     totalCount: number
     error: string | null
 }
 
-type UsersAPIComponentType = MapStateType & MapDispatchType
+type UsersContainerType = MapStateType & MapDispatchType
 
-export class UsersContainer extends React.Component<UsersAPIComponentType> {
+export class UsersContainer extends React.Component<UsersContainerType> {
 
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        axios.get<GetUsersResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        axios.get<UsersResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
                 this.props.toggleIsFetching(false)
                 this.props.setUsers(response.data.items)
@@ -37,7 +37,7 @@ export class UsersContainer extends React.Component<UsersAPIComponentType> {
     onPageChanged = (p: number) => {
         this.props.setCurrentPage(p)
         this.props.toggleIsFetching(true)
-        axios.get<GetUsersResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`)
+        axios.get<UsersResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`)
             .then(response => {
                 this.props.toggleIsFetching(false)
                 this.props.setUsers(response.data.items)
@@ -76,15 +76,13 @@ type MapDispatchType = {
     toggleIsFetching: (isFetching: boolean) => void
 }
 
-const mapState = (state: AppStateType): MapStateType => {
-    return {
-        users: state.usersReducer.users,
-        totalUsersCount: state.usersReducer.totalUsersCount,
-        pageSize: state.usersReducer.pageSize,
-        currentPage: state.usersReducer.currentPage,
-        isFetching: state.usersReducer.isFetching,
-    }
-}
+const mapState = (state: AppStateType): MapStateType => ({
+    users: state.usersState.users,
+    totalUsersCount: state.usersState.totalUsersCount,
+    pageSize: state.usersState.pageSize,
+    currentPage: state.usersState.currentPage,
+    isFetching: state.usersState.isFetching,
+})
 
 export default connect<MapStateType, MapDispatchType, {}, AppStateType>(mapState,
     {follow, unfollow, setUsers, setCurrentPage, setUsersTotalCount, toggleIsFetching})(UsersContainer)
