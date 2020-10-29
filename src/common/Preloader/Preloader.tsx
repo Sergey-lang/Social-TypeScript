@@ -1,5 +1,5 @@
 import React from 'react';
-import preloader from '../../asets/images/Preloader.gif';
+import preloader from '../Preloader/Preloader.gif';
 import s from './Preloader.module.css'
 
 export const Preloader: React.FC = () => {
