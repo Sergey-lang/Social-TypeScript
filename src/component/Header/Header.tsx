@@ -13,8 +13,8 @@ export const Header: React.FC<HeaderPropsType> = (props) => {
 				<div className={s.logo_name}>
 					SW<span className={s.logo_explanation}>social network</span>
 				</div>
-				<div>
-					{props.isAuth ? props.login : <div className={s.login}>Login</div>}
+				<div className={s.user_login}>
+					{props.isAuth ? <div className={s.login}>{props.login}</div>: <div className={s.login}>Login</div>}
 				</div>
 			</div>
 		</header>
