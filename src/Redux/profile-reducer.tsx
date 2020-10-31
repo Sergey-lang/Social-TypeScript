@@ -1,6 +1,5 @@
 import React from 'react';
 import {ActionsTypes} from '../essences/essences';
-import {UsersType} from './users-reducer';
 
 enum ActionType {
   ADD_POST = 'PROFILE/ADD-POST',

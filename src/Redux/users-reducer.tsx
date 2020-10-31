@@ -46,7 +46,8 @@ export const usersReducer = (state: UsersInitializeStateType = initializeState, 
                 users: state.users.map(u => {
                     if (u.id === action.userID) {
                         return {...u, followed: true}
-                    } else return u
+                    }
+                    return u
                 })
             }
         case ActionsType.UNFOLLOW:
@@ -55,7 +56,8 @@ export const usersReducer = (state: UsersInitializeStateType = initializeState, 
                 users: state.users.map(u => {
                     if (u.id === action.userID) {
                         return {...u, followed: false}
-                    } else return u
+                    }
+                    return u
                 })
             }
         case ActionsType.SET_USERS:

@@ -10,7 +10,6 @@ export type ProfilePropsType = {
 }
 
 export const Description: React.FC<ProfilePropsType> = ({aboutMe, contacts, lookingForAJob, lookingForAJobDescription}) => {
-    debugger
     return (
         <>
             <div className={s.description}>

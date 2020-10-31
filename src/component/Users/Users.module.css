@@ -66,7 +66,6 @@
 
 .description {
     display: flex;
-    overflow: hidden;
     align-self: flex-start;
     flex-direction: column;
     width: 550px;
@@ -94,7 +93,7 @@
 
 .btn {
     align-self: center;
-    width: 10%;
+    width: 100px;
     margin: 5px;
     composes: btn from './../../index.css';
 }

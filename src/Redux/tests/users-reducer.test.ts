@@ -1,4 +1,4 @@
-import {follow, unfollow, UsersInitializeStateType, usersReducer} from './users-reducer';
+import {follow, unfollow, UsersInitializeStateType, usersReducer} from '../users-reducer';
 
 let startState: UsersInitializeStateType
 
