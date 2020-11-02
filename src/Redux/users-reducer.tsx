@@ -7,7 +7,8 @@ enum ActionsType {
     SET_USERS = 'USERS/SET-USERS',
     SET_CURRENT_PAGE = 'USERS/SET-CURRENT-PAGE',
     SET_USERS_TOTAL_COUNT = 'USERS/SET-USERS-TOTAL-COUNT',
-    TOGGLE_IS_FETCHING = 'USERS/TOGGLE-IS-FETCHING'
+    TOGGLE_IS_FETCHING = 'USERS/TOGGLE-IS-FETCHING',
+    FOLLOWING_IN_PROGRESS = 'USERS/FOLLOWING-IN-PROGRESS',
 }
 
 export type PhotosType = {
@@ -28,6 +29,7 @@ export type UsersInitializeStateType = {
     pageSize: number
     currentPage: number
     isFetching: boolean
+    followingInProgress: Array<number>
 }
 
 let initializeState: UsersInitializeStateType = {
@@ -35,7 +37,8 @@ let initializeState: UsersInitializeStateType = {
     totalUsersCount: 0,
     pageSize: 5,
     currentPage: 5,
-    isFetching: false
+    isFetching: false,
+    followingInProgress: []
 }
 
 export const usersReducer = (state: UsersInitializeStateType = initializeState, action: ActionsTypes): UsersInitializeStateType => {
@@ -68,6 +71,13 @@ export const usersReducer = (state: UsersInitializeStateType = initializeState, 
             return {...state, totalUsersCount: action.totalCount}
         case ActionsType.TOGGLE_IS_FETCHING:
             return {...state, isFetching: action.isFetching}
+        case ActionsType.FOLLOWING_IN_PROGRESS:
+            return {
+                ...state,
+                followingInProgress: action.payload.isFetching
+                    ? [...state.followingInProgress, action.payload.userId]
+                    : state.followingInProgress.filter(id => id !== action.payload.userId)
+            }
         default:
             return state
     }
@@ -110,4 +120,19 @@ type ToggleIsFetchingACType = {
 export const toggleIsFetching = (isFetching: boolean): ToggleIsFetchingACType => ({
     type: ActionsType.TOGGLE_IS_FETCHING, isFetching
 })
+type followingProgressACType = {
+    type: ActionsType.FOLLOWING_IN_PROGRESS
+    payload: {
+        isFetching: boolean,
+        userId: number
+    }
+}
+export const toggleFollowingProgress = (isFetching: boolean, userId: number): followingProgressACType => ({
+    type: ActionsType.FOLLOWING_IN_PROGRESS,
+    payload: {
+        isFetching,
+        userId
+    }
+})
+
 
