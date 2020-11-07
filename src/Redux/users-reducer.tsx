@@ -2,7 +2,7 @@ import React from 'react';
 import {ActionsTypes, ThunkType} from '../essences/essences';
 import {usersAPI} from '../API/api';
 import {AppStateType} from './redux-store';
-import {ThunkAction, ThunkDispatch} from 'redux-thunk';
+import {ThunkDispatch} from 'redux-thunk';
 
 enum ActionsType {
     FOLLOW = 'USERS/FOLLOW',

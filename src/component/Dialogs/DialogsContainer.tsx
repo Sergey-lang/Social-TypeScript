@@ -5,14 +5,20 @@ import {Dialogs} from './Dialogs';
 import React from 'react';
 
 export type MapStateType = {
-  dialogsPage: DialogInitPageType
+    dialogsPage: DialogInitPageType
+    isAuth: boolean
 }
 export type mapDispatchType = {
-  addMessage: () => void
-  updateNewMessageText: (newMessageText: string) => void
+    addMessage: () => void
+    updateNewMessageText: (newMessageText: string) => void
 }
 
-let mapState = (state: AppStateType): MapStateType => ({dialogsPage: state.dialogsState})
+let mapState = (state: AppStateType): MapStateType => {
+    return {
+        dialogsPage: state.dialogsState,
+        isAuth: state.authState.isAuth
+    }
+}
 
 export const DialogsContainer = connect<MapStateType, mapDispatchType, {}, AppStateType>
-(mapState, {addMessage,updateNewMessageText})(Dialogs)
+(mapState, {addMessage, updateNewMessageText})(Dialogs)

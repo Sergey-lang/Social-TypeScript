@@ -5,9 +5,10 @@ import {Message} from './Message/Message';
 import {mapDispatchType, MapStateType} from './DialogsContainer';
 import {Button} from '../../common/Button/Button';
 import {TextArea} from '../../common/TextArea/TextArea';
+import { Redirect } from 'react-router-dom';
 
 type OwnPropsType = MapStateType & mapDispatchType
-export const Dialogs: React.FC<OwnPropsType> = ({dialogsPage, addMessage, updateNewMessageText}) => {
+export const Dialogs: React.FC<OwnPropsType> = ({dialogsPage, addMessage, updateNewMessageText,...props}) => {
 
     let dialogsElement = dialogsPage.dialogs.map(d => <Dialog id={d.id} name={d.name} key={d.id}/>)
     let messagesElement = dialogsPage.messages.map(m => <Message id={m.id} message={m.message} key={m.id}/>)
@@ -20,6 +21,7 @@ export const Dialogs: React.FC<OwnPropsType> = ({dialogsPage, addMessage, update
         updateNewMessageText(newMessageText)
     }
 
+    if(!props.isAuth) return <Redirect to={'/login'}/>
     return (
         <div className={s.dialogs_container}>
             <div className={s.my_dialogs_headline}>Dialogs</div>
