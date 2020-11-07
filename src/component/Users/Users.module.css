@@ -95,7 +95,6 @@
     align-self: center;
     width: 100px;
     margin: 5px;
-    composes: btn from './../../index.css';
 }
 
 .unfollow {

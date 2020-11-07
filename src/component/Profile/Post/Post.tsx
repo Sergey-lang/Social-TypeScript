@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './Post.module.css';
+import s from './Post.module.css';
 import userPhoto from './../../../asets/images/user_photo.png';
 
 type MessageType = {
@@ -9,10 +9,12 @@ type MessageType = {
 
 function Post(props: MessageType) {
     return (
-        <div className={style.post}>
-            <img alt={'user'} src={userPhoto} className={style.post_user_photo}/>
-            <div className={style.post_message}>{props.message}</div>
-            <div className={style.likes_count}>likes {props.likeCount}</div>
+        <div className={s.post}>
+            <div  className={s.postUserPhoto}>
+                <img alt={'user'} src={userPhoto}/>
+            </div>
+            <div className={s.post_message}>{props.message}</div>
+            <div className={s.likes_count}>likes {props.likeCount}</div>
         </div>
     )
 }

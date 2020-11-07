@@ -1,5 +1,8 @@
 import React from 'react'
-import {ActionsTypes} from '../essences/essences'
+import {ActionsTypes, ThunkType} from '../essences/essences'
+import {ThunkDispatch} from 'redux-thunk';
+import {AppStateType} from './redux-store';
+import {authAPI} from '../API/api';
 
 enum ActionsType {
     SET_USER_DATA = 'AUTH/SET-USER-DATA',
@@ -39,8 +42,18 @@ type SetDataACType = {
         login: string
     }
 }
-export const setUserData = (id: number, email: string, login: string
-): SetDataACType => ({
+export const setUserData = (id: number, email: string, login: string): SetDataACType => ({
     type: ActionsType.SET_USER_DATA,
     data: {id, email, login},
 })
+
+export const getAuthUserData = (): ThunkType => {
+    return (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes>) => {
+        authAPI.me().then(data => {
+            if (data.resultCode === 0) {
+                let {id, email, login} = data.data
+                dispatch(setUserData(id, email, login))
+            }
+        })
+    }
+}

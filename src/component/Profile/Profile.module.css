@@ -1,5 +1,4 @@
-.mainProfileWrapper
-{
+.mainProfileWrapper {
     display: flex;
     flex-direction: column;
     width: 100%;

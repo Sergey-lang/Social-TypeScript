@@ -71,11 +71,13 @@
 
 .button_wrapper {
     display: flex;
-    flex-direction: column;
-
+    justify-content: flex-end;
     padding: 5px 0 5px 0;
 }
 
-.add_message_button {
-    composes: btn from './../../index.css';
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
 }
