@@ -22,7 +22,7 @@ type MapStateType = {
 }
 
 type MapDispatchType = {
-	getAuthUserData: Function
+	getAuthUserData: () => void
 }
 
 const mapState = (state: AppStateType): MapStateType => ({

@@ -33,7 +33,7 @@ type MapStateType = {
 }
 
 type MapDispatchType = {
-    getUserProfile: Function
+    getUserProfile: (userId: number) => void
 }
 
 const mapState = (state: AppStateType): MapStateType => ({

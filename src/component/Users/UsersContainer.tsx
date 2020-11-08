@@ -53,9 +53,9 @@ type MapStateType = {
 
 type MapDispatchType = {
     setCurrentPage: (currentPage: number) => void
-    getUsers:Function
-    follow:Function
-    unfollow:Function
+    getUsers: (currentPage: number, pageSize: number) => void
+    follow: (id: number) => void
+    unfollow: (id: number) => void
 }
 
 const mapState = (state: AppStateType): MapStateType => ({
