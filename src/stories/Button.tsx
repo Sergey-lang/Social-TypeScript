@@ -15,7 +15,7 @@ export interface ButtonProps {
    */
   size?: 'small' | 'medium' | 'large';
   /**
-   * TextArea contents
+   * EditableSpan contents
    */
   label: string;
   /**

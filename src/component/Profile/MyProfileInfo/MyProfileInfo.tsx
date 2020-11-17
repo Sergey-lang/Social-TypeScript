@@ -5,6 +5,7 @@ import Sidebar from './Sidebar/Sidebar';
 import {Preloader} from '../../../common/Preloader/Preloader';
 import {ProfileType} from '../../../Redux/profile-reducer';
 import {Description} from '../../../common/Description/Description';
+import {ProfileStatus} from './Status/ProfileStatus';
 
 type MyProfileInfoType = {
     profile: ProfileType | null
@@ -26,7 +27,8 @@ export const MyProfileInfo: React.FC<MyProfileInfoType> = ({profile, sidebar}) =
 
             <div className={s.profile_info}>
                 <div className={s.user_name}>{profile.fullName}</div>
-                <div className={s.status}>"Ученье свет, а за свет надо платить!"
+                <div className={s.status}>
+                    <ProfileStatus/>
                 </div>
                 <div className={s.descriptions_wrapper}>
                     <Description aboutMe={profile.aboutMe}

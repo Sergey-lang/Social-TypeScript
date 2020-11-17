@@ -1,0 +1,9 @@
+.statusWrapper {
+   display: flex;
+}
+
+.input {
+   height: 30px;
+   background: #f6f6f6;
+   display: flex;
+}
