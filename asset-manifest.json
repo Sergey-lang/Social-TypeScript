@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Social-TypeScript/static/css/main.588d4d2e.chunk.css",
-    "main.js": "/Social-TypeScript/static/js/main.d0f96bff.chunk.js",
-    "main.js.map": "/Social-TypeScript/static/js/main.d0f96bff.chunk.js.map",
+    "main.js": "/Social-TypeScript/static/js/main.21371bf1.chunk.js",
+    "main.js.map": "/Social-TypeScript/static/js/main.21371bf1.chunk.js.map",
     "runtime-main.js": "/Social-TypeScript/static/js/runtime-main.18e493ad.js",
     "runtime-main.js.map": "/Social-TypeScript/static/js/runtime-main.18e493ad.js.map",
     "static/js/2.68822b78.chunk.js": "/Social-TypeScript/static/js/2.68822b78.chunk.js",
     "static/js/2.68822b78.chunk.js.map": "/Social-TypeScript/static/js/2.68822b78.chunk.js.map",
     "index.html": "/Social-TypeScript/index.html",
-    "precache-manifest.c6d63317a760e0a21e6a9a281625eec2.js": "/Social-TypeScript/precache-manifest.c6d63317a760e0a21e6a9a281625eec2.js",
+    "precache-manifest.0367f6b5ea61a9a50f0dcf417b6437bf.js": "/Social-TypeScript/precache-manifest.0367f6b5ea61a9a50f0dcf417b6437bf.js",
     "service-worker.js": "/Social-TypeScript/service-worker.js",
     "static/css/main.588d4d2e.chunk.css.map": "/Social-TypeScript/static/css/main.588d4d2e.chunk.css.map",
     "static/js/2.68822b78.chunk.js.LICENSE.txt": "/Social-TypeScript/static/js/2.68822b78.chunk.js.LICENSE.txt",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.18e493ad.js",
     "static/js/2.68822b78.chunk.js",
     "static/css/main.588d4d2e.chunk.css",
-    "static/js/main.d0f96bff.chunk.js"
+    "static/js/main.21371bf1.chunk.js"
   ]
 }
