@@ -3,22 +3,28 @@ import {axiosInstance} from './api';
 export const profileAPI = {
    getProfile(userId: number) {
       return axiosInstance.get(`profile/${userId}`)
-         .then(response => {
-            return response.data
+         .then(res => {
+            return res.data
          })
    },
 
    getStatus(userId: number) {
       return axiosInstance.get(`/profile/status/${userId}`)
-         .then(response => {
-            return response.data
+         .then(res => {
+            return res.data
          })
    },
 
-   updateStatus(status: string) {
-      return axiosInstance.put(`/profile/status`,{status})
-         .then(response => {
-            return response.data
+   updateProfileStatus(status: string) {
+      return axiosInstance.put<UpdateStatusType>(`/profile/status`, {status})
+         .then(res => {
+            return res.data
          })
    },
+}
+
+type UpdateStatusType = {
+   resultCode: number
+   messages: string
+   data: any
 }

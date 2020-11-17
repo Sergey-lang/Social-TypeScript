@@ -8,7 +8,7 @@ import {
     unfollowSuccess
 } from '../Redux/users-reducer';
 import {setUserData} from '../Redux/auth-reducer';
-import {addPost, changingPostText, setUserProfile} from '../Redux/profile-reducer';
+import {addPost, changingPostText, getUserStatus, setUserProfile, setProfileStatus} from '../Redux/profile-reducer';
 import {addMessage, updateNewMessageText} from '../Redux/dialogs-reducer';
 import {ThunkAction} from 'redux-thunk';
 import {GlobalStateType} from '../Redux/redux-store';
@@ -27,5 +27,7 @@ export type ActionsTypes =
     | ReturnType<typeof setUserProfile>
     | ReturnType<typeof setUserData>
     | ReturnType<typeof toggleFollowingProgress>
+    | ReturnType<typeof getUserStatus>
+    | ReturnType<typeof setProfileStatus>
 
 export type ThunkType = ThunkAction<void, GlobalStateType, unknown, ActionsTypes>

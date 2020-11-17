@@ -1,12 +1,16 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
 import {Input} from '../../../../common/Input/Input';
 import s from './ProfileStatus.module.css'
-import {EditableSpan} from '../../../../common/EditableSpan/EditableSpan';
 
-export class ProfileStatus extends React.Component {
+type PropsType = {
+   status: string
+   updateProfileStatus: (status: string) => void
+}
+
+export class ProfileStatus extends React.Component<PropsType> {
 
    state = {
-      status: 'this is status',
+      status: this.props.status,
       editMode: false
    }
 
@@ -16,7 +20,7 @@ export class ProfileStatus extends React.Component {
 
    deactivateEditMode = () => {
       this.setState({editMode: false})
-      // profileAPI.updateStatus(this.state.status)
+      this.props.updateProfileStatus(this.state.status)
    }
 
    onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,13 +38,14 @@ export class ProfileStatus extends React.Component {
          {!this.state.editMode &&
          <div>
             <span onClick={this.activateEditMode}>
-               {this.state.status}
+               {this.props.status || 'status not found'}
             </span>
          </div>}
          {this.state.editMode &&
          <div className={s.statusWrapper}>
             <Input type="text"
                    autoFocus={true}
+                   value={this.state.status}
                    onBlur={this.deactivateEditMode}
                    onChange={this.onStatusChange}
                    onKeyPress={this.onKeyPress}

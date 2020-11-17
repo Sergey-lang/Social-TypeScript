@@ -8,35 +8,44 @@ import {Description} from '../../../common/Description/Description';
 import {ProfileStatus} from './Status/ProfileStatus';
 
 type MyProfileInfoType = {
-    profile: ProfileType | null
-    sidebar?: any
+   profile: ProfileType | null
+   sidebar?: any
+   status: string
+   updateProfileStatus: (status: string) => void
 }//sidebar will be do
 
-export const MyProfileInfo: React.FC<MyProfileInfoType> = ({profile, sidebar}) => {
-    if (!profile) {
-        return <Preloader/>
-    }
-    return (
-        <div className={s.profile_wrapper}>
-            <div className={s.left_block}>
-                <div className={s.profile_photo}>
-                    <img alt='avatar' src={profile.photos.large ? profile.photos.large! : avatar}/>
-                </div>
-                <Sidebar sidebar={sidebar}/>
-            </div>
+export const MyProfileInfo: React.FC<MyProfileInfoType> = (
+   {
+      profile,
+      sidebar,
+      status,
+      updateProfileStatus
+   }) => {
 
-            <div className={s.profile_info}>
-                <div className={s.user_name}>{profile.fullName}</div>
-                <div className={s.status}>
-                    <ProfileStatus/>
-                </div>
-                <div className={s.descriptions_wrapper}>
-                    <Description aboutMe={profile.aboutMe}
-                                 contacts={profile.contacts}
-                                 lookingForAJob={profile.lookingForAJob}
-                                 lookingForAJobDescription={profile.lookingForAJobDescription}/>
-                </div>
+   if (!profile) {
+      return <Preloader/>
+   }
+   return (
+      <div className={s.profile_wrapper}>
+         <div className={s.left_block}>
+            <div className={s.profile_photo}>
+               <img alt='avatar' src={profile.photos.large ? profile.photos.large! : avatar}/>
             </div>
-        </div>
-    )
+            <Sidebar sidebar={sidebar}/>
+         </div>
+
+         <div className={s.profile_info}>
+            <div className={s.user_name}>{profile.fullName}</div>
+            <div className={s.status}>
+               <ProfileStatus status={status} updateProfileStatus={updateProfileStatus}/>
+            </div>
+            <div className={s.descriptions_wrapper}>
+               <Description aboutMe={profile.aboutMe}
+                            contacts={profile.contacts}
+                            lookingForAJob={profile.lookingForAJob}
+                            lookingForAJobDescription={profile.lookingForAJobDescription}/>
+            </div>
+         </div>
+      </div>
+   )
 }
