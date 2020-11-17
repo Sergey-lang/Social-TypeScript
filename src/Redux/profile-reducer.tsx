@@ -1,8 +1,8 @@
 import React from 'react';
 import {ActionsTypes, ThunkType} from '../essences/essences';
 import {ThunkDispatch} from 'redux-thunk';
-import {AppStateType} from './redux-store';
-import {usersAPI} from '../API/api';
+import {GlobalStateType} from './redux-store';
+import {profileAPI} from '../API/profile-api';
 
 enum ActionType {
     ADD_POST = 'PROFILE/ADD-POST',
@@ -103,8 +103,8 @@ export const setUserProfile = (profile: ProfileType): SetUserProfile =>
 
 
 export const getUserProfile = (userId: number): ThunkType => {
-    return (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes>) => {
-        usersAPI.getProfile(userId)
+    return (dispatch: ThunkDispatch<GlobalStateType, unknown, ActionsTypes>) => {
+        profileAPI.getProfile(userId)
             .then(data => {
                 dispatch(setUserProfile(data))
             })

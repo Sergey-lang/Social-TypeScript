@@ -1,6 +1,6 @@
 import React from 'react'
 import {Header} from './Header'
-import {AppStateType} from '../../Redux/redux-store'
+import {GlobalStateType} from '../../Redux/redux-store'
 import {connect} from 'react-redux'
 import {getAuthUserData} from '../../Redux/auth-reducer';
 
@@ -25,12 +25,12 @@ type MapDispatchType = {
 	getAuthUserData: () => void
 }
 
-const mapState = (state: AppStateType): MapStateType => ({
+const mapState = (state: GlobalStateType): MapStateType => ({
 	isAuth: state.authState.isAuth,
 	login: state.authState.login,
 })
 
-export default connect<MapStateType, MapDispatchType, {}, AppStateType>(
+export default connect<MapStateType, MapDispatchType, {}, GlobalStateType>(
 	mapState,
 	{ getAuthUserData}
 )(HeaderContainer)

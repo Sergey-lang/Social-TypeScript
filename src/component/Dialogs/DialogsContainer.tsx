@@ -1,24 +1,27 @@
 import {addMessage, DialogInitPageType, updateNewMessageText} from '../../Redux/dialogs-reducer';
-import {AppStateType} from '../../Redux/redux-store';
+import {GlobalStateType} from '../../Redux/redux-store';
 import {connect} from 'react-redux';
 import {Dialogs} from './Dialogs';
-import React from 'react';
+import React, {ComponentType} from 'react';
+import {withAuthRedirect} from '../../hoc/WithAuthRedirect';
+import {compose} from 'redux';
 
-export type MapStateType = {
-    dialogsPage: DialogInitPageType
-    isAuth: boolean
-}
 export type mapDispatchType = {
-    addMessage: () => void
-    updateNewMessageText: (newMessageText: string) => void
+   addMessage: () => void
+   updateNewMessageText: (newMessageText: string) => void
+}
+export type MapStateType = {
+   dialogsPage: DialogInitPageType
+}
+let mapState = (state: GlobalStateType): MapStateType => {
+   return {
+      dialogsPage: state.dialogsState,
+   }
 }
 
-let mapState = (state: AppStateType): MapStateType => {
-    return {
-        dialogsPage: state.dialogsState,
-        isAuth: state.authState.isAuth
-    }
-}
+export default compose<ComponentType>(
+   connect<MapStateType, mapDispatchType, {}, GlobalStateType>
+   (mapState, {addMessage, updateNewMessageText}),
+   withAuthRedirect
+)(Dialogs)
 
-export const DialogsContainer = connect<MapStateType, mapDispatchType, {}, AppStateType>
-(mapState, {addMessage, updateNewMessageText})(Dialogs)

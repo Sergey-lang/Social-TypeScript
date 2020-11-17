@@ -11,7 +11,7 @@ import {setUserData} from '../Redux/auth-reducer';
 import {addPost, changingPostText, setUserProfile} from '../Redux/profile-reducer';
 import {addMessage, updateNewMessageText} from '../Redux/dialogs-reducer';
 import {ThunkAction} from 'redux-thunk';
-import {AppStateType} from '../Redux/redux-store';
+import {GlobalStateType} from '../Redux/redux-store';
 
 export type ActionsTypes =
     | ReturnType<typeof addPost>
@@ -28,4 +28,4 @@ export type ActionsTypes =
     | ReturnType<typeof setUserData>
     | ReturnType<typeof toggleFollowingProgress>
 
-export type ThunkType = ThunkAction<void, AppStateType, unknown, ActionsTypes>
+export type ThunkType = ThunkAction<void, GlobalStateType, unknown, ActionsTypes>
