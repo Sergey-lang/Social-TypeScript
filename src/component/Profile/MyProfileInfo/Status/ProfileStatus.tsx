@@ -4,7 +4,7 @@ import s from './ProfileStatus.module.css'
 
 type PropsType = {
    status: string
-   updateProfileStatus: (status: string) => void
+   updateOwnProfileStatus: (status: string) => void
 }
 
 export class ProfileStatus extends React.Component<PropsType> {
@@ -20,7 +20,7 @@ export class ProfileStatus extends React.Component<PropsType> {
 
    deactivateEditMode = () => {
       this.setState({editMode: false})
-      this.props.updateProfileStatus(this.state.status)
+      this.props.updateOwnProfileStatus(this.state.status)
    }
 
    onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -33,12 +33,21 @@ export class ProfileStatus extends React.Component<PropsType> {
       }
    }
 
+   componentDidUpdate(prevProps: Readonly<PropsType>, prevState: Readonly<{}>, snapshot?: any) {
+      if (prevProps.status !== this.props.status) {
+         this.setState({
+            status: this.props.status
+         })
+      }
+      console.log('update')
+   }
+
    render() {
       return <div>
          {!this.state.editMode &&
          <div>
             <span onClick={this.activateEditMode}>
-               {this.props.status || 'status not found'}
+               {this.props.status || '-----'}
             </span>
          </div>}
          {this.state.editMode &&

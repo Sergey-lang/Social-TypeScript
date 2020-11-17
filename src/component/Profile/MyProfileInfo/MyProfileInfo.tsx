@@ -11,7 +11,7 @@ type MyProfileInfoType = {
    profile: ProfileType | null
    sidebar?: any
    status: string
-   updateProfileStatus: (status: string) => void
+   updateOwnProfileStatus: (status: string) => void
 }//sidebar will be do
 
 export const MyProfileInfo: React.FC<MyProfileInfoType> = (
@@ -19,7 +19,7 @@ export const MyProfileInfo: React.FC<MyProfileInfoType> = (
       profile,
       sidebar,
       status,
-      updateProfileStatus
+      updateOwnProfileStatus
    }) => {
 
    if (!profile) {
@@ -37,7 +37,7 @@ export const MyProfileInfo: React.FC<MyProfileInfoType> = (
          <div className={s.profile_info}>
             <div className={s.user_name}>{profile.fullName}</div>
             <div className={s.status}>
-               <ProfileStatus status={status} updateProfileStatus={updateProfileStatus}/>
+               <ProfileStatus status={status} updateOwnProfileStatus={updateOwnProfileStatus}/>
             </div>
             <div className={s.descriptions_wrapper}>
                <Description aboutMe={profile.aboutMe}

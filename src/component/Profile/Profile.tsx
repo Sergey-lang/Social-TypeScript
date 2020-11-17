@@ -7,7 +7,7 @@ import {ProfileType} from '../../Redux/profile-reducer';
 type ProfileProps = {
    profile: ProfileType | null
    status: string
-   updateProfileStatus: (status: string) => void
+   updateOwnProfileStatus: (status: string) => void
 }
 
 export const Profile: React.FC<ProfileProps> = (props) => {
@@ -15,7 +15,7 @@ export const Profile: React.FC<ProfileProps> = (props) => {
       <div className={s.mainProfileWrapper}>
          <MyProfileInfo profile={props.profile}
                         status={props.status}
-                        updateProfileStatus={props.updateProfileStatus}
+                        updateOwnProfileStatus={props.updateOwnProfileStatus}
          />
          <MyPostsContainer/>
       </div>

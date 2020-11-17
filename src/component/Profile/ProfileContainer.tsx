@@ -2,7 +2,7 @@ import React, {ComponentType} from 'react'
 import {Profile} from './Profile'
 import {connect} from 'react-redux'
 import {GlobalStateType} from '../../Redux/redux-store'
-import {getStatus, getUserProfile, ProfileType, updateProfileStatus} from '../../Redux/profile-reducer'
+import {getStatusFromUser, getUserProfileData, ProfileType, updateOwnProfileStatus} from '../../Redux/profile-reducer'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
 import {withAuthRedirect} from '../../hoc/WithAuthRedirect';
 import {compose} from 'redux';
@@ -18,25 +18,25 @@ export class ProfileContainer extends React.Component<PropsType> {
    componentDidMount() {
       let userId = Number(this.props.match.params.userid)
       if (!userId) {
-         userId = 2
+         userId = 7567
       }
-      this.props.getUserProfile(userId)
-      this.props.getStatus(userId)
+      this.props.getUserProfileData(userId)
+      this.props.getStatusFromUser(userId)
    }
 
    render() {
       return <Profile {...this.props}
                       profile={this.props.profile}
                       status={this.props.status}
-                      updateProfileStatus={this.props.updateProfileStatus}
+                      updateOwnProfileStatus={this.props.updateOwnProfileStatus}
       />
    }
 }
 
 type MapDispatchType = {
-   getUserProfile: (userId: number) => void
-   getStatus: (userId: number) => void
-   updateProfileStatus: (status: string) => void
+   getUserProfileData: (userId: number) => void
+   getStatusFromUser: (userId: number) => void
+   updateOwnProfileStatus: (status: string) => void
 }
 type MapStateType = {
    profile: ProfileType | null
@@ -50,7 +50,7 @@ const mapState = (state: GlobalStateType): MapStateType => ({
 export default compose<ComponentType>(
    connect<MapStateType, MapDispatchType, {}, GlobalStateType>(
       mapState,
-      {getUserProfile, getStatus, updateProfileStatus}
+      {getUserProfileData, getStatusFromUser, updateOwnProfileStatus}
    ),
    withRouter,
    withAuthRedirect
