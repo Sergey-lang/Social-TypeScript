@@ -65,21 +65,23 @@ type UpdateNewPostTextACType = {
 }
 export const changingPostText = (text: string): UpdateNewPostTextACType =>
    ({type: ActionType.UPDATE_NEW_POST_TEXT, newPostText: text})
+
+//set Profile Data
 type SetUserProfile = {
    type: ActionType.SET_USER_PROFILE
    profile: ProfileType
 }
 
-//set Profile Data
 export const setUserProfileData = (profile: ProfileType): SetUserProfile =>
    ({type: ActionType.SET_USER_PROFILE, profile})
 
+
+//Status get Other and set Yourself
 type GetUserStatus = {
    type: ActionType.GET_USER_STATUS
    userStatus: string
 }
 
-//Status get Other and set Yourself
 export const getUserStatus = (userStatus: string): GetUserStatus =>
    ({type: ActionType.GET_USER_STATUS, userStatus: userStatus})
 
@@ -114,7 +116,6 @@ export const updateOwnProfileStatus = (status: string): ThunkType => {
    return (dispatch: ThunkDispatch<GlobalStateType, unknown, ActionsTypes>) => {
       profileAPI.updateOwnProfileStatus(status)
          .then(data => {
-            debugger
             if (data.resultCode === 0) {
                dispatch(setOwnProfileStatus(status))
             }

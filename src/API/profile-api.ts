@@ -9,12 +9,12 @@ export const profileAPI = {
    },
 
    getUserStatus(userId: number) {
-      return axiosInstance.get(`/profile/status/${userId}`)
+      return axiosInstance.get(`profile/status/${userId}`)
          .then(res => res)
    },
 
    updateOwnProfileStatus(status: string) {
-      return axiosInstance.put<UpdateStatusType>(`/profile/status`, {status})
+      return axiosInstance.put<UpdateStatusType>(`profile/status`, {status})
          .then(res => {
             return res.data
          })
