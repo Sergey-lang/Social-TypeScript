@@ -12,7 +12,7 @@ beforeEach(() => {
 })
 
 test('used should be is authorized', () => {
-    const endState = authReducer(startState, setUserData(2, 'blabla@bla.bla', 'samurai'))
+    const endState = authReducer(startState, setUserData(2, 'blabla@bla.bla', 'samurai', true))
     expect(endState.isAuth).toBeTruthy()
     expect(endState.email).toEqual('blabla@bla.bla')
     expect(endState.id).toBe(2)

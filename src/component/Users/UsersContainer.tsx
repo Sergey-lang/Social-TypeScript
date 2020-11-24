@@ -1,20 +1,11 @@
 import React, {ComponentType} from 'react'
 import {connect} from 'react-redux'
-import {GlobalStateType} from '../../Redux/redux-store'
-import {
-   follow,
-   unfollow,
-   getUsers,
-   setCurrentPage,
-   UsersType,
-} from '../../Redux/users-reducer'
+import {AppStateType} from '../../Redux/redux-store'
+import {follow, getUsers, setCurrentPage, unfollow, UsersType,} from '../../Redux/users-reducer'
 import {Users} from './Users'
 import {Preloader} from '../../common/Preloader/Preloader'
 import {withAuthRedirect} from '../../hoc/WithAuthRedirect';
 import {compose} from 'redux';
-import {addMessage, updateNewMessageText} from '../../Redux/dialogs-reducer';
-import {Dialogs} from '../Dialogs/Dialogs';
-import {mapDispatchType} from '../Dialogs/DialogsContainer';
 
 type UsersContainerType = MapStateType & MapDispatchType
 
@@ -63,7 +54,7 @@ type MapDispatchType = {
    unfollow: (id: number) => void
 }
 
-const mapState = (state: GlobalStateType): MapStateType => ({
+const mapState = (state: AppStateType): MapStateType => ({
    users: state.usersState.users,
    totalUsersCount: state.usersState.totalUsersCount,
    pageSize: state.usersState.pageSize,
@@ -73,7 +64,7 @@ const mapState = (state: GlobalStateType): MapStateType => ({
 })
 
 export default compose<ComponentType>(
-   connect<MapStateType, MapDispatchType, {}, GlobalStateType>(
+   connect<MapStateType, MapDispatchType, {}, AppStateType>(
       mapState,
       {
          setCurrentPage, getUsers, follow, unfollow,

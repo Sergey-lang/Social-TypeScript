@@ -6,7 +6,7 @@ type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonE
 type ButtonPropsType = DefaultButtonPropsType & {}
 
 export const Button: React.FC<ButtonPropsType> = ({className, ...restProps}) => {
-    const finalClassName = `${s.default} ${className}`;
+    const finalClassName = `${className} ${s.default}`;
     return (
         <>
             <button className={finalClassName} {...restProps}/>

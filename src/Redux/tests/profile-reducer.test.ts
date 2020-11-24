@@ -1,4 +1,4 @@
-import {addPost, changingPostText, ProfilePageInitType, profileReducer} from '../profile-reducer';
+import {addPost, ProfilePageInitType, profileReducer} from '../profile-reducer';
 
 let startState: ProfilePageInitType
 beforeEach(() => {
@@ -8,7 +8,6 @@ beforeEach(() => {
             {id: 2, message: 'I am very handsome props', likeCount: 10},
             {id: 3, message: 'I go out from my post component', likeCount: 5},
         ],
-        newPostText: '',
         profile: {
             aboutMe: 'I am',
             contacts: {
@@ -29,21 +28,15 @@ beforeEach(() => {
                 small: 'string | null',
                 large: 'string | null'
             }
-        }
+        },
+        status: ''
     }
 })
 
 test('reducer should be add new post', () => {
 
-    const endState = profileReducer(startState, addPost())
+    const postMessage = 'This is new post text from redux-form'
+
+    const endState = profileReducer(startState, addPost(postMessage))
     expect(endState.posts.length).toBe(4)
-});
-
-test('reducer should be change post message', () => {
-
-    const newTestPostText = 'Changed text'
-    const endState = profileReducer(startState, changingPostText(newTestPostText))
-
-    expect(endState.newPostText).toBe('Changed text')
-    expect(endState.newPostText.trim().length).toBe(12)
 });

@@ -1,18 +1,17 @@
 import React from 'react';
-import {addPost, changingPostText, ProfilePageInitType} from '../../../Redux/profile-reducer';
-import {MyPosts} from './MyPosts';
+import {addPost, ProfilePageInitType} from '../../../Redux/profile-reducer';
+import {MyPosts, PostFormValuesType} from './MyPosts';
 import {connect} from 'react-redux';
-import {GlobalStateType} from '../../../Redux/redux-store';
+import {AppStateType} from '../../../Redux/redux-store';
 
 export type MapStateType = {
-  profilePage: ProfilePageInitType
+   profilePage: ProfilePageInitType
 }
 export type MapDispatchType = {
-  addPost: () => void
-  changingPostText: (postText: string) => void
+   addPost: (postNewMessage: string) => void
 }
 
-const mapState = (state: GlobalStateType): MapStateType => ({profilePage: state.profileState})
+const mapState = (state: AppStateType): MapStateType => ({profilePage: state.profileState})
 
-export const MyPostsContainer = connect<MapStateType, MapDispatchType, {}, GlobalStateType>
-(mapState, {addPost, changingPostText})(MyPosts)
+export const MyPostsContainer = connect<MapStateType, MapDispatchType, {}, AppStateType>
+(mapState, {addPost})(MyPosts)

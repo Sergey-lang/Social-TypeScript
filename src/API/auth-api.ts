@@ -7,11 +7,17 @@ export const authAPI = {
             return response.data
          })
    },
-   loginMe(email: string, password: string, rememberMe: boolean, captcha: boolean) {
-      return axiosInstance.post(`auth/login`, {email, password, rememberMe, captcha})
+   login(email: string, password: string, rememberMe: boolean) {
+      return axiosInstance.post(`auth/login`, {email, password, rememberMe})
+         .then(response => {
+            return response.data
+         })
    },
 
-   logoutMe() {
+   logout() {
       return axiosInstance.delete(`auth/login`,)
+         .then(response => {
+            return response.data
+         })
    },
 }

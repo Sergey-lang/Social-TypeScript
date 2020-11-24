@@ -1,8 +1,8 @@
 import React from 'react';
-import {GlobalStateType} from './redux-store';
+import {AppStateType} from './redux-store';
 import {ThunkDispatch} from 'redux-thunk';
-import {ActionsTypes, ThunkType} from '../essences/essences';
 import {usersAPI} from '../API/user-api';
+import {ActionsTypes, ThunkType} from './actions';
 
 enum ActionsType {
    FOLLOW = 'USERS/FOLLOW',
@@ -86,7 +86,7 @@ export const usersReducer = (state: UsersInitializeStateType = initializeState, 
    }
 }
 type FollowACType = {
-   type: ActionsType.FOLLOW
+   type: typeof ActionsType.FOLLOW
    userID: number
 }
 export const followSuccess = (userID: number): FollowACType => ({type: ActionsType.FOLLOW, userID})
@@ -140,7 +140,7 @@ export const toggleFollowingProgress = (isFetching: boolean, userId: number): fo
 
 export const getUsers = (currentPage: number, pageSize: number): ThunkType => {
 
-   return (dispatch: ThunkDispatch<GlobalStateType, unknown, ActionsTypes>) => {
+   return (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes>) => {
 
       dispatch(toggleIsFetching(true))
       usersAPI.getUsers(currentPage, pageSize)
@@ -153,7 +153,7 @@ export const getUsers = (currentPage: number, pageSize: number): ThunkType => {
 }
 
 export const follow = (id: number): ThunkType => {
-   return (dispatch: ThunkDispatch<GlobalStateType, unknown, ActionsTypes>) => {
+   return (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes>) => {
       dispatch(toggleFollowingProgress(true, id))
       usersAPI.follow(id)
          .then(data => {
@@ -167,7 +167,7 @@ export const follow = (id: number): ThunkType => {
 }
 
 export const unfollow = (id: number): ThunkType => {
-   return (dispatch: ThunkDispatch<GlobalStateType, unknown, ActionsTypes>) => {
+   return (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes>) => {
       dispatch(toggleFollowingProgress(true, id))
       usersAPI.unfollow(id)
          .then(data => {

@@ -30,6 +30,7 @@ beforeEach(() => {
         pageSize: 5,
         currentPage: 5,
         isFetching: false,
+        followingInProgress: []
     }
 })
 

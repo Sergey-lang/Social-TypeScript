@@ -1,40 +1,63 @@
 import s from './MyPosts.module.css';
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import Post from '../Post/Post';
 import {MapDispatchType, MapStateType} from './MyPostsContainer';
+import {Field, InjectedFormProps, reduxForm} from 'redux-form';
+import {maxLengthCreator, required} from '../../../Utils/validator';
+import {Textarea} from '../../../common/FormControl/FormControl';
 import {Button} from '../../../common/Button/Button';
-import {TextArea} from '../../../common/TextArea/TextArea';
 
-type OwnPropsType = MapStateType & MapDispatchType
-export const MyPosts: React.FC<OwnPropsType> = ({profilePage, addPost, changingPostText}) => {
-    let postElements = profilePage.posts
-        .map(p => <Post message={p.message} likeCount={p.likeCount} key={p.id}/>)
+type OwnProps = {}
 
-    const addPostCallback = () => {
-        addPost()
-    }
-    const changingPostTextCallback = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let postText = e.currentTarget.value
-        changingPostText(postText)
-    }
+type OwnPropsType = MapStateType & MapDispatchType & OwnProps
 
-    return (
-        <div className={s.post_wrapper}>
-            <h4 className={s.my_posts_headline}>My posts</h4>
-            <div className={s.add_new_posts}>
-                <div className={s.area_wrapper}>
-                <TextArea value={profilePage.newPostText}
-                          onChange={changingPostTextCallback}
-                          onEnter={addPostCallback}
-                          placeholder='What new?'
-                          className={s.area}>
-                </TextArea>
-                </div>
-                <div className={s.button_wrapper}>
-                    <Button onClick={addPostCallback} className={s.btn}>Add post</Button>
-                </div>
-            </div>
-            {postElements}
-        </div>
-    )
+export const MyPosts: React.FC<OwnPropsType> = ({profilePage, addPost}) => {
+
+   let postElements = profilePage.posts
+      .map(p => <Post message={p.message} likeCount={p.likeCount} key={p.id}/>)
+
+   const addPostCallback = (formData: PostFormValuesType) => {
+      addPost(formData.postNewMessageText)
+   }
+
+   return (
+      <div className={s.post_wrapper}>
+         <h4 className={s.my_posts_headline}>My posts</h4>
+         <AddNewPostForm onSubmit={addPostCallback}/>
+         {postElements}
+      </div>
+   )
 }
+
+const maxLength10 = maxLengthCreator(10)
+
+export const AddPost: React.FC<InjectedFormProps<PostFormValuesType, PostFormOwnProps> & PostFormOwnProps> = ({handleSubmit, error}) => {
+
+   return (
+      <form onSubmit={handleSubmit}>
+         <div>
+            <div>
+               <Field placeholder='Add post'
+                      component={Textarea}
+                      name='postNewMessageText'
+                      className={s.area}
+                      validate={[required, maxLength10]}
+               />
+            </div>
+            <div className={s.button_wrapper}>
+               <Button className={s.btn}>Add post</Button>
+            </div>
+         </div>
+      </form>
+   )
+}
+
+export type PostFormValuesType = {
+   postNewMessageText: string
+}
+
+export type PostFormOwnProps = {
+
+}
+
+const AddNewPostForm = reduxForm<PostFormValuesType, PostFormOwnProps>({form: 'postAddMessageForm'})(AddPost)

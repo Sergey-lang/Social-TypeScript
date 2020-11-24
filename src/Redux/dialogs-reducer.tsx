@@ -1,22 +1,7 @@
 import React from 'react';
-import {ActionsTypes} from '../essences/essences';
+import {ActionsTypes} from './actions';
 
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
-
-export type DialogType = {
-   id: number
-   name: string
-}
-export type MessageType = {
-   id: number
-   message: string
-}
-export type DialogInitPageType = {
-   dialogs: Array<DialogType>
-   messages: Array<MessageType>
-   newMessageText: string
-}
 
 let initializeState: DialogInitPageType = {
    dialogs: [
@@ -29,27 +14,16 @@ let initializeState: DialogInitPageType = {
       {id: 2, message: 'An stairs as be lovers'},
       {id: 3, message: 'Unpleasant in in insensible favourable'},
    ],
-   newMessageText: ''
 }
 
 export const dialogsReducer = (state: DialogInitPageType = initializeState,
                                action: ActionsTypes): DialogInitPageType => {
    switch (action.type) {
       case ADD_NEW_MESSAGE:
-         const newMessage: MessageType = {
-            id: 5,
-            message: state.newMessageText
-         }
          return {
             ...state,
-            messages: [...state.messages, newMessage],
-            newMessageText: ''
-         }
-      case UPDATE_NEW_MESSAGE_TEXT:
-         return {
-            ...state,
-            newMessageText: action.newMessageText
-         }
+            messages: [...state.messages,{id: 5, message: action.dialogNewMessageText}]
+         };
       default:
          return state
    }
@@ -57,14 +31,21 @@ export const dialogsReducer = (state: DialogInitPageType = initializeState,
 
 type AddMessageACType = {
    type: typeof ADD_NEW_MESSAGE
+   dialogNewMessageText: string
 }
-export const addMessage = (): AddMessageACType =>
-   ({type: ADD_NEW_MESSAGE}) as const
-type UpdateNewMessageTextACType = {
-   type: typeof UPDATE_NEW_MESSAGE_TEXT,
-   newMessageText: string
-}
-export const updateNewMessageText = (text: string): UpdateNewMessageTextACType =>
-   ({type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: text}) as const
+export const addMessage = (dialogNewMessageText: string): AddMessageACType =>
+   ({type: ADD_NEW_MESSAGE, dialogNewMessageText})
 
+export type DialogType = {
+   id: number
+   name: string
+}
+export type MessageType = {
+   id: number
+   message: string
+}
+export type DialogInitPageType = {
+   dialogs: Array<DialogType>
+   messages: Array<MessageType>
+}
 

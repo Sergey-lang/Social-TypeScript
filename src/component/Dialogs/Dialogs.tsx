@@ -1,23 +1,24 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import s from './Dialogs.module.css';
 import {Dialog} from './Dialog/Dialog';
 import {Message} from './Message/Message';
 import {mapDispatchType, MapStateType} from './DialogsContainer';
+import {maxLengthCreator, required} from '../../Utils/validator';
+import {Field, InjectedFormProps, reduxForm} from 'redux-form';
+import {Textarea} from '../../common/FormControl/FormControl';
 import {Button} from '../../common/Button/Button';
-import {TextArea} from '../../common/TextArea/TextArea';
 
-type OwnPropsType = MapStateType & mapDispatchType
-export const Dialogs: React.FC<OwnPropsType> = ({dialogsPage, addMessage, updateNewMessageText, ...props}) => {
+type OwnProps = {}
+
+type OwnPropsType = MapStateType & mapDispatchType  & OwnProps
+
+export const Dialogs: React.FC<OwnPropsType> = ({dialogsPage, addMessage, ...props}) => {
 
    let dialogsElement = dialogsPage.dialogs.map(d => <Dialog id={d.id} name={d.name} key={d.id}/>)
    let messagesElement = dialogsPage.messages.map(m => <Message id={m.id} message={m.message} key={m.id}/>)
 
-   const sendMessageCallback = () => {
-      addMessage()
-   }
-   const changingMessageTextCallback = (e: ChangeEvent<HTMLTextAreaElement>) => {
-      let newMessageText = e.currentTarget.value
-      updateNewMessageText(newMessageText)
+   const sendMessageCallback = (formData: DialogFormValuesType) => {
+      addMessage(formData.dialogNewMessageText)
    }
 
    return (
@@ -31,20 +32,42 @@ export const Dialogs: React.FC<OwnPropsType> = ({dialogsPage, addMessage, update
                <div className={s.message_block}>
                   {messagesElement}
                </div>
-               <div className={s.add_new_message}>
-                  <div className={s.area_wrapper}>
-                     <TextArea value={dialogsPage.newMessageText}
-                               onChange={changingMessageTextCallback}
-                               onEnter={sendMessageCallback}
-                               placeholder='What is new?'
-                               className={s.area}></TextArea>
-                  </div>
-                  <div className={s.button_wrapper}>
-                     <Button className={s.btn} onClick={sendMessageCallback}>Send message</Button>
-                  </div>
-               </div>
+               <AddNewMessageForm onSubmit={sendMessageCallback}/>
             </div>
          </div>
       </div>
    )
 }
+
+const maxLength50 = maxLengthCreator(50)
+
+export const AddMessage: React.FC<InjectedFormProps<DialogFormValuesType, DialogFormOwnProps> & DialogFormOwnProps> = ({handleSubmit, error}) => {
+
+   return (
+      <form onSubmit={handleSubmit}>
+         <div className={s.add_new_message}>
+            <div className={s.area_wrapper}>
+               <Field placeholder='Send message'
+                      component={Textarea}
+                      className={s.area}
+                      name="dialogNewMessageText"
+                      validate={[required, maxLength50]}
+               />
+            </div>
+            <div className={s.button_wrapper}>
+               <Button className={s.btn}>Send message</Button>
+            </div>
+         </div>
+      </form>
+   )
+}
+
+export type DialogFormValuesType = {
+   dialogNewMessageText: string
+}
+
+export type DialogFormOwnProps = {
+
+}
+
+const AddNewMessageForm = reduxForm<DialogFormValuesType, DialogFormOwnProps>({form: 'dialogAddMessageForm'})(AddMessage)

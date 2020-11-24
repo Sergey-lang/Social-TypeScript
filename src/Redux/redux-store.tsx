@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
 	form: formReducer,
 })
 
-export type GlobalStateType = ReturnType<typeof rootReducer>
+export type AppStateType = ReturnType<typeof rootReducer>
 
 export let store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
 

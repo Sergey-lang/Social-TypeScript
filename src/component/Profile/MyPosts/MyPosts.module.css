@@ -28,7 +28,6 @@
     display: flex;
     padding-top: 5px;
     justify-content: flex-end;
-
 }
 
 .btn {
@@ -40,4 +39,5 @@
 .area {
     height: 150px;
     width: 50%;
+    resize: none;
 }
