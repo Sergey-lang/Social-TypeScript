@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+
+.appContainer {
+   display: flex;
+   margin: 0 auto;
+   width: 986px;
+   min-height: 800px;
+   border: 1px solid black;
+   margin-top: 15px;
+}

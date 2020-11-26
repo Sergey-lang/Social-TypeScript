@@ -1,6 +1,6 @@
 import s from './Description.module.css';
 import React from 'react';
-import {ContactType} from '../../Redux/profile-reducer';
+import {ContactType} from '../../redux/profile-reducer';
 
 export type ProfilePropsType = {
     aboutMe: string

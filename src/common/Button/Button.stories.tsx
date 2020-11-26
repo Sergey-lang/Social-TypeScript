@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button} from './Button';
 import {action} from '@storybook/addon-actions';
-import s from '../../component/Profile/MyPosts/MyPosts.module.css';
+import s from '../../features/Profile/MyPosts/MyPosts.module.css';
 
 export default {
   title: 'Example/Button',
