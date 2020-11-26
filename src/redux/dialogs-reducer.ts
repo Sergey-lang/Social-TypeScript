@@ -14,7 +14,7 @@ let initializeState: DialogInitPageType = {
 export const dialogsReducer = (state: DialogInitPageType = initializeState,
                                action: ActionsType): DialogInitPageType => {
    switch (action.type) {
-      case 'ADD-NEW-MESSAGE':
+      case 'DIALOGS/ADD-NEW-MESSAGE':
          return {...state,
             messages: [...state.messages, {id: 5, message: action.dialogNewMessageText}]
          };
@@ -25,7 +25,7 @@ export const dialogsReducer = (state: DialogInitPageType = initializeState,
 
 //Action
 export const addMessage = (dialogNewMessageText: string) =>
-   ({type: 'ADD-NEW-MESSAGE', dialogNewMessageText} as const)
+   ({type: 'DIALOGS/ADD-NEW-MESSAGE', dialogNewMessageText} as const)
 
 //Types
 type ActionsType = ReturnType<typeof addMessage>

@@ -19,7 +19,7 @@ let initializeState: AuthInitPageType = {
 
 export const authReducer = (state: AuthInitPageType = initializeState, action: ActionsType): AuthInitPageType => {
    switch (action.type) {
-      case 'SET-USER-DATA':
+      case 'AUTH/SET-USER-DATA':
          return {...state,...action.data}
       default:
          return state
@@ -28,7 +28,7 @@ export const authReducer = (state: AuthInitPageType = initializeState, action: A
 
 //Action
 export const setUserData = (id: number | null, email: string | null, login: string | null, isAuth: boolean) => ({
-   type: 'SET-USER-DATA',
+   type: 'AUTH/SET-USER-DATA',
    data: {id, email, login, isAuth},
 } as const)
 

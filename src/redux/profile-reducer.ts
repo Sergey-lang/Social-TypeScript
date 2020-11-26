@@ -15,16 +15,16 @@ let initializeState: ProfilePageInitType = {
 export const profileReducer = (state: ProfilePageInitType = initializeState,
                                action: ActionsType): ProfilePageInitType => {
    switch (action.type) {
-      case 'ADD-POST':
+      case 'PROFILE/ADD-POST':
          return {
             ...state,
             posts: [{id: 4, message: action.postNewMessageText, likeCount: 0}, ...state.posts],
          };
-      case 'SET-USER-PROFILE':
+      case 'PROFILE/SET-USER-PROFILE':
          return {...state, profile: action.profile}
-      case 'GET-USER-STATUS':
+      case 'PROFILE/GET-USER-STATUS':
          return {...state, status: action.userStatus}
-      case 'UPDATE-PROFILE-STATUS':
+      case 'PROFILE/UPDATE-PROFILE-STATUS':
          return {...state, status: action.status}
       default:
          return state
@@ -33,16 +33,16 @@ export const profileReducer = (state: ProfilePageInitType = initializeState,
 
 //Action
 export const addPost = (postNewMessageText: string) =>
-   ({type: 'ADD-POST', postNewMessageText} as const)
+   ({type: 'PROFILE/ADD-POST', postNewMessageText} as const)
 
 export const setUserProfileData = (profile: ProfileType) =>
-   ({type: 'SET-USER-PROFILE', profile} as const)
+   ({type: 'PROFILE/SET-USER-PROFILE', profile} as const)
 
 export const getUserStatus = (userStatus: string) =>
-   ({type: 'GET-USER-STATUS', userStatus} as const)
+   ({type: 'PROFILE/GET-USER-STATUS', userStatus} as const)
 
 export const setOwnProfileStatus = (status: string) =>
-   ({type: 'UPDATE-PROFILE-STATUS', status} as const)
+   ({type: 'PROFILE/UPDATE-PROFILE-STATUS', status} as const)
 
 //Thunk
 export const getUserProfileData = (userId: number): ThunkType =>
