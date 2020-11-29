@@ -5,7 +5,6 @@ import {AppStateType} from '../../redux/store'
 import {getStatusFromUser, getUserProfileData, ProfileType, updateOwnProfileStatus} from '../../redux/profile-reducer'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
 import {compose} from 'redux';
-import {withAuthRedirect} from '../../hoc/WithAuthRedirect';
 
 type PathParamsType = {
    userid: string
@@ -19,6 +18,9 @@ class ProfileContainer extends React.Component<PropsType> {
 
       let id = Number(this.props.match.params.userid)
       let userId = id ? id : this.props.authorizedUserId
+      if(!userId) {
+            this.props.history.push('/login')
+      }
 
       this.props.getUserProfileData(userId!)
       this.props.getStatusFromUser(userId!)
@@ -57,5 +59,4 @@ export default compose<ComponentType>(
       {getUserProfileData, getStatusFromUser, updateOwnProfileStatus}
    ),
    withRouter,
-   withAuthRedirect
 )(ProfileContainer)

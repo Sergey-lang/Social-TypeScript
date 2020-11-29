@@ -7,10 +7,6 @@ import {getAuthUserData, logout} from '../../redux/auth-reducer';
 type OwnPropsType = MapStateType & MapDispatchType
 
 class HeaderContainer extends React.Component<OwnPropsType> {
-   componentDidMount() {
-      this.props.getAuthUserData()
-   }
-
    render() {
       return <Header login={this.props.login}
                      isAuth={this.props.isAuth}

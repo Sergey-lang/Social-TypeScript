@@ -35,7 +35,8 @@ export const setUserData = (id: number | null, email: string | null, login: stri
 //Thunk
 export const getAuthUserData = (): ThunkType =>
    (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
-   authAPI.me().then(data => {
+   //return promise for app reducer
+   return authAPI.me().then(data => {
       if (data.resultCode === 0) {
          let {id, email, login} = data.data
          dispatch(setUserData(id, email, login, true))

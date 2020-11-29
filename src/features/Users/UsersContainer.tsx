@@ -4,7 +4,6 @@ import {AppStateType} from '../../redux/store'
 import {follow, getUsers, setCurrentPage, unfollow, UsersType,} from '../../redux/users-reducer'
 import {Users} from './Users'
 import {Preloader} from '../../common/Preloader/Preloader'
-import {withAuthRedirect} from '../../hoc/WithAuthRedirect';
 import {compose} from 'redux';
 
 type UsersContainerType = MapStateType & MapDispatchType
@@ -70,5 +69,4 @@ export default compose<ComponentType>(
          setCurrentPage, getUsers, follow, unfollow,
       }
    ),
-   withAuthRedirect
 )(UsersContainer)
