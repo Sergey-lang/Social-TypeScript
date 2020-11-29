@@ -1,21 +1,28 @@
 import React, {ComponentType} from 'react'
 import {connect} from 'react-redux'
 import {AppStateType} from '../../redux/store'
-import {follow, getUsers, setCurrentPage, unfollow, UsersType,} from '../../redux/users-reducer'
+import {follow, requestUsers, setCurrentPage, unfollow, UsersType,} from '../../redux/users-reducer'
 import {Users} from './Users'
 import {Preloader} from '../../common/Preloader/Preloader'
 import {compose} from 'redux';
+import {
+   getCurrentPage,
+   getFollowingInProgress,
+   getIsFetching,
+   getPageSize,
+   getTotalUsersCount, getUsers
+} from '../../redux/users-selectors';
 
 type UsersContainerType = MapStateType & MapDispatchType
 
 class UsersContainer extends React.Component<UsersContainerType> {
 
    componentDidMount() {
-      this.props.getUsers(this.props.currentPage, this.props.pageSize)
+      this.props.requestUsers(this.props.currentPage, this.props.pageSize)
    }
 
    onPageChanged = (p: number) => {
-      this.props.getUsers(p, this.props.pageSize)
+      this.props.requestUsers(p, this.props.pageSize)
    }
 
    render() {
@@ -48,25 +55,25 @@ type MapStateType = {
 
 type MapDispatchType = {
    setCurrentPage: (currentPage: number) => void
-   getUsers: (currentPage: number, pageSize: number) => void
+   requestUsers: (requestPage: number, pageSize: number) => void
    follow: (id: number) => void
    unfollow: (id: number) => void
 }
 
 const mapState = (state: AppStateType): MapStateType => ({
-   users: state.usersState.users,
-   totalUsersCount: state.usersState.totalUsersCount,
-   pageSize: state.usersState.pageSize,
-   currentPage: state.usersState.currentPage,
-   isFetching: state.usersState.isFetching,
-   followingInProgress: state.usersState.followingInProgress,
+   users: getUsers(state),
+   totalUsersCount: getTotalUsersCount(state),
+   pageSize: getPageSize(state),
+   currentPage: getCurrentPage(state),
+   isFetching: getIsFetching(state),
+   followingInProgress: getFollowingInProgress(state),
 })
 
 export default compose<ComponentType>(
    connect<MapStateType, MapDispatchType, {}, AppStateType>(
       mapState,
       {
-         setCurrentPage, getUsers, follow, unfollow,
+         setCurrentPage, requestUsers, follow, unfollow,
       }
    ),
 )(UsersContainer)

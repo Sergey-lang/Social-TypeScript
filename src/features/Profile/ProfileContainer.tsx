@@ -3,7 +3,7 @@ import {Profile} from './Profile'
 import {connect} from 'react-redux'
 import {AppStateType} from '../../redux/store'
 import {getStatusFromUser, getUserProfileData, ProfileType, updateOwnProfileStatus} from '../../redux/profile-reducer'
-import {RouteComponentProps, withRouter} from 'react-router-dom'
+import {RouteComponentProps} from 'react-router-dom'
 import {compose} from 'redux';
 
 type PathParamsType = {
@@ -18,8 +18,8 @@ class ProfileContainer extends React.Component<PropsType> {
 
       let id = Number(this.props.match.params.userid)
       let userId = id ? id : this.props.authorizedUserId
-      if(!userId) {
-            this.props.history.push('/login')
+      if (!userId) {
+         this.props.history.push('/login')
       }
 
       this.props.getUserProfileData(userId!)
@@ -58,5 +58,4 @@ export default compose<ComponentType>(
       mapState,
       {getUserProfileData, getStatusFromUser, updateOwnProfileStatus}
    ),
-   withRouter,
 )(ProfileContainer)

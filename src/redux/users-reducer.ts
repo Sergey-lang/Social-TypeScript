@@ -77,41 +77,42 @@ export const toggleFollowingProgress = (isFetching: boolean, userId: number) => 
 } as const)
 
 //Thunk
-export const getUsers = (currentPage: number, pageSize: number): ThunkType =>
+export const requestUsers = (requestPage: number, pageSize: number): ThunkType =>
    (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
-   dispatch(toggleIsFetching(true))
-   usersAPI.getUsers(currentPage, pageSize)
-      .then(data => {
-         dispatch(toggleIsFetching(false))
-         dispatch(setUsers(data.items))
-         dispatch(setUsersTotalCount(data.totalCount))
-      })
-}
+      dispatch(toggleIsFetching(true))
+      dispatch(setCurrentPage(requestPage))
+      usersAPI.getUsers(requestPage, pageSize)
+         .then(data => {
+            dispatch(toggleIsFetching(false))
+            dispatch(setUsers(data.items))
+            dispatch(setUsersTotalCount(data.totalCount))
+         })
+   }
 
 export const follow = (id: number): ThunkType =>
    (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
-   dispatch(toggleFollowingProgress(true, id))
-   usersAPI.follow(id)
-      .then(data => {
-         debugger
-         if (data.resultCode === 0) {
-            dispatch(followSuccess(id))
-         }
-         dispatch(toggleFollowingProgress(false, id))
-      })
-}
+      dispatch(toggleFollowingProgress(true, id))
+      usersAPI.follow(id)
+         .then(data => {
+            debugger
+            if (data.resultCode === 0) {
+               dispatch(followSuccess(id))
+            }
+            dispatch(toggleFollowingProgress(false, id))
+         })
+   }
 
 export const unfollow = (id: number): ThunkType =>
    (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
-   dispatch(toggleFollowingProgress(true, id))
-   usersAPI.unfollow(id)
-      .then(data => {
-         if (data.resultCode === 0) {
-            dispatch(unfollowSuccess(id))
-         }
-         dispatch(toggleFollowingProgress(false, id))
-      })
-}
+      dispatch(toggleFollowingProgress(true, id))
+      usersAPI.unfollow(id)
+         .then(data => {
+            if (data.resultCode === 0) {
+               dispatch(unfollowSuccess(id))
+            }
+            dispatch(toggleFollowingProgress(false, id))
+         })
+   }
 
 //Type
 type ThunkType = ThunkAction<void, AppStateType, unknown, ActionsType>
