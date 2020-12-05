@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a5fa439b807749f5730191fdec62b93e",
+    "revision": "481097d119f34aecd1bc3ffeb4daba9e",
     "url": "/Social-TypeScript/index.html"
   },
   {
-    "revision": "84917c1dda120151a78b",
-    "url": "/Social-TypeScript/static/css/main.eb6c4aa2.chunk.css"
+    "revision": "e9a9b80a02d4719f7bcf",
+    "url": "/Social-TypeScript/static/css/main.989a7073.chunk.css"
   },
   {
-    "revision": "23372e4bbf5405f9c0fa",
-    "url": "/Social-TypeScript/static/js/2.82dca5eb.chunk.js"
+    "revision": "675995c869c3fc3686f4",
+    "url": "/Social-TypeScript/static/js/2.87c16f89.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/Social-TypeScript/static/js/2.82dca5eb.chunk.js.LICENSE.txt"
+    "url": "/Social-TypeScript/static/js/2.87c16f89.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "84917c1dda120151a78b",
-    "url": "/Social-TypeScript/static/js/main.57c6f31d.chunk.js"
+    "revision": "e9a9b80a02d4719f7bcf",
+    "url": "/Social-TypeScript/static/js/main.a6a91898.chunk.js"
   },
   {
     "revision": "42dc512b95ed467b0196",
