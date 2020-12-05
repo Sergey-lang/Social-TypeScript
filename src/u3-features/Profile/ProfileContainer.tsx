@@ -53,9 +53,7 @@ const mapState = (state: AppStateType): MapStateType => ({
 })
 
 export default compose<ComponentType>(
-   connect<MapStateType, MapDispatchType, {}, AppStateType>(
-      mapState,
-      {getUserProfileData, getStatusFromUser, updateOwnProfileStatus}
-   ),
+   connect<MapStateType, MapDispatchType, {}, AppStateType>(mapState,
+      {getUserProfileData, getStatusFromUser, updateOwnProfileStatus}),
     withRouter,
 )(ProfileContainer)

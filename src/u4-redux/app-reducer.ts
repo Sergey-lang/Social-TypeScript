@@ -27,7 +27,7 @@ export const initializedSuccess = () => ({
 //Thunk
 export const initializeApp = (): ThunkType =>
    (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
-   let promise = dispatch(getAuthUserData)
+   let promise = dispatch(getAuthUserData())
       Promise.all([promise])
          .then(()=>{
          dispatch(initializedSuccess)

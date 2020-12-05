@@ -54,6 +54,6 @@ const mapState = (state: AppStateType): MapStateType => ({
 })
 
 export default compose<ComponentType>(
+    withRouter,
    connect<MapStateType, MapDispatch, {}, AppStateType>(mapState, {initializeApp}),
-   withRouter,
 )(App)
