@@ -34,39 +34,31 @@ export const setUserData = (id: number | null, email: string | null, login: stri
 
 //Thunk
 export const getAuthUserData = (): ThunkType =>
-    (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
-        //return promise for u6-app reducer
-        return authAPI.me()
-            .then(data => {
-                if (data.resultCode === 0) {
-                    debugger
-                    let {id, email, login} = data.data
-                    dispatch(setUserData(id, email, login, true))
-                }
-            })
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
+        const data = await authAPI.me()
+        if (data.resultCode === 0) {
+            let {id, email, login} = data.data
+            dispatch(setUserData(id, email, login, true))
+        }
     }
 
 export const login = (email: string, password: string, rememberMe: boolean): ThunkType =>
-    (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType | FormAction>) => {
-        authAPI.login(email, password, rememberMe)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(getAuthUserData())
-                } else {
-                    let messages = data.messages.length > 0 ? data.messages[0] : 'some error';
-                    dispatch(stopSubmit('login', {_error: messages}))
-                }
-            })
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType | FormAction>) => {
+        const data = await authAPI.login(email, password, rememberMe)
+        if (data.resultCode === 0) {
+            dispatch(getAuthUserData())
+        } else {
+            let messages = data.messages.length > 0 ? data.messages[0] : 'some error';
+            dispatch(stopSubmit('login', {_error: messages}))
+        }
     }
 
 export const logout = (): ThunkType =>
-    (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
-        authAPI.logout()
-            .then(response => {
-                if (response.resultCode === 0) {
-                    dispatch(setUserData(null, null, null, false));
-                }
-            });
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
+        const response = await authAPI.logout()
+        if (response.resultCode === 0) {
+            dispatch(setUserData(null, null, null, false));
+        }
     }
 
 //Type

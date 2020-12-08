@@ -14,46 +14,47 @@ import {compose} from 'redux';
 import {Preloader} from '../u2-components/Preloader/Preloader';
 
 type PropsType = MapStateType & MapDispatch
+
 class App extends React.Component<PropsType> {
 
-   componentDidMount() {
-      this.props.initializeApp()
-   }
+    componentDidMount() {
+        this.props.initializeApp()
+    }
 
-   render() {
+    render() {
 
-      if (this.props.initialized) {
-         return <Preloader/>
-      }
+        if (this.props.initialized) {
+            return <Preloader/>
+        }
 
-      return (
-         <div className="app">
-            <HeaderContainer/>
-            <div className="appContainer">
-               <Navbar/>
-               <Route path="/profile/:userid?" render={() => <ProfileContainer/>}/>
-               <Route path="/dialogs" render={() => <DialogsContainer/>}/>
-               <Route path="/users" render={() => <UsersContainer/>}/>
-               <Route path="/login" render={() => <LoginReduxForm/>}/>
+        return (
+            <div className="app">
+                <HeaderContainer/>
+                <div className="appContainer">
+                    <Navbar/>
+                    <Route path="/profile/:userid?" render={() => <ProfileContainer/>}/>
+                    <Route path="/dialogs" render={() => <DialogsContainer/>}/>
+                    <Route path="/users" render={() => <UsersContainer/>}/>
+                    <Route path="/login" render={() => <LoginReduxForm/>}/>
+                </div>
             </div>
-         </div>
-      )
-   }
+        )
+    }
 }
 
 type MapDispatch = {
-   initializeApp: () => void
+    initializeApp: () => void
 }
 
 type MapStateType = {
-   initialized: boolean
+    initialized: boolean
 }
 
 const mapState = (state: AppStateType): MapStateType => ({
-   initialized: state.app.initialized
+    initialized: state.app.initialized
 })
 
 export default compose<ComponentType>(
     withRouter,
-   connect<MapStateType, MapDispatch, {}, AppStateType>(mapState, {initializeApp}),
+    connect<MapStateType, MapDispatch, {}, AppStateType>(mapState, {initializeApp}),
 )(App)

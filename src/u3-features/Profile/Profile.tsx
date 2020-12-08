@@ -5,19 +5,19 @@ import React from 'react';
 import {ProfileType} from '../../u4-redux/profile-reducer';
 
 type ProfileProps = {
-   profile: ProfileType | null
-   status: string
-   updateOwnProfileStatus: (status: string) => void
+    profile: ProfileType | null
+    status: string
+    updateOwnProfileStatus: (status: string) => void
 }
 
 export const Profile: React.FC<ProfileProps> = (props) => {
-   return (
-      <div className={s.mainProfileWrapper}>
-         <MyProfileInfo profile={props.profile}
-                        status={props.status}
-                        updateOwnProfileStatus={props.updateOwnProfileStatus}
-         />
-         <MyPostsContainer/>
-      </div>
-   )
+    return (
+        <div className={s.mainProfileWrapper}>
+            <MyProfileInfo profile={props.profile}
+                           status={props.status}
+                           updateOwnProfileStatus={props.updateOwnProfileStatus}
+            />
+            <MyPostsContainer/>
+        </div>
+    )
 }

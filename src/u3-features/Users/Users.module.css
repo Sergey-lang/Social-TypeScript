@@ -17,24 +17,6 @@
     border-bottom: 1px solid #aeaeae;
 }
 
-.users_page_num {
-    font-size: 15px;
-    display: flex;
-    justify-content: center;
-    width: content-box;
-    padding: 5px;
-}
-
-.totalCount {
-    width: auto;
-    padding: 0 2px;
-    cursor: pointer;
-}
-
-.selected {
-    font-weight: 600;
-}
-
 .users_page {
     font-size: 13px;
     display: flex;
@@ -42,65 +24,4 @@
     flex-direction: column;
     width: content-box;
     padding: 0 20px;
-}
-
-.user {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    box-sizing: border-box;
-    width: content-box;
-    padding: 10px;
-}
-
-.avatar {
-    display: flex;
-    align-self: center;
-    justify-content: flex-start;
-    width: 20%;
-}
-
-.avatar img {
-    width: 100%;
-}
-
-.description {
-    display: flex;
-    align-self: flex-start;
-    flex-direction: column;
-    width: 550px;
-    height: 150px;
-    padding: 0 20px;
-}
-
-.user_name {
-    font-weight: 500;
-    display: flex;
-    align-self: center;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 100%;
-}
-
-.status {
-    display: flex;
-    align-self: center;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 100%;
-    padding: 10px;
-}
-
-.btn {
-    align-self: center;
-    width: 100px;
-    margin: 5px;
-}
-
-.unfollow {
-    opacity: .8;
-}
-
-.link_to_profile {
-    cursor: pointer;
 }
