@@ -1,8 +1,8 @@
-import s from './Users.module.css';
-import React from 'react';
-import {UsersType} from '../../u4-redux/users-reducer';
-import {Paginator} from "../../u2-components/Paginator/Paginator";
-import {User} from "./User/User";
+import s from './Users.module.css'
+import React from 'react'
+import {UsersType} from '../../u4-redux/users-reducer'
+import {Paginator} from '../../u2-components/Paginator/Paginator'
+import {User} from './User/User'
 
 type UsersPageType = {
    pageSize: number
@@ -15,27 +15,36 @@ type UsersPageType = {
    followingInProgress: Array<number>
 }
 
-export const Users: React.FC<UsersPageType> = ({pageSize, currentPage, users, onPageChanged, isFetching, followingInProgress, ...props}) => {
+export const Users: React.FC<UsersPageType> =
+    ({
+        pageSize,
+        currentPage,
+        users,
+        onPageChanged,
+        isFetching,
+        followingInProgress,
+        ...props
+     }) => {
 
-   return (
-      <div className={s.users_container}>
-         <div className={s.users_headline}>Users</div>
-         <div>
-             <Paginator currentPage={currentPage}
-                        onPageChanged={onPageChanged}
-                        pageSize={pageSize}/>
-            <div className={s.users_page}>
-                {users.map(u => <User key={u.id}
-                                      user={u}
-                                      follow={props.follow}
-                                      unfollow={props.unfollow}
-                                      followingInProgress={followingInProgress}/>
-                )}
-            </div>
-         </div>
-      </div>
-   )
-}
+       return (
+           <div className={s.users_container}>
+              <div className={s.users_headline}>Users</div>
+              <div>
+                 <Paginator currentPage={currentPage}
+                            onPageChanged={onPageChanged}
+                            pageSize={pageSize}/>
+                 <div className={s.users_page}>
+                    {users.map(u => <User key={u.id}
+                                          user={u}
+                                          follow={props.follow}
+                                          unfollow={props.unfollow}
+                                          followingInProgress={followingInProgress}/>
+                    )}
+                 </div>
+              </div>
+           </div>
+       )
+    }
 
 
 

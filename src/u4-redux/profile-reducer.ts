@@ -1,34 +1,34 @@
-import {ThunkAction, ThunkDispatch} from 'redux-thunk';
-import {AppStateType} from './store';
-import {profileAPI} from '../u5-api/profile-api';
+import {ThunkAction, ThunkDispatch} from 'redux-thunk'
+import {AppStateType} from './store'
+import {profileAPI} from '../u5-api/profile-api'
 
 let initializeState: ProfilePageInitType = {
-    posts: [
-        {id: 1, message: 'Hello I am props.', likeCount: 21},
-        {id: 2, message: 'I am very handsome props', likeCount: 10},
-        {id: 3, message: 'I go out from my post u3-features', likeCount: 5},
-    ],
-    profile: null as ProfileType | null,
-    status: ''
+   posts: [
+      {id: 1, message: 'Hello I am props.', likeCount: 21},
+      {id: 2, message: 'I am very handsome props', likeCount: 10},
+      {id: 3, message: 'I go out from my post u3-features', likeCount: 5},
+   ],
+   profile: null as ProfileType | null,
+   status: ''
 }
 
 export const profileReducer = (state: ProfilePageInitType = initializeState,
                                action: ActionsType): ProfilePageInitType => {
-    switch (action.type) {
-        case 'PROFILE/ADD-POST':
-            return {
-                ...state,
-                posts: [{id: 4, message: action.postNewMessageText, likeCount: 0}, ...state.posts],
-            };
-        case 'PROFILE/SET-USER-PROFILE':
-            return {...state, profile: action.profile}
-        case 'PROFILE/GET-USER-STATUS':
-            return {...state, status: action.userStatus}
-        case 'PROFILE/UPDATE-PROFILE-STATUS':
-            return {...state, status: action.status}
-        default:
-            return state
-    }
+   switch (action.type) {
+      case 'PROFILE/ADD-POST':
+         return {
+            ...state,
+            posts: [{id: 4, message: action.postNewMessageText, likeCount: 0}, ...state.posts],
+         }
+      case 'PROFILE/SET-USER-PROFILE':
+         return {...state, profile: action.profile}
+      case 'PROFILE/GET-USER-STATUS':
+         return {...state, status: action.userStatus}
+      case 'PROFILE/UPDATE-PROFILE-STATUS':
+         return {...state, status: action.status}
+      default:
+         return state
+   }
 }
 
 //Action
@@ -47,22 +47,22 @@ export const setOwnProfileStatus = (status: string) =>
 //Thunk
 export const getUserProfileData = (userId: number): ThunkType =>
     async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
-        const data = await profileAPI.getProfile(userId)
-        dispatch(setUserProfileData(data))
+       const data = await profileAPI.getProfile(userId)
+       dispatch(setUserProfileData(data))
     }
 
 export const getStatusFromUser = (userId: number): ThunkType =>
     async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
-        const res = await profileAPI.getUserStatus(userId)
-        dispatch(getUserStatus(res.data))
+       const res = await profileAPI.getUserStatus(userId)
+       dispatch(getUserStatus(res.data))
     }
 
 export const updateOwnProfileStatus = (status: string): ThunkType =>
     async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
-        const data = await profileAPI.updateOwnProfileStatus(status)
-        if (data.resultCode === 0) {
-            dispatch(setOwnProfileStatus(status))
-        }
+       const data = await profileAPI.updateOwnProfileStatus(status)
+       if (data.resultCode === 0) {
+          dispatch(setOwnProfileStatus(status))
+       }
     }
 
 //Type
@@ -75,36 +75,36 @@ type ActionsType =
     ReturnType<typeof setOwnProfileStatus>
 
 export type PostType = {
-    id: number
-    message: string
-    likeCount: number
+   id: number
+   message: string
+   likeCount: number
 }
 export type ContactType = {
-    facebook: string
-    website: string | null
-    vk: string
-    twitter: string
-    instagram: string
-    youtube: string | null
-    github: string
-    mainLink: string | null
+   facebook: string
+   website: string | null
+   vk: string
+   twitter: string
+   instagram: string
+   youtube: string | null
+   github: string
+   mainLink: string | null
 }
 export type PhotosType = {
-    small: string | null
-    large: string | null
+   small: string | null
+   large: string | null
 }
 export type ProfileType = {
-    aboutMe: string
-    contacts: ContactType
-    lookingForAJob: boolean
-    lookingForAJobDescription: string
-    fullName: string
-    userId: number
-    photos: PhotosType
+   aboutMe: string
+   contacts: ContactType
+   lookingForAJob: boolean
+   lookingForAJobDescription: string
+   fullName: string
+   userId: number
+   photos: PhotosType
 }
 export type ProfilePageInitType = {
-    posts: Array<PostType>
-    profile: ProfileType | null
-    status: string
+   posts: Array<PostType>
+   profile: ProfileType | null
+   status: string
 }
 

@@ -1,20 +1,20 @@
-import {addMessage, DialogInitPageType, dialogsReducer} from '../dialogs-reducer';
+import {addMessage, DialogInitPageType, dialogsReducer} from '../dialogs-reducer'
 
 
 test('reducer should be add new message', () => {
 
-    const startState: DialogInitPageType = {
-        dialogs: [
-            {id: 1, name: 'Dima Ivanov'},
-        ],
-        messages: [
-            {id: 1, message: 'Detract yet delight written farther'},
-        ],
-    }
+   const startState: DialogInitPageType = {
+      dialogs: [
+         {id: 1, name: 'Dima Ivanov'},
+      ],
+      messages: [
+         {id: 1, message: 'Detract yet delight written farther'},
+      ],
+   }
 
-    const messageText = 'This is dialogs message for another user'
+   const messageText = 'This is dialogs message for another user'
 
-    const endState = dialogsReducer(startState, addMessage(messageText))
+   const endState = dialogsReducer(startState, addMessage(messageText))
 
-    expect(endState.messages.length).toBe(2)
-});
+   expect(endState.messages.length).toBe(2)
+})

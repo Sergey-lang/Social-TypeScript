@@ -1,5 +1,5 @@
-import {AppStateType} from './store';
-import {UsersType} from './users-reducer';
+import {AppStateType} from './store'
+import {UsersType} from './users-reducer'
 
 export const getUsers = (state: AppStateType): Array<UsersType> => {
    return state.usersState.users

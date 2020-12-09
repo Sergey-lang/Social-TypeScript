@@ -1,6 +1,6 @@
-import React, {ChangeEvent, KeyboardEvent, DetailedHTMLProps, HTMLAttributes, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, DetailedHTMLProps, HTMLAttributes, useState} from 'react'
 import s from './EditableSpan.module.css'
-import {Input} from '../Input/Input';
+import {Input} from '../Input/Input'
 
 type DefaultInputPropsType = DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 
@@ -16,62 +16,62 @@ type EditableSpanPropsType = DefaultInputPropsType & {
 }
 
 export const EditableSpan: React.FC<EditableSpanPropsType> = (
-   {
-      autoFocus,
-      onBlur,
-      onEnter,
-      spanProps,
-      spanClassName,
-      ...restProps
-   }) => {
+    {
+       autoFocus,
+       onBlur,
+       onEnter,
+       spanProps,
+       spanClassName,
+       ...restProps
+    }) => {
 
-   const [editMode, setEditMode] = useState<boolean>(false);
-   const {children, onDoubleClick, className, ...restSpanProps} = spanProps || {};
+   const [editMode, setEditMode] = useState<boolean>(false)
+   const {children, onDoubleClick, className, ...restSpanProps} = spanProps || {}
 
    const onEnterCallback = () => {
-      setEditMode(false); // выключить editMode при нажатии Enter
+      setEditMode(false) // выключить editMode при нажатии Enter
 
-      onEnter && onEnter();
-   };
+      onEnter && onEnter()
+   }
 
    const onBlurCallback = (e: React.FocusEvent<HTMLInputElement>) => {
-      setEditMode(false); // выключить editMode при нажатии за пределами инпута
+      setEditMode(false) // выключить editMode при нажатии за пределами инпута
 
-      onBlur && onBlur(e);
-   };
+      onBlur && onBlur(e)
+   }
 
    const onDoubleClickCallBack = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-      setEditMode(true); // включить editMode при двойном клике
+      setEditMode(true) // включить editMode при двойном клике
 
-      onDoubleClick && onDoubleClick(e);
-   };
+      onDoubleClick && onDoubleClick(e)
+   }
 
-   const finalInputClassName = `${s.inputDefault} ${className}`;
-   const finalSpanClassName = `${s.spanDefault} ${spanClassName}`;
+   const finalInputClassName = `${s.inputDefault} ${className}`
+   const finalSpanClassName = `${s.spanDefault} ${spanClassName}`
 
    return (
-      <>
-         {editMode ? (
-            <Input
-               autoFocus // пропсу с булевым значением не обязательно указывать true
-               onBlur={onBlurCallback}
-               onEnter={onEnterCallback}
-               className={finalInputClassName}
-               {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
-            />
-         ) : (
-            <span
-               onDoubleClick={onDoubleClickCallBack}
-               className={finalSpanClassName}
+       <>
+          {editMode ? (
+              <Input
+                  autoFocus // пропсу с булевым значением не обязательно указывать true
+                  onBlur={onBlurCallback}
+                  onEnter={onEnterCallback}
+                  className={finalInputClassName}
+                  {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
+              />
+          ) : (
+              <span
+                  onDoubleClick={onDoubleClickCallBack}
+                  className={finalSpanClassName}
 
-               {...restSpanProps}
-            >
+                  {...restSpanProps}
+              >
             {/*если нет захардкодженного текста для спана, то значение инпута*/}
-               {children || restProps.value}
+                 {children || restProps.value}
             </span>
-         )
+          )
 
-         }
-      </>
-   );
+          }
+       </>
+   )
 }

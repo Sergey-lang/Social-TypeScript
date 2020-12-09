@@ -6,52 +6,52 @@ import {Route, withRouter} from 'react-router-dom'
 import DialogsContainer from '../u3-features/Dialogs/DialogsContainer'
 import UsersContainer from '../u3-features/Users/UsersContainer'
 import ProfileContainer from '../u3-features/Profile/ProfileContainer'
-import LoginReduxForm from '../u3-features/Login/Login';
-import {AppStateType} from '../u4-redux/store';
-import {connect} from 'react-redux';
-import {initializeApp} from '../u4-redux/app-reducer';
-import {compose} from 'redux';
-import {Preloader} from '../u2-components/Preloader/Preloader';
+import LoginReduxForm from '../u3-features/Login/Login'
+import {AppStateType} from '../u4-redux/store'
+import {connect} from 'react-redux'
+import {initializeApp} from '../u4-redux/app-reducer'
+import {compose} from 'redux'
+import {Preloader} from '../u2-components/Preloader/Preloader'
 
 type PropsType = MapStateType & MapDispatch
 
 class App extends React.Component<PropsType> {
 
-    componentDidMount() {
-        this.props.initializeApp()
-    }
+   componentDidMount() {
+      this.props.initializeApp()
+   }
 
-    render() {
+   render() {
 
-        if (this.props.initialized) {
-            return <Preloader/>
-        }
+      if (this.props.initialized) {
+         return <Preloader/>
+      }
 
-        return (
-            <div className="app">
-                <HeaderContainer/>
-                <div className="appContainer">
-                    <Navbar/>
-                    <Route path="/profile/:userid?" render={() => <ProfileContainer/>}/>
-                    <Route path="/dialogs" render={() => <DialogsContainer/>}/>
-                    <Route path="/users" render={() => <UsersContainer/>}/>
-                    <Route path="/login" render={() => <LoginReduxForm/>}/>
-                </div>
-            </div>
-        )
-    }
+      return (
+          <div className="app">
+             <HeaderContainer/>
+             <div className="appContainer">
+                <Navbar/>
+                <Route path="/profile/:userid?" render={() => <ProfileContainer/>}/>
+                <Route path="/dialogs" render={() => <DialogsContainer/>}/>
+                <Route path="/users" render={() => <UsersContainer/>}/>
+                <Route path="/login" render={() => <LoginReduxForm/>}/>
+             </div>
+          </div>
+      )
+   }
 }
 
 type MapDispatch = {
-    initializeApp: () => void
+   initializeApp: () => void
 }
 
 type MapStateType = {
-    initialized: boolean
+   initialized: boolean
 }
 
 const mapState = (state: AppStateType): MapStateType => ({
-    initialized: state.app.initialized
+   initialized: state.app.initialized
 })
 
 export default compose<ComponentType>(

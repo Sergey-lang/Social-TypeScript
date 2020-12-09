@@ -5,7 +5,7 @@ import {
    unfollowSuccess,
    UsersInitializeStateType,
    usersReducer
-} from '../users-reducer';
+} from '../users-reducer'
 
 let startState: UsersInitializeStateType
 
@@ -68,13 +68,13 @@ test('check user follow', () => {
 
    const endState = usersReducer(startState, followSuccess(1))
    expect(endState.users[0].followed).toBeTruthy()
-});
+})
 
 test('check user unfollow', () => {
 
    const endState = usersReducer(startState, unfollowSuccess(1))
    expect(endState.users[1].followed).toBeTruthy()
-});
+})
 
 test('set users data', () => {
 
@@ -83,10 +83,10 @@ test('set users data', () => {
    expect(endState.users[0].status).toBe('Test status')
    expect(endState.users[1].id).toBe(46)
    expect(endState.users[1].status).toBe('Test status 2')
-});
+})
 
 test('toggle is fetching', () => {
 
    const endState = usersReducer(startState, toggleIsFetching(true))
    expect(endState.isFetching).toBeTruthy()
-});
+})
