@@ -6,7 +6,7 @@ let initializeState: ProfilePageInitType = {
    posts: [
       {id: 1, message: 'Hello I am props.', likeCount: 21},
       {id: 2, message: 'I am very handsome props', likeCount: 10},
-      {id: 3, message: 'I go out from my post u3-features', likeCount: 5},
+      {id: 3, message: 'I go out from my post u3-Pages', likeCount: 5},
    ],
    profile: null as ProfileType | null,
    status: ''

@@ -6,6 +6,7 @@ import {User} from './User/User'
 
 type UsersPageType = {
    pageSize: number
+   totalUsersCount: number
    currentPage: number
    users: Array<UsersType>
    follow: any
@@ -18,6 +19,7 @@ type UsersPageType = {
 export const Users: React.FC<UsersPageType> =
     ({
         pageSize,
+        totalUsersCount,
         currentPage,
         users,
         onPageChanged,
@@ -32,7 +34,9 @@ export const Users: React.FC<UsersPageType> =
               <div>
                  <Paginator currentPage={currentPage}
                             onPageChanged={onPageChanged}
-                            pageSize={pageSize}/>
+                            pageSize={pageSize}
+                            totalItemsCount={totalUsersCount}
+                 />
                  <div className={s.users_page}>
                     {users.map(u => <User key={u.id}
                                           user={u}
