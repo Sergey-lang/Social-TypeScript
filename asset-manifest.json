@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/Social-TypeScript/static/css/main.8b32b8ac.chunk.css",
-    "main.js": "/Social-TypeScript/static/js/main.4863eddd.chunk.js",
-    "main.js.map": "/Social-TypeScript/static/js/main.4863eddd.chunk.js.map",
+    "main.css": "/Social-TypeScript/static/css/main.ea3fbac5.chunk.css",
+    "main.js": "/Social-TypeScript/static/js/main.cd4895ce.chunk.js",
+    "main.js.map": "/Social-TypeScript/static/js/main.cd4895ce.chunk.js.map",
     "runtime-main.js": "/Social-TypeScript/static/js/runtime-main.18e493ad.js",
     "runtime-main.js.map": "/Social-TypeScript/static/js/runtime-main.18e493ad.js.map",
-    "static/js/2.32b943b0.chunk.js": "/Social-TypeScript/static/js/2.32b943b0.chunk.js",
-    "static/js/2.32b943b0.chunk.js.map": "/Social-TypeScript/static/js/2.32b943b0.chunk.js.map",
+    "static/js/2.d1996c48.chunk.js": "/Social-TypeScript/static/js/2.d1996c48.chunk.js",
+    "static/js/2.d1996c48.chunk.js.map": "/Social-TypeScript/static/js/2.d1996c48.chunk.js.map",
     "index.html": "/Social-TypeScript/index.html",
-    "precache-manifest.9e5b696a4b1023176877cf0f1fe6cd12.js": "/Social-TypeScript/precache-manifest.9e5b696a4b1023176877cf0f1fe6cd12.js",
+    "precache-manifest.b338776516f6ea9d490d66c30a825f5d.js": "/Social-TypeScript/precache-manifest.b338776516f6ea9d490d66c30a825f5d.js",
     "service-worker.js": "/Social-TypeScript/service-worker.js",
-    "static/css/main.8b32b8ac.chunk.css.map": "/Social-TypeScript/static/css/main.8b32b8ac.chunk.css.map",
-    "static/js/2.32b943b0.chunk.js.LICENSE.txt": "/Social-TypeScript/static/js/2.32b943b0.chunk.js.LICENSE.txt",
+    "static/css/main.ea3fbac5.chunk.css.map": "/Social-TypeScript/static/css/main.ea3fbac5.chunk.css.map",
+    "static/js/2.d1996c48.chunk.js.LICENSE.txt": "/Social-TypeScript/static/js/2.d1996c48.chunk.js.LICENSE.txt",
     "static/media/icons8_user.png": "/Social-TypeScript/static/media/icons8_user.9dc38257.png",
     "static/media/preloader.gif": "/Social-TypeScript/static/media/preloader.5861c44d.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.18e493ad.js",
-    "static/js/2.32b943b0.chunk.js",
-    "static/css/main.8b32b8ac.chunk.css",
-    "static/js/main.4863eddd.chunk.js"
+    "static/js/2.d1996c48.chunk.js",
+    "static/css/main.ea3fbac5.chunk.css",
+    "static/js/main.cd4895ce.chunk.js"
   ]
 }
