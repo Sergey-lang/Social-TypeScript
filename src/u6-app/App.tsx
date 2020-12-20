@@ -3,17 +3,19 @@ import './App.css'
 import HeaderContainer from '../u3-Pages/Header/HeaderContainer'
 import {Navbar} from '../u3-Pages/Navbar/Navbar'
 import {Route, withRouter} from 'react-router-dom'
-import DialogsContainer from '../u3-Pages/Dialogs/DialogsContainer'
-import UsersContainer from '../u3-Pages/Users/UsersContainer'
-import ProfileContainer from '../u3-Pages/Profile/ProfileContainer'
-import LoginReduxForm from '../u3-Pages/Login/Login'
 import {AppStateType} from '../u4-redux/store'
 import {connect} from 'react-redux'
 import {initializeApp} from '../u4-redux/app-reducer'
 import {compose} from 'redux'
 import {Preloader} from '../u2-components/Preloader/Preloader'
+import {withSuspense} from '../u7-hoc/withSuspense'
 
 type PropsType = MapStateType & MapDispatch
+
+const Login = React.lazy(() => import('../u3-Pages/Login/Login'))
+const ProfileContainer = React.lazy(() => import('../u3-Pages/Profile/ProfileContainer'))
+const DialogsContainer = React.lazy(() => import('../u3-Pages/Dialogs/DialogsContainer'))
+const UsersContainer = React.lazy(() => import('../u3-Pages/Users/UsersContainer'))
 
 class App extends React.Component<PropsType> {
 
@@ -32,10 +34,10 @@ class App extends React.Component<PropsType> {
              <HeaderContainer/>
              <div className="appContainer">
                 <Navbar/>
-                <Route path="/profile/:userid?" render={() => <ProfileContainer/>}/>
-                <Route path="/dialogs" render={() => <DialogsContainer/>}/>
-                <Route path="/users" render={() => <UsersContainer/>}/>
-                <Route path="/login" render={() => <LoginReduxForm/>}/>
+                <Route path="/profile/:userid?" render={withSuspense(ProfileContainer)}/>
+                <Route path="/dialogs" render={withSuspense(DialogsContainer)}/>
+                <Route path="/users" render={withSuspense(UsersContainer)}/>
+                <Route path="/login" render={withSuspense(Login)}/>
              </div>
           </div>
       )
