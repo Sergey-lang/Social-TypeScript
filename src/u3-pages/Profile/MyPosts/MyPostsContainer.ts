@@ -1,10 +1,10 @@
-import {addPost, ProfilePageInitType} from '../../../u4-redux/profile-reducer'
+import {addPost, ProfileInitialStateType} from '../../../u4-redux/profile-reducer'
 import {MyPosts} from './MyPosts'
 import {connect} from 'react-redux'
 import {AppStateType} from '../../../u4-redux/store'
 
 export type MapStateType = {
-   profilePage: ProfilePageInitType
+   profilePage: ProfileInitialStateType
 }
 export type MapDispatchType = {
    addPost: (postNewMessage: string) => void

@@ -25,7 +25,7 @@ export interface ButtonProps {
 }
 
 /**
- * Primary UI u3-Pages for user interaction
+ * Primary UI u3-pages for user interaction
  */
 export const Button: React.FC<ButtonProps> = ({
   primary = false,

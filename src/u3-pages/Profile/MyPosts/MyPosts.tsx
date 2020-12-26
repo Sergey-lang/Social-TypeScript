@@ -6,6 +6,7 @@ import {Field, InjectedFormProps, reduxForm} from 'redux-form'
 import {maxLengthCreator, required} from '../../../utils/validator'
 import {Textarea} from '../../../u2-components/FormControl/FormControl'
 import {Button} from '../../../u2-components/Button/Button'
+import {PostType} from '../../../u4-redux/profile-reducer'
 
 type OwnProps = {}
 
@@ -14,7 +15,7 @@ type OwnPropsType = MapStateType & MapDispatchType & OwnProps
 export const MyPosts: React.FC<OwnPropsType> = ({profilePage, addPost}) => {
 
    let postElements = profilePage.posts
-       .map(p => <Post message={p.message} likeCount={p.likeCount} key={p.id}/>)
+       .map((p: PostType) => <Post message={p.message} likeCount={p.likeCount} key={p.id}/>)
 
    const addPostCallback = (formData: PostFormValuesType) => {
       addPost(formData.postNewMessageText)

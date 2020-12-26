@@ -2,18 +2,20 @@ import {ThunkAction, ThunkDispatch} from 'redux-thunk'
 import {AppStateType} from './store'
 import {profileAPI} from '../u5-api/profile-api'
 
-let initializeState: ProfilePageInitType = {
+let initialState = {
    posts: [
       {id: 1, message: 'Hello I am props.', likeCount: 21},
       {id: 2, message: 'I am very handsome props', likeCount: 10},
-      {id: 3, message: 'I go out from my post u3-Pages', likeCount: 5},
-   ],
+      {id: 3, message: 'I go out from my post u3-pages', likeCount: 5},
+   ] as Array<PostType>,
    profile: null as ProfileType | null,
    status: ''
 }
 
-export const profileReducer = (state: ProfilePageInitType = initializeState,
-                               action: ActionsType): ProfilePageInitType => {
+export type ProfileInitialStateType = typeof initialState
+
+export const profileReducer = (state: ProfileInitialStateType = initialState,
+                               action: ActionsType): ProfileInitialStateType => {
    switch (action.type) {
       case 'PROFILE/ADD-POST':
          return {
@@ -26,6 +28,8 @@ export const profileReducer = (state: ProfilePageInitType = initializeState,
          return {...state, status: action.userStatus}
       case 'PROFILE/UPDATE-PROFILE-STATUS':
          return {...state, status: action.status}
+      case 'PROFILE/SAVE-PHOTO-SUCCESS':
+         return {...state, profile: {...state.profile, photos: action.photos} as ProfileType}
       default:
          return state
    }
@@ -43,6 +47,8 @@ export const getUserStatus = (userStatus: string) =>
 
 export const setOwnProfileStatus = (status: string) =>
     ({type: 'PROFILE/UPDATE-PROFILE-STATUS', status} as const)
+
+export const savePhotoSuccess = (photos: PhotosType) => ({type: 'PROFILE/SAVE-PHOTO-SUCCESS', photos} as const)
 
 //Thunk
 export const getUserProfileData = (userId: number): ThunkType =>
@@ -65,6 +71,14 @@ export const updateOwnProfileStatus = (status: string): ThunkType =>
        }
     }
 
+export const savePhoto = (file: File): ThunkType =>
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
+       const data = await profileAPI.savePhoto(file)
+       if (data.resultCode === 0) {
+          dispatch(savePhotoSuccess(data.data.photos))
+       }
+    }
+
 //Type
 type ThunkType = ThunkAction<void, AppStateType, unknown, ActionsType>
 
@@ -72,7 +86,8 @@ type ActionsType =
     ReturnType<typeof addPost> |
     ReturnType<typeof setUserProfileData> |
     ReturnType<typeof getUserStatus> |
-    ReturnType<typeof setOwnProfileStatus>
+    ReturnType<typeof setOwnProfileStatus> |
+    ReturnType<typeof savePhotoSuccess>
 
 export type PostType = {
    id: number
@@ -80,20 +95,32 @@ export type PostType = {
    likeCount: number
 }
 export type ContactType = {
-   facebook: string
-   website: string | null
-   vk: string
-   twitter: string
-   instagram: string
-   youtube: string | null
    github: string
-   mainLink: string | null
+   vk: string
+   facebook: string
+   instagram: string
+   twitter: string
+   website: string
+   youtube: string
+   mainLink: string
 }
+
 export type PhotosType = {
    small: string | null
    large: string | null
 }
+
 export type ProfileType = {
+   userId: number
+   lookingForAJob: boolean
+   lookingForAJobDescription: string
+   fullName: string
+   contacts: ContactType
+   aboutMe: string
+   photos: PhotosType
+}
+
+export type _ProfileType = {
    aboutMe: string
    contacts: ContactType
    lookingForAJob: boolean
@@ -101,10 +128,5 @@ export type ProfileType = {
    fullName: string
    userId: number
    photos: PhotosType
-}
-export type ProfilePageInitType = {
-   posts: Array<PostType>
-   profile: ProfileType | null
-   status: string
 }
 

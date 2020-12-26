@@ -5,7 +5,7 @@ import {AppStateType} from '../../u4-redux/store'
 import {
    getStatusFromUser,
    getUserProfileData,
-   ProfileType,
+   ProfileType, savePhoto,
    updateOwnProfileStatus
 } from '../../u4-redux/profile-reducer'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
@@ -19,7 +19,7 @@ type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType
 
 class ProfileContainer extends React.Component<PropsType> {
 
-   componentDidMount() {
+   updateProfile() {
       let id = Number(this.props.match.params.userid)
       let userId = id ? id : this.props.authorizedUserId
       if (!userId) {
@@ -30,10 +30,22 @@ class ProfileContainer extends React.Component<PropsType> {
       this.props.getStatusFromUser(userId!)
    }
 
+   componentDidMount() {
+      this.updateProfile()
+   }
+
+   componentDidUpdate(prevProps: Readonly<PropsType>, prevState: Readonly<{}>, snapshot?: any) {
+      if (this.props.match.params.userid !== prevProps.match.params.userid) {
+         this.updateProfile()
+      }
+   }
+
    render() {
       return <Profile {...this.props}
                       profile={this.props.profile}
                       status={this.props.status}
+                      savePhoto={this.props.savePhoto}
+                      isOwner={!this.props.match.params.userid}
                       updateOwnProfileStatus={this.props.updateOwnProfileStatus}
       />
    }
@@ -43,6 +55,7 @@ type MapDispatchType = {
    getUserProfileData: (userId: number) => void
    getStatusFromUser: (userId: number) => void
    updateOwnProfileStatus: (status: string) => void
+   savePhoto: (photo: File) => void
 }
 type MapStateType = {
    profile: ProfileType | null
@@ -59,6 +72,6 @@ const mapState = (state: AppStateType): MapStateType => ({
 
 export default compose<ComponentType>(
     connect<MapStateType, MapDispatchType, {}, AppStateType>(mapState,
-        {getUserProfileData, getStatusFromUser, updateOwnProfileStatus}),
+        {getUserProfileData, getStatusFromUser, updateOwnProfileStatus, savePhoto}),
     withRouter,
 )(ProfileContainer)

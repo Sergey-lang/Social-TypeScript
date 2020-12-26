@@ -1,7 +1,7 @@
 import React, {ComponentType} from 'react'
 import './App.css'
-import HeaderContainer from '../u3-Pages/Header/HeaderContainer'
-import {Navbar} from '../u3-Pages/Navbar/Navbar'
+import HeaderContainer from '../u3-pages/Header/HeaderContainer'
+import {Navbar} from '../u3-pages/Navbar/Navbar'
 import {Route, withRouter} from 'react-router-dom'
 import {AppStateType} from '../u4-redux/store'
 import {connect} from 'react-redux'
@@ -12,10 +12,10 @@ import {withSuspense} from '../u7-hoc/withSuspense'
 
 type PropsType = MapStateType & MapDispatch
 
-const Login = React.lazy(() => import('../u3-Pages/Login/Login'))
-const ProfileContainer = React.lazy(() => import('../u3-Pages/Profile/ProfileContainer'))
-const DialogsContainer = React.lazy(() => import('../u3-Pages/Dialogs/DialogsContainer'))
-const UsersContainer = React.lazy(() => import('../u3-Pages/Users/UsersContainer'))
+const Login = React.lazy(() => import('../u3-pages/Login/Login'))
+const ProfileContainer = React.lazy(() => import('../u3-pages/Profile/ProfileContainer'))
+const DialogsContainer = React.lazy(() => import('../u3-pages/Dialogs/DialogsContainer'))
+const UsersContainer = React.lazy(() => import('../u3-pages/Users/UsersContainer'))
 
 class App extends React.Component<PropsType> {
 
