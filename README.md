@@ -4,6 +4,8 @@
 
 ## https://sergey-lang.github.io/Social-TypeScript/
 
+**Beautiful design will be add later!**
+
 Stack:
 
 - Typescript
