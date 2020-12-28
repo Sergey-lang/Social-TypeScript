@@ -1,6 +1,7 @@
 import React from 'react'
-import s from './Post.module.css'
 import userPhoto from '../../../u1-assets/images/user_photo.png'
+
+import s from './Post.module.css'
 
 type MessageType = {
    message: string

@@ -1,12 +1,13 @@
-import React, {FC} from 'react'
-import s from './Login.module.css'
-import {Field, InjectedFormProps, reduxForm, WrappedFieldProps} from 'redux-form'
+import React from 'react'
+import {InjectedFormProps, reduxForm} from 'redux-form'
 import {connect} from 'react-redux'
-import {Input} from '../../u2-components/FormControl/FormControl'
+import {CreateField, Input} from '../../u2-components/FormControl/FormControl'
 import {required} from '../../utils/validator'
 import {Redirect} from 'react-router-dom'
 import {login} from '../../u4-redux/auth-reducer'
 import {AppStateType} from '../../u4-redux/store'
+
+import s from './Login.module.css'
 
 type LoginFormOwnProps = {
    captchaUrl?: string
@@ -37,13 +38,6 @@ export const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType,
        </form>
    )
 }
-
-export const CreateField = (placeholder: string | null, name: string, component: FC<WrappedFieldProps>, validators: Array<any>, props = {}, text = '') => (
-    <div>
-       <Field placeholder={placeholder} name={name} component={component} validate={validators} {...props}/>
-       {text}
-    </div>
-)
 
 const LoginReduxForm = reduxForm<LoginFormValuesType, LoginFormOwnProps>({form: 'login'})(LoginForm)
 

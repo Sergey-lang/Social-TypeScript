@@ -5,7 +5,7 @@ import {AppStateType} from '../../u4-redux/store'
 import {
    getStatusFromUser,
    getUserProfileData,
-   ProfileType, savePhoto,
+   ProfileType, savePhoto, saveProfileData,
    updateOwnProfileStatus
 } from '../../u4-redux/profile-reducer'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
@@ -47,6 +47,7 @@ class ProfileContainer extends React.Component<PropsType> {
                       savePhoto={this.props.savePhoto}
                       isOwner={!this.props.match.params.userid}
                       updateOwnProfileStatus={this.props.updateOwnProfileStatus}
+                      saveProfileData={this.props.saveProfileData}
       />
    }
 }
@@ -56,6 +57,7 @@ type MapDispatchType = {
    getStatusFromUser: (userId: number) => void
    updateOwnProfileStatus: (status: string) => void
    savePhoto: (photo: File) => void
+   saveProfileData: (profile: ProfileType) => void
 }
 type MapStateType = {
    profile: ProfileType | null
@@ -72,6 +74,6 @@ const mapState = (state: AppStateType): MapStateType => ({
 
 export default compose<ComponentType>(
     connect<MapStateType, MapDispatchType, {}, AppStateType>(mapState,
-        {getUserProfileData, getStatusFromUser, updateOwnProfileStatus, savePhoto}),
+        {getUserProfileData, getStatusFromUser, updateOwnProfileStatus, savePhoto,saveProfileData}),
     withRouter,
 )(ProfileContainer)

@@ -1,11 +1,13 @@
-import React from 'react'
-import s from './MyProfileInfo.module.css'
+import React, {useState} from 'react'
 import avatar from '../../../u1-assets/images/icons8_user.png'
 import Sidebar from './Sidebar/Sidebar'
 import {Preloader} from '../../../u2-components/Preloader/Preloader'
-import {ProfileType, savePhoto} from '../../../u4-redux/profile-reducer'
-import {Description} from '../../../u2-components/Description/Description'
+import {ProfileType} from '../../../u4-redux/profile-reducer'
+import {ProfileDescription} from './ProfileDescription/ProfileDescription'
 import {ProfileStatusWithHooks} from './Status/NewProfileStatus'
+import {ProfileDescriptionForm, ProfileFormType} from './ProfileDescriptionForm/ProfileDescriptionForm'
+
+import s from './MyProfileInfo.module.css'
 
 type MyProfileInfoType = {
    profile: ProfileType | null
@@ -14,6 +16,7 @@ type MyProfileInfoType = {
    isOwner: boolean
    updateOwnProfileStatus: (status: string) => void
    savePhoto: (photo: File) => void
+   saveProfileData: (profile: ProfileType) => any
 }//sidebar will be do
 
 export const MyProfileInfo: React.FC<MyProfileInfoType> = (
@@ -23,8 +26,11 @@ export const MyProfileInfo: React.FC<MyProfileInfoType> = (
        status,
        savePhoto,
        isOwner,
+       saveProfileData,
        updateOwnProfileStatus
     }) => {
+
+   const [editMode, setEditMode] = useState<boolean>(false)
 
    const mainPhotoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.files !== null && e.target.files.length) {
@@ -35,6 +41,14 @@ export const MyProfileInfo: React.FC<MyProfileInfoType> = (
    if (!profile) {
       return <Preloader/>
    }
+
+   const onSubmit = (formData: ProfileFormType) => {
+      saveProfileData(formData).then(
+          () => setEditMode(false)
+      )
+      // console.log(formData)
+   }
+
    return (
        <div className={s.profile_wrapper}>
           <div className={s.left_block}>
@@ -51,10 +65,15 @@ export const MyProfileInfo: React.FC<MyProfileInfoType> = (
                 <ProfileStatusWithHooks status={status} updateOwnProfileStatus={updateOwnProfileStatus}/>
              </div>
              <div className={s.descriptions_wrapper}>
-                <Description aboutMe={profile.aboutMe}
-                             contacts={profile.contacts}
-                             lookingForAJob={profile.lookingForAJob}
-                             lookingForAJobDescription={profile.lookingForAJobDescription}/>
+                {
+                   !editMode
+                       ? <ProfileDescription profile={profile}
+                                             editMode={setEditMode}
+                                             isOwner={isOwner}/>
+                       : <ProfileDescriptionForm profile={profile}
+                                                 initialValues={profile}
+                                                 onSubmit={onSubmit}/>
+                }
              </div>
           </div>
        </div>

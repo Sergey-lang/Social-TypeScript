@@ -1,4 +1,3 @@
-import s from './MyPosts.module.css'
 import React from 'react'
 import Post from '../Post/Post'
 import {MapDispatchType, MapStateType} from './MyPostsContainer'
@@ -7,6 +6,8 @@ import {maxLengthCreator, required} from '../../../utils/validator'
 import {Textarea} from '../../../u2-components/FormControl/FormControl'
 import {Button} from '../../../u2-components/Button/Button'
 import {PostType} from '../../../u4-redux/profile-reducer'
+
+import s from './MyPosts.module.css'
 
 type OwnProps = {}
 
@@ -32,29 +33,26 @@ export const MyPosts: React.FC<OwnPropsType> = ({profilePage, addPost}) => {
 
 const maxLength10 = maxLengthCreator(10)
 
-export const AddPost: React.FC<InjectedFormProps<PostFormValuesType, PostFormOwnProps> & PostFormOwnProps> = ({
-                                                                                                                 handleSubmit,
-                                                                                                                 error
-                                                                                                              }) => {
-
-   return (
-       <form onSubmit={handleSubmit}>
-          <div>
-             <div>
-                <Field placeholder='Add post'
-                       component={Textarea}
-                       name='postNewMessageText'
-                       className={s.area}
-                       validate={[required, maxLength10]}
-                />
-             </div>
-             <div className={s.button_wrapper}>
-                <Button className={s.btn}>Add post</Button>
-             </div>
-          </div>
-       </form>
-   )
-}
+export const AddPost: React.FC<InjectedFormProps<PostFormValuesType, PostFormOwnProps> & PostFormOwnProps> =
+    ({handleSubmit, error}) => {
+       return (
+           <form onSubmit={handleSubmit}>
+              <div>
+                 <div>
+                    <Field placeholder='Add post'
+                           component={Textarea}
+                           name='postNewMessageText'
+                           className={s.area}
+                           validate={[required, maxLength10]}
+                    />
+                 </div>
+                 <div className={s.button_wrapper}>
+                    <Button className={s.btn}>Add post</Button>
+                 </div>
+              </div>
+           </form>
+       )
+    }
 
 export type PostFormValuesType = {
    postNewMessageText: string

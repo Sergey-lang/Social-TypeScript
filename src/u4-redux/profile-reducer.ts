@@ -1,6 +1,7 @@
 import {ThunkAction, ThunkDispatch} from 'redux-thunk'
 import {AppStateType} from './store'
 import {profileAPI} from '../u5-api/profile-api'
+import {FormAction, stopSubmit} from 'redux-form'
 
 let initialState = {
    posts: [
@@ -79,6 +80,21 @@ export const savePhoto = (file: File): ThunkType =>
        }
     }
 
+export const saveProfileData = (profile: ProfileType): ThunkType =>
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType | FormAction>, getState) => {
+       const userId = getState().authState.id
+       const data = await profileAPI.saveProfile(profile)
+       if (data.resultCode === 0) {
+          dispatch(getUserProfileData(userId as number))
+       } else {
+          //need changing error for different fields
+          // dispatch(stopSubmit('edit-profile', {'contacts': {'facebook': messages}}))
+          const messages = data.messages.length > 0 ? data.messages[0] : 'some error'
+          dispatch(stopSubmit('profile-data', {_error: messages}))
+          return Promise.reject(messages)
+       }
+    }
+
 //Type
 type ThunkType = ThunkAction<void, AppStateType, unknown, ActionsType>
 
@@ -120,13 +136,4 @@ export type ProfileType = {
    photos: PhotosType
 }
 
-export type _ProfileType = {
-   aboutMe: string
-   contacts: ContactType
-   lookingForAJob: boolean
-   lookingForAJobDescription: string
-   fullName: string
-   userId: number
-   photos: PhotosType
-}
 
