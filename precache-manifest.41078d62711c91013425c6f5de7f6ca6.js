@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7401c46eaa861bde3ca546f90d65f2b7",
+    "revision": "f0ef7e1e3fcc322a763aa36383274918",
     "url": "/Social-TypeScript/index.html"
   },
   {
@@ -16,11 +16,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Social-TypeScript/static/css/6.bbf70135.chunk.css"
   },
   {
-    "revision": "9cee70eaa3c94a7f1fc6",
+    "revision": "055aff52ecd64ce5d35f",
     "url": "/Social-TypeScript/static/css/7.7baaf401.chunk.css"
   },
   {
-    "revision": "ef7dc71267db34bb78ae",
+    "revision": "87db7a322415b359b860",
     "url": "/Social-TypeScript/static/css/main.35b02fc1.chunk.css"
   },
   {
@@ -28,12 +28,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Social-TypeScript/static/js/0.949718a9.chunk.js"
   },
   {
-    "revision": "8150f62ab60cdc33d39d",
-    "url": "/Social-TypeScript/static/js/3.7f00c94b.chunk.js"
+    "revision": "7f6358904ee000a39018",
+    "url": "/Social-TypeScript/static/js/3.63d4be2d.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/Social-TypeScript/static/js/3.7f00c94b.chunk.js.LICENSE.txt"
+    "url": "/Social-TypeScript/static/js/3.63d4be2d.chunk.js.LICENSE.txt"
   },
   {
     "revision": "92ead2f480ac96709aa0",
@@ -52,16 +52,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Social-TypeScript/static/js/6.b0c11069.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9cee70eaa3c94a7f1fc6",
-    "url": "/Social-TypeScript/static/js/7.873ce1a7.chunk.js"
+    "revision": "055aff52ecd64ce5d35f",
+    "url": "/Social-TypeScript/static/js/7.0d45e166.chunk.js"
   },
   {
-    "revision": "ef7dc71267db34bb78ae",
-    "url": "/Social-TypeScript/static/js/main.69540542.chunk.js"
+    "revision": "87db7a322415b359b860",
+    "url": "/Social-TypeScript/static/js/main.270ec57e.chunk.js"
   },
   {
-    "revision": "72854552682514240030",
-    "url": "/Social-TypeScript/static/js/runtime-main.7995e25f.js"
+    "revision": "4f3bc872f3dcc5bc816a",
+    "url": "/Social-TypeScript/static/js/runtime-main.538b6286.js"
   },
   {
     "revision": "9dc3825792d508bf23ef411d8e0ca7e9",
