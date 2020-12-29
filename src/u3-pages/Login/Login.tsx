@@ -10,7 +10,7 @@ import {AppStateType} from '../../u4-redux/store'
 import s from './Login.module.css'
 
 type LoginFormOwnProps = {
-   captchaUrl?: string
+   captchaUrl: string | null
 }
 
 export const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType,
@@ -20,7 +20,6 @@ export const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType,
           error,
           captchaUrl
        }) => {
-
    return (
        <form onSubmit={handleSubmit}>
           <p>Use test data</p>
@@ -29,6 +28,13 @@ export const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType,
           {CreateField('email', 'email', Input, [required])}
           {CreateField('password', 'password', Input, [required], {type: 'password'})}
           {CreateField(null, 'rememberMe', Input, [], {type: 'checkbox'}, 'remember me')}
+          <div>
+             {/*captchaUrl without '&&' check don't work! Because null*/}
+             {captchaUrl && <img src={captchaUrl && captchaUrl} alt="captcha"/>}
+          </div>
+          <div>
+             {captchaUrl && CreateField('Symbol of captcha', 'captcha', Input, [required], {})}
+          </div>
           <div>
              <button>Login</button>
           </div>
@@ -42,7 +48,7 @@ export const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType,
 const LoginReduxForm = reduxForm<LoginFormValuesType, LoginFormOwnProps>({form: 'login'})(LoginForm)
 
 type LoginFormValuesType = {
-   // captcha?: boolean
+   captcha: string | null //this type name have to match with field name 'captcha'
    email: string
    password: string
    rememberMe: boolean
@@ -51,8 +57,9 @@ type LoginFormValuesType = {
 type OwnProps = {}
 
 export const Login: React.FC<MapStateType & MapDispatchType & OwnProps> = (props) => {
+
    const onSubmit = (formData: LoginFormValuesType) => {
-      props.login(formData.email, formData.password, formData.rememberMe)
+      props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
    }
 
    if (props.isAuth) {
@@ -62,28 +69,28 @@ export const Login: React.FC<MapStateType & MapDispatchType & OwnProps> = (props
    return (
        <div className={s.login}>
           <h1>Login</h1>
-          <LoginReduxForm onSubmit={onSubmit}/>
+          <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
        </div>
 
    )
 }
 
 type MapStateType = {
-   captchaUrl?: string | null
+   captchaUrl: string | null
    isAuth: boolean
 }
 
 type MapDispatchType = {
    login: (email: string,
            password: string,
-           rememberMe: boolean
-           // captcha?: boolean
+           rememberMe: boolean,
+           captcha: string | null
    ) => void
 }
 
 const mapState = (state: AppStateType): MapStateType => ({
-   isAuth: state.authState.isAuth
-   // captcha?: boolean
+   isAuth: state.authState.isAuth,
+   captchaUrl: state.authState.captchaUrl
 })
 
 
