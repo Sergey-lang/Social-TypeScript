@@ -1,67 +1,40 @@
 import React from 'react'
-import {ContactType, ProfileType} from '../../../../u4-redux/profile-reducer'
+import {Info} from '../../../../u2-components/Info/Info'
 import {Button} from '../../../../u2-components/Button/Button'
-import {Contact} from './Contact'
+import {ContactType, ProfileType} from '../../../../u4-redux/profile-reducer'
+import {PersonalInfo} from '../../../../u2-components/PersonalInfo/PersonalInfo'
 
 import s from './ProfileDescription.module.css'
 
-export type ProfilePropsType = {
+export type ProfileProps = {
    profile: ProfileType
    editMode: (value: boolean) => void
    isOwner: boolean
 }
 
-export const ProfileDescription: React.FC<ProfilePropsType> =
+export const ProfileDescription: React.FC<ProfileProps> =
     ({profile, editMode, isOwner}) => {
 
        return (
            <>
-              {
-                 isOwner && <Button onClick={() => editMode(true)}>Edit mode</Button>
-              }
-              <div className={s.description}>
-                 <div className={s.title}>
-                    Name:
+              <PersonalInfo title='Personal info'>
+                 <Info name='Name' description={profile && profile.fullName}/>
+                 <Info name='About me' description={profile && profile.aboutMe}/>
+                 <Info name='Looking for a job' description={profile && profile.lookingForAJob}/>
+                 <Info name='Skills' description='ReactJS'/>
+                 {
+                    Object.keys(profile.contacts).map((key, index) => {
+                       return <Info key={index}
+                                    name={key}
+                           //We can cast the key argument to be of keyof Person to ensure TypeScript understands                             what we’re aiming for. [key as keyof ContactType]
+                                    description={profile.contacts[key as keyof ContactType]}/>
+                    })
+                 }
+                 <div className={s.btnWrapper}>
+                    <Button white onClick={() => {
+                       editMode(true)}}>Edit</Button>
                  </div>
-                 <div className={s.inform}>
-                    {profile.fullName}
-                 </div>
-              </div>
-              <div className={s.description}>
-                 <div className={s.title}>
-                    About me:
-                 </div>
-                 <div className={s.inform}>
-                    {profile.aboutMe}
-                 </div>
-              </div>
-              <div className={s.description}>
-                 <div className={s.title}>
-                    Looking For AJob:
-                 </div>
-                 <div className={s.inform}>
-                    {profile.lookingForAJob ? 'Yes' : 'No'}
-                 </div>
-              </div>
-              {
-                 profile.lookingForAJob &&
-                 <div className={s.description}>
-                    <div className={s.title}>
-                       Skills:
-                    </div>
-                    <div className={s.inform}>
-                       {profile.lookingForAJobDescription}
-                    </div>
-                 </div>
-              }
-              {
-                 Object.keys(profile.contacts).map((key, index) => {
-                    return <Contact key={index}
-                                    contactTitle={key}
-                        //We can cast the key argument to be of keyof Person to ensure TypeScript understands                             what we’re aiming for. [key as keyof ContactType]
-                                    contactValue={profile.contacts[key as keyof ContactType]}/>
-                 })
-              }
+              </PersonalInfo>
            </>
        )
     }

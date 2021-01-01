@@ -2,8 +2,8 @@ import s from './User.module.css'
 import avatar from '../../../u1-assets/images/icons8_user.png'
 import React from 'react'
 import {NavLink} from 'react-router-dom'
-import {Button} from '../../../u2-components/Button/Button'
 import {UsersType} from '../../../u4-redux/users-reducer'
+import { Button } from '../../../u2-components/Button/Button'
 
 type UserType = {
    user: UsersType

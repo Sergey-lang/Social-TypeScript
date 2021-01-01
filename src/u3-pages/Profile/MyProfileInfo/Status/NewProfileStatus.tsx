@@ -1,11 +1,14 @@
 import React, {ChangeEvent, useEffect, useState} from 'react'
+import {Button} from '../../../../u2-components/Button/Button'
 
-type PropsType = {
+import s from './ProfileStatus.module.scss'
+
+type ProfileStatusWithHooksProps = {
    status: string
    updateOwnProfileStatus: (status: string) => void
 }
 
-export const ProfileStatusWithHooks = (props: PropsType) => {
+export const ProfileStatusWithHooks = (props: ProfileStatusWithHooksProps) => {
 
    let [editMode, setEditMode] = useState<boolean>(false)
    let [status, setStatus] = useState<string>(props.status)
@@ -28,21 +31,22 @@ export const ProfileStatusWithHooks = (props: PropsType) => {
    }
 
    return (
-       <div>
-          {!editMode &&
-          <div>
-               <span onDoubleClick={activateEditMode}>
-                  {props.status || '-----'}
-               </span>
-          </div>}
-          {editMode &&
-          <div>
-             <input autoFocus={true}
-                    onBlur={deactivateEditMode}
-                    onChange={onStatusChange}
-                    value={status}
-             />
-          </div>}
+       <div className={s.statusWrapper}>
+          {
+             editMode
+                 ? <div className={s.status}>
+                    <input type="text" autoFocus={true}
+                           onBlur={deactivateEditMode}
+                           onChange={onStatusChange}
+                           value={status}/>
+                 </div>
+                 : <div className={s.editStatus}>
+                    <span className={s.status} onDoubleClick={activateEditMode}>{props.status || '-----'}</span>
+                    <div className={s.btnWrapper}>
+                       <Button white onClick={() => setEditMode(true)}>Edit</Button>
+                    </div>
+                 </div>
+          }
        </div>
    )
 }

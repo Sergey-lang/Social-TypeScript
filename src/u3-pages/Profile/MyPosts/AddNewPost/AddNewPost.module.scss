@@ -1,0 +1,53 @@
+.newPostBox {
+   div {
+      display: flex;
+      width: 100%;
+      position: relative;
+   }
+
+   width: 100%;
+
+   figure {
+      margin: 0;
+      display: inline-block;
+
+      img {
+         width: 45px;
+         border-radius: 100%;
+      }
+   }
+
+   .input {
+      display: inline-block;
+      width: 90%;
+
+      textarea {
+         display: flex;
+         border: none;
+         width: 100%;
+         border-radius: 6px 6px 0 0;
+         font-family: 'Roboto';
+         padding: 10px;
+         resize: none;
+         outline: none;
+      }
+   }
+
+   .postBtn {
+      background: #23d2e2 none repeat scroll 0 0;
+      height: 25px;
+      border: medium none;
+      border-radius: 5px;
+      color: #fff;
+      font-weight: 500;
+      font-size: 16px;
+      margin-top: 11px;
+      padding: 5px;
+      width: 100%;
+      transition: all 0.2s linear 0s;
+
+      &:hover {
+         background: #fa6342;
+      }
+   }
+}

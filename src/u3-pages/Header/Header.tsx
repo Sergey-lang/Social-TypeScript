@@ -1,7 +1,12 @@
 import React from 'react'
-import s from './Header.module.css'
-import {NavLink} from 'react-router-dom'
-import {Button} from '../../u2-components/Button/Button'
+import s from './Header.module.scss'
+import {NavLink, useLocation} from 'react-router-dom'
+
+import logoImg from './../../u1-assets/images/logo.svg'
+import undefinedUserImg from './../../u1-assets/images/header/question-mark-128.png'
+import exit from './../../u1-assets/images/exit-100.png'
+import {useSelector} from 'react-redux'
+import {AppStateType} from '../../u4-redux/store'
 
 type HeaderPropsType = {
    isAuth: boolean
@@ -10,21 +15,45 @@ type HeaderPropsType = {
 }
 
 export const Header: React.FC<HeaderPropsType> = (props) => {
+
+   //get current url, rerender too much!!!
+   const HeaderView = () => {
+      return useLocation().pathname.substring(1)
+   }
+
+   const smallProfileImg = useSelector<AppStateType, string | null | undefined>(state => state.profileState.profile?.photos.small)
+
    return (
-       <header className={s.header}>
-          <div className={s.container}>
-             <div className={s.logo_name}>
-                SW<span className={s.logo_explanation}>social network</span>
-             </div>
-             <div className={s.user_login}>
-                {props.isAuth
-                    ? <div className={s.loginBtnWrapper}>
-                       <div className={s.login}>{props.login}</div>
-                       <Button onClick={props.logout} className={s.logBtn}>logout</Button>
-                    </div>
-                    : <NavLink to={'/login'} className={s.login}>Login</NavLink>}
-             </div>
+       <div className={s.topbar}>
+          <div className={s.logo}>
+             <a href="#">
+                <img src={logoImg} alt="logo"/>
+                <h4>SOCIAL LOGO</h4>
+             </a>
           </div>
-       </header>
+          <div className={s.topArea}>
+             <div className={s.pageName}>
+                <span>{HeaderView()}</span>
+             </div>
+             <div className={s.userImg}>
+                {
+                   props.isAuth
+                       ? <>
+                          <h5>{props.login}</h5>
+                          <img src={smallProfileImg ? smallProfileImg : undefinedUserImg} alt="userPhoto"/>
+                       </>
+                       : <NavLink to={'/login'} className={s.login}>Login</NavLink>
+                }
+             </div>
+             <span>
+                {
+                   props.isAuth
+                   && <a href="#" onClick={props.logout}>
+                      <img src={exit} alt="settings"/>
+                   </a>
+                }
+             </span>
+          </div>
+       </div>
    )
 }

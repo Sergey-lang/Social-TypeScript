@@ -1,16 +1,25 @@
-import React, {ButtonHTMLAttributes, DetailedHTMLProps} from 'react'
-import s from './Button.module.css'
+import React from 'react'
+import classNames from 'classnames'
 
-type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
+import s from './Button.module.scss'
 
-type ButtonPropsType = DefaultButtonPropsType & {}
-
-export const Button: React.FC<ButtonPropsType> = ({className, ...restProps}) => {
-   const finalClassName = `${className} ${s.default}`
-   return (
-       <>
-          <button className={finalClassName} {...restProps}/>
-       </>
-   )
+type ButtonProps = {
+   className?: string
+   white?: boolean
+   children: any
+   onClick?: () =>void
+   disabled?:boolean
 }
 
+export const Button:React.FC<ButtonProps> = ({className, white, children, onClick,...restProps}) => {
+
+   return (
+       <a {...restProps}
+          onClick={onClick}
+          className={classNames(s.button, className, {
+          '--white': white,
+       })}
+          {...restProps}
+       >{children}</a>
+   )
+}

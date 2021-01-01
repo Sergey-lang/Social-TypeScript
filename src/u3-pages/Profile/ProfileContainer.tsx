@@ -1,15 +1,14 @@
-import React, {ComponentType} from 'react'
+import {compose} from 'redux'
 import {Profile} from './Profile'
 import {connect} from 'react-redux'
-import {AppStateType} from '../../u4-redux/store'
 import {
-   getStatusFromUser,
-   getUserProfileData,
-   ProfileType, savePhoto, saveProfileData,
-   updateOwnProfileStatus
+   getStatusFromUser, getUserProfileData, ProfileType,
+   savePhoto, saveProfileData, updateOwnProfileStatus
 } from '../../u4-redux/profile-reducer'
+import React, {ComponentType} from 'react'
+import {AppStateType} from '../../u4-redux/store'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
-import {compose} from 'redux'
+
 
 type PathParamsType = {
    userid: string
@@ -74,6 +73,6 @@ const mapState = (state: AppStateType): MapStateType => ({
 
 export default compose<ComponentType>(
     connect<MapStateType, MapDispatchType, {}, AppStateType>(mapState,
-        {getUserProfileData, getStatusFromUser, updateOwnProfileStatus, savePhoto,saveProfileData}),
+        {getUserProfileData, getStatusFromUser, updateOwnProfileStatus, savePhoto, saveProfileData}),
     withRouter,
 )(ProfileContainer)

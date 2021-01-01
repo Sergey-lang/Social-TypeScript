@@ -1,7 +1,6 @@
 import React, {ComponentType} from 'react'
-import './App.css'
+import s from './App.module.scss'
 import HeaderContainer from '../u3-pages/Header/HeaderContainer'
-import {Navbar} from '../u3-pages/Navbar/Navbar'
 import {Route, withRouter} from 'react-router-dom'
 import {AppStateType} from '../u4-redux/store'
 import {connect} from 'react-redux'
@@ -9,6 +8,7 @@ import {initializeApp} from '../u4-redux/app-reducer'
 import {compose} from 'redux'
 import {Preloader} from '../u2-components/Preloader/Preloader'
 import {withSuspense} from '../u7-hoc/withSuspense'
+import {Main} from '../u3-pages/Main/Main'
 
 type PropsType = MapStateType & MapDispatch
 
@@ -30,16 +30,19 @@ class App extends React.Component<PropsType> {
       }
 
       return (
-          <div className="app">
+          <div className={s.app}>
              <HeaderContainer/>
-             <div className="appContainer">
-                <Navbar/>
-                <Route path="/profile/:userid?" render={withSuspense(ProfileContainer)}/>
-                <Route path="/dialogs" render={withSuspense(DialogsContainer)}/>
-                <Route path="/users" render={withSuspense(UsersContainer)}/>
-                <Route path="/login" render={withSuspense(Login)}/>
+             <div className={s.container}>
+                <Main/>
+                <div className={s.content}>
+                   <Route path="/profile/:userid?" render={withSuspense(ProfileContainer)}/>
+                   <Route path="/dialogs" render={withSuspense(DialogsContainer)}/>
+                   <Route path="/users" render={withSuspense(UsersContainer)}/>
+                   <Route path="/login" render={withSuspense(Login)}/>
+                </div>
              </div>
           </div>
+
       )
    }
 }

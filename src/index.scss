@@ -1,0 +1,53 @@
+* body {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+
+    a {
+        text-decoration: none;
+        color:#535165;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    p {
+        font-size: 13.4px;
+        letter-spacing: 0.1px;
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #959ab5;
+    }
+
+    span {
+        color: #515365;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    h4 {
+        color: #333;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    input {
+        outline: none;
+    }
+}
+
+:root {
+    --header-gb: #101010;
+    --bg: #191919;
+    //--main-headline-text: rgba(198, 201, 216, .75);
+    //--main-headline-span: #f9004d;
+    //--h3-headline: #fff;
+    //--work-card-background-color: #101010;
+    //--skills-card-background-color: #191919;
+    //--skills-card-hover-bg-color: rgb(248, 31, 1);
+    //--footer-share-hover-bg-color: #f9004d;
+    //--navbar-menu-item-color: #fff;
+    //--navbar-menu-item-hover-color: #f9004d;
+}
+

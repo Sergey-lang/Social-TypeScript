@@ -1,0 +1,17 @@
+.profilePage {
+   display: flex;
+   gap: 20px;
+
+   .leftBlock {
+      display: flex;
+      flex-direction: column;
+      max-width: 33%;
+      width: 100%;
+
+      .btnWrapper {
+         width: 100%;
+         display: flex;
+         justify-content: center;
+      }
+   }
+}
