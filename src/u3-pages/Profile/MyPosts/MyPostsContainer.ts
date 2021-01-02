@@ -1,7 +1,7 @@
-import {addPost, ProfileInitialStateType} from '../../../u4-redux/profile-reducer'
 import {MyPosts} from './MyPosts'
 import {connect} from 'react-redux'
 import {AppStateType} from '../../../u4-redux/store'
+import {addPost, ProfileInitialStateType} from '../../../u4-redux/profile-reducer'
 
 export type MapStateType = {
    profilePage: ProfileInitialStateType

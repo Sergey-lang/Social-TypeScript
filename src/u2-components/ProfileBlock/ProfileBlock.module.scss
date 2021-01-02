@@ -1,6 +1,7 @@
 .sidebar {
    display: flex;
-   min-width: 300px;
+   width: auto;
+   position: relative;
 
    .central {
       background: #fff none repeat scroll 0 0;

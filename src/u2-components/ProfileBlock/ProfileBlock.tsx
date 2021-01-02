@@ -1,13 +1,13 @@
 import React from 'react'
 
-import s from './PersonalInfo.module.scss'
+import s from './ProfileBlock.module.scss'
 
 type PersonalInfoProps = {
    title: string
    children: any
 }
 
-export const PersonalInfo:React.FC<PersonalInfoProps> = ({title, children, ...restProps}) => {
+export const ProfileBlock:React.FC<PersonalInfoProps> = ({title, children, ...restProps}) => {
 
    return (
        <aside className={s.sidebar} {...restProps}>

@@ -2,13 +2,12 @@ import React from 'react'
 import {Field, InjectedFormProps, reduxForm} from 'redux-form'
 import {Button} from '../../../../u2-components/Button/Button'
 import posterImg from './../../../../u1-assets/images/user.jpg'
-import {maxLengthCreator, required} from '../../../../utils/validator'
 import {Textarea} from '../../../../u2-components/FormControl/FormControl'
+import {maxLengthCreator, required} from '../../../../utils/validator'
 
 import s from './AddNewPost.module.scss'
 
-const maxLength10 = maxLengthCreator(10)
-
+const maxLength10 = maxLengthCreator(50)
 export const AddPost: React.FC<InjectedFormProps<PostFormValuesType, PostFormOwnProps> & PostFormOwnProps> =
     ({handleSubmit, error}) => {
 
@@ -22,7 +21,6 @@ export const AddPost: React.FC<InjectedFormProps<PostFormValuesType, PostFormOwn
                     <Field placeholder="Share some what you are thinking?"
                            component={Textarea}
                            name='postNewMessageText'
-                           className={s.area}
                            validate={[required, maxLength10]}
                     />
                  </div>

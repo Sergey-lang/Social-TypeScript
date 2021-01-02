@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {ProfileType} from '../../u4-redux/profile-reducer'
 import {MyPostsContainer} from './MyPosts/MyPostsContainer'
 import {Preloader} from '../../u2-components/Preloader/Preloader'
-import {PersonalInfo} from '../../u2-components/PersonalInfo/PersonalInfo'
+import {ProfileBlock} from '../../u2-components/ProfileBlock/ProfileBlock'
 import {ProfileStatusWithHooks} from './MyProfileInfo/Status/NewProfileStatus'
 import {ProfileDescription} from './MyProfileInfo/ProfileDescription/ProfileDescription'
 
@@ -44,9 +44,9 @@ export const Profile: React.FC<ProfileProps> = (
    return (
        <div className={s.profilePage}>
           <div className={s.leftBlock}>
-             <PersonalInfo title='Status'>
+             <ProfileBlock title='Status'>
                 <ProfileStatusWithHooks status={status} updateOwnProfileStatus={updateOwnProfileStatus}/>
-             </PersonalInfo>
+             </ProfileBlock>
              {
                 !editMode
                     ? <ProfileDescription profile={profile}
@@ -56,7 +56,6 @@ export const Profile: React.FC<ProfileProps> = (
                                               initialValues={profile}
                                               onSubmit={onSubmit}/>
              }
-
           </div>
           <MyPostsContainer/>
        </div>

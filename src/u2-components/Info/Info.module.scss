@@ -8,11 +8,14 @@
       width: 100%;
       text-transform: capitalize;
    }
-
-   p {
+   .description {
+      display: inline-block;
       font-size: 13px;
+      color: #959ab5;
+      font-weight: 400;
       line-height: 20px;
       margin-bottom: 20px;
+      letter-spacing: 0.1px;
       padding-left: 20px;
    }
 }

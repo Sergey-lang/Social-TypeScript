@@ -1,0 +1,39 @@
+form {
+   .input {
+      input {
+         width: 98%;
+         border: 1px solid #dbd6d6;
+         border-radius: 5px;
+         margin-bottom: 10px;
+         padding: 5px;
+      }
+   }
+
+   .textArea {
+      textarea {
+         display: flex;
+         border: 1px solid #dbd6d6;
+         width: 100%;
+         border-radius: 5px;
+         font-family: 'Roboto';
+         padding: 10px;
+         margin: 0;
+         resize: none;
+         outline: none;
+      }
+   }
+
+   .btnWrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+   }
+
+   .error {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 15px;
+      color: red;
+      font-size: 12px;
+   }
+}

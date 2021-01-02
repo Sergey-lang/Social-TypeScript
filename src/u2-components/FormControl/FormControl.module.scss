@@ -1,0 +1,22 @@
+//.formControl {
+//   &.error input  {
+//
+//   }
+//} input,
+//.formControl.error textarea {
+//   border: 5px solid red;
+//}
+
+.formControl {
+   display: flex;
+   flex-direction: column;
+   &.error span {
+         display: flex;
+         align-items: center;
+         justify-content: flex-start;
+         width: 100%;
+         padding: 10px;
+         color: red;
+         font-size: 12px;
+   }
+}

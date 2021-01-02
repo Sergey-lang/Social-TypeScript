@@ -1,9 +1,12 @@
-import s from './ProfileDescriptionForm.module.css'
 import React from 'react'
-import {ContactType, PhotosType, ProfileType} from '../../../../u4-redux/profile-reducer'
-import {Button} from '../../../../u2-components/Button/Button'
 import {InjectedFormProps, reduxForm} from 'redux-form'
+import {Info} from '../../../../u2-components/Info/Info'
+import {Button} from '../../../../u2-components/Button/Button'
+import {ProfileBlock} from '../../../../u2-components/ProfileBlock/ProfileBlock'
+import {ContactType, PhotosType, ProfileType} from '../../../../u4-redux/profile-reducer'
 import {CreateField, Input, Textarea} from '../../../../u2-components/FormControl/FormControl'
+
+import s from './ProfileDescriptionForm.module.scss'
 
 type ProfileDescriptionFormOwnProps = {
    profile: ProfileType
@@ -17,55 +20,37 @@ export const ProfileForm: React.FC<InjectedFormProps<ProfileFormType,
           profile,
           error,
        }) => {
+
    return (
-       <form onSubmit={handleSubmit}>
-          <Button>Save</Button>
-          {error && <div className={s.error}>{error}</div>}
-          <div className={s.description}>
-             <div className={s.title}>
-                Name:
-             </div>
-             <div className={s.inform}>
+       <ProfileBlock title='Personal info'>
+          <form onSubmit={handleSubmit}>
+             <Info name='Name' className={s.input}>
                 {CreateField('Your name...', 'fullName', Input, [])}
-             </div>
-          </div>
-          <div className={s.description}>
-             <div className={s.title}>
-                About me:
-             </div>
-             <div className={s.inform}>
+             </Info>
+             <Info name='About me' className={s.textArea}>
                 {CreateField('About me', 'aboutMe', Textarea, [])}
-             </div>
-          </div>
-          <div className={s.description}>
-             <div className={s.title}>
-                Looking For A Job:
-             </div>
-             <div className={s.inform}>
+             </Info>
+             <Info name='Looking for a job' className={s.checkbox}>
                 {CreateField('What are you looking for?', 'lookingForAJob', Input, [], {type: 'checkbox'})}
-             </div>
-          </div>
-          <div className={s.description}>
-             <div className={s.title}>
-                Skills:
-             </div>
-             <div className={s.inform}>
+             </Info>
+             <Info name='Skills' className={s.input}>
                 {CreateField('Skills...', 'lookingForAJobDescription', Input, [])}
-             </div>
-          </div>
-          {
-             Object.keys(profile.contacts).map((key, index) => {
-                return <div className={s.description} key={index}>
-                   <div className={s.title}>
-                      {key}:
-                   </div>
-                   <div className={s.inform}>
+             </Info>
+             {
+                Object.keys(profile.contacts).map((key, index) => {
+                   return <Info name={key}
+                                className={s.input}
+                                key={index}>
                       {CreateField(key, 'contacts.' + key, Input, [])}
-                   </div>
-                </div>
-             })
-          }
-       </form>
+                   </Info>
+                })
+             }
+             {error && <div className={s.error}>{error}</div>}
+             <div className={s.btnWrapper}>
+                <Button>Save</Button>
+             </div>
+          </form>
+       </ProfileBlock>
    )
 }
 

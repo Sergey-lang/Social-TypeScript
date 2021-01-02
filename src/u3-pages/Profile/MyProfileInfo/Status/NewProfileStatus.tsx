@@ -43,7 +43,7 @@ export const ProfileStatusWithHooks = (props: ProfileStatusWithHooksProps) => {
                  : <div className={s.editStatus}>
                     <span className={s.status} onDoubleClick={activateEditMode}>{props.status || '-----'}</span>
                     <div className={s.btnWrapper}>
-                       <Button white onClick={() => setEditMode(true)}>Edit</Button>
+                       <Button onClick={() => setEditMode(true)}>Edit</Button>
                     </div>
                  </div>
           }
