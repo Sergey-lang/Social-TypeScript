@@ -4,7 +4,7 @@ import {NavLink, useLocation} from 'react-router-dom'
 
 import logoImg from './../../u1-assets/images/logo.svg'
 import undefinedUserImg from './../../u1-assets/images/header/question-mark-128.png'
-import exit from './../../u1-assets/images/exit-100.png'
+import exit from './../../u1-assets/images/header/exit-100.png'
 import {useSelector} from 'react-redux'
 import {AppStateType} from '../../u4-redux/store'
 
@@ -24,32 +24,34 @@ export const Header: React.FC<HeaderPropsType> = (props) => {
    const smallProfileImg = useSelector<AppStateType, string | null | undefined>(state => state.profileState.profile?.photos.small)
 
    return (
-       <div className={s.topbar}>
-          <div className={s.logo}>
-             <a href="#">
-                <img src={logoImg} alt="logo"/>
-                <h4>SOCIAL LOGO</h4>
+       <div className={s.topBar}>
+          <div className={s.logoWrapper}>
+             <a className={s.logoLink} href="#">
+                <img className={s.logoImg} src={logoImg} alt="logo"/>
+                <h4 className={s.logoName}>SOCIAL LOGO</h4>
              </a>
           </div>
           <div className={s.topArea}>
-             <div className={s.pageName}>
-                <span>{HeaderView()}</span>
+             <div className={s.pageNameWrapper}>
+                <span className={s.pageName}>
+                   {HeaderView()}
+                </span>
              </div>
              <div className={s.userImg}>
                 {
                    props.isAuth
                        ? <>
-                          <h5>{props.login}</h5>
+                          <h5 className={s.isAuthState}>{props.login}</h5>
                           <img src={smallProfileImg ? smallProfileImg : undefinedUserImg} alt="userPhoto"/>
                        </>
-                       : <NavLink to={'/login'} className={s.login}>Login</NavLink>
+                       : <NavLink to={'/login'} className={s.login}>LOGIN</NavLink>
                 }
              </div>
-             <span>
+             <span className={s.exitIconWrapper}>
                 {
                    props.isAuth
-                   && <a href="#" onClick={props.logout}>
-                      <img src={exit} alt="settings"/>
+                   && <a className={s.exit} href="#" onClick={props.logout}>
+                      <img className={s.exitIcon} src={exit} alt="settings"/>
                    </a>
                 }
              </span>

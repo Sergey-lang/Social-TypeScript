@@ -2,12 +2,11 @@ import React, {useState} from 'react'
 import {ProfileType} from '../../u4-redux/profile-reducer'
 import {MyPostsContainer} from './MyPosts/MyPostsContainer'
 import {Preloader} from '../../u2-components/Preloader/Preloader'
-import {ProfileBlock} from '../../u2-components/ProfileBlock/ProfileBlock'
-import {ProfileStatusWithHooks} from './MyProfileInfo/Status/NewProfileStatus'
 import {ProfileDescription} from './MyProfileInfo/ProfileDescription/ProfileDescription'
 
 import s from './Profile.module.scss'
 import {ProfileDescriptionForm, ProfileFormType} from './MyProfileInfo/ProfileDescriptionForm/ProfileDescriptionForm'
+import {ProfileStatusWithHooks} from './MyProfileInfo/Status/NewProfileStatus'
 
 type ProfileProps = {
    profile: ProfileType | null
@@ -23,12 +22,6 @@ export const Profile: React.FC<ProfileProps> = (
 
    const [editMode, setEditMode] = useState<boolean>(false)
 
-   // const mainPhotoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-   //    if (e.target.files !== null && e.target.files.length) {
-   //       savePhoto(e.target.files[0])
-   //    }
-   // }
-
    if (!profile) {
       return <Preloader/>
    }
@@ -40,34 +33,27 @@ export const Profile: React.FC<ProfileProps> = (
       // console.log(formData)
    }
 
-
    return (
        <div className={s.profilePage}>
           <div className={s.leftBlock}>
-             <ProfileBlock title='Status'>
-                <ProfileStatusWithHooks status={status} updateOwnProfileStatus={updateOwnProfileStatus}/>
-             </ProfileBlock>
-             {
-                !editMode
-                    ? <ProfileDescription profile={profile}
-                                          editMode={setEditMode}
-                                          isOwner={isOwner}/>
-                    : <ProfileDescriptionForm profile={profile}
-                                              initialValues={profile}
-                                              onSubmit={onSubmit}/>
+             <aside className={s.sideBar}>
+                <div className={s.central}>
+                <span className={s.personal}>
+                   Status
+                </span>
+                   <ProfileStatusWithHooks status={status} updateOwnProfileStatus={updateOwnProfileStatus} isOwner={isOwner}/>
+                </div>
+             </aside>
+             {!editMode
+                 ? <ProfileDescription profile={profile}
+                                       editMode={setEditMode}
+                                       isOwner={isOwner}/>
+                 : <ProfileDescriptionForm profile={profile}
+                                           initialValues={profile}
+                                           onSubmit={onSubmit}/>
              }
           </div>
           <MyPostsContainer/>
        </div>
-       // <div className={s.mainProfileWrapper}>
-       //    <MyProfileInfo profile={props.profile}
-       //                   status={props.status}
-       //                   isOwner={props.isOwner}
-       //                   savePhoto={props.savePhoto}
-       //                   saveProfileData={props.saveProfileData}
-       //                   updateOwnProfileStatus={props.updateOwnProfileStatus}
-       //    />
-       //
-       // </div>
    )
 }

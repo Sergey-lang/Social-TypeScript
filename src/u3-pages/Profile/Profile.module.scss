@@ -1,18 +1,53 @@
+@import '../../u1-assets/mixins/mixins';
+
 .profilePage {
    display: flex;
    gap: 20px;
    width: 100%;
 
    .leftBlock {
-      display: flex;
-      flex-direction: column;
+      @include display(flex, $f-der: column);
       max-width: 33%;
       width: 100%;
 
       .btnWrapper {
+         @include display(flex, center);
          width: 100%;
-         display: flex;
-         justify-content: center;
+      }
+
+      .sideBar {
+         position: relative;
+
+         .central {
+            @include display(flex, $f-der: column);
+            position: relative;
+            background: #fff none repeat scroll 0 0;
+            border: 1px solid #ede9e9;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 20px;
+
+            .personal {
+               position: relative;
+               border-bottom: 1px solid #e6ecf5;
+               font-weight: 500;
+               font-size: 15px;
+               line-height: 15px;
+               margin-bottom: 20px;
+               padding-bottom: 12px;
+               text-transform: capitalize;
+               width: 100%;
+               color: #515365;
+
+               &:before {
+                  @include position(absolute, -5px, $l: -21px);
+                  content: "";
+                  height: 90%;
+                  width: 3px;
+                  background: #fa6342;
+               }
+            }
+         }
       }
    }
 }

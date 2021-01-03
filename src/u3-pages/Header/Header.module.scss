@@ -1,29 +1,28 @@
-.topbar {
-   z-index: 2;
+@import "../../u1-assets/mixins/mixins";
+
+.topBar {
+   @include display(flex, $a-items: center);
+   z-index: 1;
    background: #34465d;
    height: 66px;
    padding: 0 16px;
    position: fixed;
-   top: 0;
    width: 100%;
    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-   display: flex;
-   align-items: center;
 
-   .logo {
-      display: flex;
-      align-items: center;
-      width: 15%;
+   .logoWrapper {
+      @include display(flex, $a-items: center);
+      width: 20%;
 
-      a {
+      .logoLink {
          display: flex;
 
-         h4 {
+         .logoName {
             color: white;
             font-size: 16px;
          }
 
-         img {
+         .logoImg {
             width: 50px;
             padding: 0 5px;
          }
@@ -31,19 +30,17 @@
    }
 
    .topArea {
+      @include display(flex, flex-end, center);
       height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      width: 84%;
+      width: 80%;
 
-      .pageName {
+      .pageNameWrapper {
+         @include display(flex, $a-items: center);
          height: 100%;
-         display: flex;
-         align-items: center;
          border-right: 1px solid rgba(255, 255, 255, 0.1);
 
-         span {
+         .pageName {
+            padding-right: 20px;
             color: #fff;
             font-size: 14px;
             text-transform: uppercase;
@@ -56,11 +53,7 @@
          display: flex;
          align-items: center;
 
-         a {
-            color: #fff;
-         }
-
-         h5 {
+         .isAuthState {
             color: #fff;
             display: inline-block;
             font-size: 14px;
@@ -70,22 +63,28 @@
          }
 
          img {
-            border-radius: 50%;
             display: inline-block;
-            transform: scale(0.8);
-            vertical-align: inherit;
-            border: 2px solid rgba(255, 255, 255, .8);
-            cursor: pointer;
             width: 45px;
             height: 45px;
+            border-radius: 50%;
+            border: 2px solid hsla(0,0%,100%,.8);
+            cursor: pointer;
+         }
+
+         .login {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
          }
       }
 
-      span {
-         padding: 0 30px;
+      .exitIconWrapper {
+         display: flex;
+         width: 50px;
+         padding: 0 20px;
 
-         a {
-            img {
+         .exit {
+            .exitIcon {
                width: 20px;
             }
          }

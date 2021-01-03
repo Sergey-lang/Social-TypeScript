@@ -3,7 +3,6 @@ import {Post} from './Post/Post'
 import {PostType} from '../../../u4-redux/profile-reducer'
 import {MapDispatchType, MapStateType} from './MyPostsContainer'
 import {AddNewPostForm, PostFormValuesType} from './AddNewPost/AddNewPost'
-import {ProfileBlock} from '../../../u2-components/ProfileBlock/ProfileBlock'
 
 import s from './MyPosts.module.scss'
 
@@ -22,9 +21,14 @@ export const MyPosts: React.FC<OwnPropsType> = ({profilePage, addPost}) => {
 
    return (
        <div className={s.wall}>
-          <ProfileBlock title='Create Post'>
-             <AddNewPostForm onSubmit={addPostCallback}/>
-          </ProfileBlock>
+          <aside className={s.sideBar}>
+             <div className={s.central}>
+                <span className={s.personal}>
+                   Status
+                </span>
+                <AddNewPostForm onSubmit={addPostCallback}/>
+             </div>
+          </aside>
           <div className={s.posts}>
              {postElements}
           </div>

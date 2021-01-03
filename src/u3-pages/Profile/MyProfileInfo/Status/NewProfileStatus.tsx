@@ -6,6 +6,7 @@ import s from './ProfileStatus.module.scss'
 type ProfileStatusWithHooksProps = {
    status: string
    updateOwnProfileStatus: (status: string) => void
+   isOwner: boolean
 }
 
 export const ProfileStatusWithHooks = (props: ProfileStatusWithHooksProps) => {

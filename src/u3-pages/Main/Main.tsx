@@ -14,26 +14,29 @@ export const Main = () => {
    const userName = useSelector<AppStateType, string | null | undefined>(state => state.profileState.profile?.fullName)
 
    return (
-       <section>
+       <div className={s.mainBlockWrapper}>
           <div className={s.gap}>
              <div className={s.row}>
                 <div className={s.userProfile}>
-                   <figure>
-                      <img src={mainBgImg} alt="mainBackground"/>
-                   </figure>
-                   <div className={s.profileSection}>
+                   <div className={s.mainBg}>
                       <div className={s.profileAuthor}>
-                         <div className={s.profileImg}>
-                            <img src={largeProfileImg ? largeProfileImg : undefinedUserImg} alt="author"/>
-                         </div>
-                         <div className={s.authorContent}>
-                            <a href="#">
-                               {userName}
-                            </a>
-                            <div className={s.country}>Minsk, BY</div>
+                         <div className={s.profileImgBlock}>
+                            <img className={s.mainAuthorImg} src={largeProfileImg ? largeProfileImg : undefinedUserImg}
+                                 alt="author"/>
+                            <div className={s.imageUpload}>
+                               <label className={s.inputLabel}>
+                                  <input className={s.photoLoad} type="file"/>
+                               </label>
+                            </div>
                          </div>
                       </div>
+                   </div>
+                   <div className={s.profileNavSection}>
                       <div className={s.navTabs}>
+                         <div className={s.shortAuthorInfo}>
+                            <div className={s.userName}>{userName}</div>
+                            <div className={s.country}>Minsk, BY</div>
+                         </div>
                          <ul className={s.navLinks}>
                             <li className={s.active}>
                                <NavLink to="/profile" activeClassName={s.active}>About</NavLink>
@@ -56,6 +59,6 @@ export const Main = () => {
                 </div>
              </div>
           </div>
-       </section>
+       </div>
    )
 }
