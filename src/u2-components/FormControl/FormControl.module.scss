@@ -10,6 +10,9 @@
 .formControl {
    display: flex;
    flex-direction: column;
+   .childrenWrapperStyle {
+      display: grid;
+   }
    &.error span {
          display: flex;
          align-items: center;

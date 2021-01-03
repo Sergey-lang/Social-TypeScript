@@ -41,7 +41,8 @@ export const Profile: React.FC<ProfileProps> = (
                 <span className={s.personal}>
                    Status
                 </span>
-                   <ProfileStatusWithHooks status={status} updateOwnProfileStatus={updateOwnProfileStatus} isOwner={isOwner}/>
+                   <ProfileStatusWithHooks status={status} updateOwnProfileStatus={updateOwnProfileStatus}
+                                           isOwner={isOwner}/>
                 </div>
              </aside>
              {!editMode

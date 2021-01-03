@@ -7,15 +7,15 @@ import {maxLengthCreator, required} from '../../../../utils/validator'
 
 import s from './AddNewPost.module.scss'
 
-const maxLength10 = maxLengthCreator(50)
+const maxLength10 = maxLengthCreator(10)
 export const AddPost: React.FC<InjectedFormProps<PostFormValuesType, PostFormOwnProps> & PostFormOwnProps> =
     ({handleSubmit, error}) => {
 
        return (
            <form className={s.newPostBox} onSubmit={handleSubmit}>
-              <div>
+              <div className={s.addMessageWrapper}>
                  <figure>
-                    <img src={posterImg} alt="post"/>
+                    <img className={s.posterImg} src={posterImg} alt="post"/>
                  </figure>
                  <div className={s.input}>
                     <Field placeholder="Share some what you are thinking?"

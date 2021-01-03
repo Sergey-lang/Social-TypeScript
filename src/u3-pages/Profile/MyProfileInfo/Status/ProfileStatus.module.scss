@@ -1,17 +1,17 @@
+@import "../../../../u1-assets/mixins/mixins";
+
 .statusWrapper {
    .status {
-      display: flex;
-      flex-direction: column;
+      @include display(flex, $f-der: column);
       width: 100%;
       margin-bottom: 10px;
 
       .btnWrapper {
+         @include display(flex, center);
          width: auto;
-         display: flex;
-         justify-content: center;
       }
 
-      input {
+      .statusInput {
          width: 98%;
          border: 1px solid #dbd6d6;
          border-radius: 5px;
@@ -21,15 +21,13 @@
    }
 
    .editStatus {
-      display: flex;
-      flex-direction: column;
+      @include display(flex, $f-der: column);
       width: 100%;
       margin-bottom: 10px;
 
       .btnWrapper {
+         @include display(flex, center);
          width: 100%;
-         display: flex;
-         justify-content: center;
       }
 
       span {

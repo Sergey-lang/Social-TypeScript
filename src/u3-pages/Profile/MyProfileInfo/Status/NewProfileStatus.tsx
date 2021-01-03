@@ -36,16 +36,20 @@ export const ProfileStatusWithHooks = (props: ProfileStatusWithHooksProps) => {
           {
              editMode
                  ? <div className={s.status}>
-                    <input type="text" autoFocus={true}
+                    <input className={s.statusInput}
+                           type="text" autoFocus={true}
                            onBlur={deactivateEditMode}
                            onChange={onStatusChange}
                            value={status}/>
                  </div>
                  : <div className={s.editStatus}>
-                    <span className={s.status} onDoubleClick={activateEditMode}>{props.status || '-----'}</span>
+                    <span className={s.status}
+                          onDoubleClick={activateEditMode}>{props.status || 'unfortunately the status is empty'}</span>
+                    {props.isOwner &&
                     <div className={s.btnWrapper}>
                        <Button onClick={() => setEditMode(true)}>Edit</Button>
                     </div>
+                    }
                  </div>
           }
        </div>

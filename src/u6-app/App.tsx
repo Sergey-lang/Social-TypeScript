@@ -1,6 +1,6 @@
 import React, {ComponentType} from 'react'
 import s from './App.module.scss'
-import HeaderContainer from '../u3-pages/Header/HeaderContainer'
+import HeaderContainer from '../u3-pages/00-Header/HeaderContainer'
 import {Route, withRouter} from 'react-router-dom'
 import {AppStateType} from '../u4-redux/store'
 import {connect} from 'react-redux'
@@ -8,7 +8,7 @@ import {initializeApp} from '../u4-redux/app-reducer'
 import {compose} from 'redux'
 import {Preloader} from '../u2-components/Preloader/Preloader'
 import {withSuspense} from '../u7-hoc/withSuspense'
-import {Main} from '../u3-pages/Main/Main'
+import {Main} from '../u3-pages/01-Main/Main'
 
 type PropsType = MapStateType & MapDispatch
 

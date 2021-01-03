@@ -1,21 +1,25 @@
 .info {
+   display: grid;
+
    .title {
-      color: #515365;
       display: inline-block;
+      width: 100%;
+      color: #515365;
       font-size: 13px;
       font-weight: 500;
       margin-bottom: 5px;
-      width: 100%;
       text-transform: capitalize;
    }
+
    .description {
       display: inline-block;
+      margin-bottom: 20px;
+      padding-left: 20px;
       font-size: 13px;
       color: #959ab5;
       font-weight: 400;
       line-height: 20px;
-      margin-bottom: 20px;
       letter-spacing: 0.1px;
-      padding-left: 20px;
+
    }
 }

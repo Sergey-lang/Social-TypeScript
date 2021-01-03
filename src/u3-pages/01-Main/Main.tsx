@@ -1,7 +1,6 @@
 import React from 'react'
 
 import s from './Main.module.scss'
-import mainBgImg from './../../u1-assets/images/main.jpg'
 import undefinedUserImg from './../../u1-assets/images/header/question-mark-128.png'
 import {NavLink} from 'react-router-dom'
 import {useSelector} from 'react-redux'
@@ -9,9 +8,16 @@ import {AppStateType} from '../../u4-redux/store'
 
 export const Main = () => {
 
+   // const mainPhotoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+   //    if (e.target.files !== null && e.target.files.length) {
+   //       savePhoto(e.target.files[0])
+   //    }
+   // }
+
    const largeProfileImg = useSelector<AppStateType, string | null | undefined>(state => state.profileState.profile?.photos.large)
 
    const userName = useSelector<AppStateType, string | null | undefined>(state => state.profileState.profile?.fullName)
+   const isOwner = true
 
    return (
        <div className={s.mainBlockWrapper}>
@@ -23,11 +29,14 @@ export const Main = () => {
                          <div className={s.profileImgBlock}>
                             <img className={s.mainAuthorImg} src={largeProfileImg ? largeProfileImg : undefinedUserImg}
                                  alt="author"/>
-                            <div className={s.imageUpload}>
-                               <label className={s.inputLabel}>
-                                  <input className={s.photoLoad} type="file"/>
-                               </label>
-                            </div>
+                            {
+                               isOwner &&
+                               <div className={s.imageUpload}>
+                                  <label className={s.inputLabel}>
+                                     <input className={s.photoLoad} type="file"/>
+                                  </label>
+                               </div>
+                            }
                          </div>
                       </div>
                    </div>

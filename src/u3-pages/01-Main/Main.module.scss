@@ -29,12 +29,6 @@
                   position: relative;
                   border-radius: 50%;
 
-                  &:hover {
-                     .imageUpload {
-                        display: flex;
-                     }
-                  }
-
                   .mainAuthorImg {
                      border: 3px solid #fff;
                      border-radius: 50%;
@@ -43,7 +37,7 @@
                   }
 
                   .imageUpload {
-                     display: none;
+                     display: flex;
                      height: 40px;
                      width: 40px;
                      background: hsla(0, 0%, 100%, .7) none no-repeat scroll 50%;
@@ -55,6 +49,7 @@
                      bottom: 0;
 
                      .inputLabel {
+                        cursor: pointer;
                         @include display(flex, center, center);
                         height: 100%;
                         width: 100%;
@@ -69,20 +64,6 @@
                         }
                      }
                   }
-               }
-            }
-         }
-
-         .profileImg {
-            img {
-               display: inline-block;
-               border: 3px solid #fff;
-               border-radius: 50%;
-               width: 155px;
-
-               &:hover {
-                  cursor: pointer;
-                  border: 3px solid #fa6342;
                }
             }
          }

@@ -24,7 +24,7 @@ export const MyPosts: React.FC<OwnPropsType> = ({profilePage, addPost}) => {
           <aside className={s.sideBar}>
              <div className={s.central}>
                 <span className={s.personal}>
-                   Status
+                   Add Post
                 </span>
                 <AddNewPostForm onSubmit={addPostCallback}/>
              </div>

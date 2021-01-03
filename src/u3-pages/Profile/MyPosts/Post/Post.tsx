@@ -11,11 +11,11 @@ type MessageType = {
 
 export const Post: React.FC<MessageType> = ({message, likeCount}) => {
    return (
-       <div className={s.central}>
+       <div className={s.postWrapper}>
           <div className={s.info}>
-             <figure>
+             <div className={s.senderImg}>
                 <img src={postImg} alt="userPostImg"/>
-             </figure>
+             </div>
              <div className={s.name}>
                 <ins>
                    <a href="#">Jack Carter</a>
@@ -28,16 +28,16 @@ export const Post: React.FC<MessageType> = ({message, likeCount}) => {
           </div>
           <div className={s.postMeta}>
              <div className={s.detail}>
-                <p>
+                <p className={s.messageText}>
                    {message}
                 </p>
              </div>
           </div>
           <div className={s.moreInfo}>
-             <ul>
-                <li>
+             <ul className={s.infoList}>
+                <li className={s.infoItem}>
                    <div className={s.like}>
-                      <img src={likeImg} alt="like"/>
+                      <img className={s.likesImg} src={likeImg} alt="like"/>
                       <span>{likeCount}K</span>
                    </div>
                 </li>

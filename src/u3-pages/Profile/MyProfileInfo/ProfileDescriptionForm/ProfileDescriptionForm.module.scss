@@ -1,39 +1,89 @@
-form {
-   .input {
-      input {
-         width: 98%;
-         border: 1px solid #dbd6d6;
-         border-radius: 5px;
-         margin-bottom: 10px;
-         padding: 5px;
-      }
-   }
+@import "../../../../u1-assets/mixins/mixins";
 
-   .textArea {
-      textarea {
-         display: flex;
-         border: 1px solid #dbd6d6;
+.sidebar {
+   display: flex;
+   width: auto;
+   position: relative;
+
+   .central {
+      @include display(flex, $f-der: column);
+      background: #fff none repeat scroll 0 0;
+      border: 1px solid #ede9e9;
+      border-radius: 5px;
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 20px;
+      position: relative;
+
+      .editProfileForm {
+         .wrapper {
+            input {
+               border: 1px solid #dbd6d6;
+               border-radius: 5px;
+               padding: 5px;
+            }
+         }
+
+         .textArea {
+            textarea {
+               resize: vertical;
+               max-height: 200px;
+               outline: none;
+               border: 1px solid #dbd6d6;
+               border-radius: 5px;
+               font-family: "Roboto";
+               padding: 5px;
+            }
+         }
+
+         .btnWrapper {
+            @include display(flex, center);
+            width: 100%;
+         }
+
+         .error {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 15px;
+            color: red;
+            font-size: 12px;
+         }
+      }
+
+      .personal {
+         border-bottom: 1px solid #e6ecf5;
+         font-weight: 500;
+         font-size: 15px;
+         line-height: 15px;
+         margin-bottom: 20px;
+         padding-bottom: 12px;
+         text-transform: capitalize;
          width: 100%;
-         border-radius: 5px;
-         font-family: 'Roboto';
-         padding: 10px;
-         margin: 0;
-         resize: none;
-         outline: none;
+         color: #515365;
+         position: relative;
+
+         &:before {
+            @include position(absolute, $t: -5px, $l: -21px);
+            content: "";
+            height: 90%;
+            width: 3px;
+            background: #fa6342;
+         }
       }
-   }
 
-   .btnWrapper {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-   }
+      .btnWrapper {
+         @include display(flex, center);
+         width: 100%;
+      }
 
-   .error {
-      text-align: center;
-      width: 100%;
-      margin-bottom: 15px;
-      color: red;
-      font-size: 12px;
+      .mappedInfo {
+         background: #fa6342;
+      }
    }
 }
+
+
+
+
+
+

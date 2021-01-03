@@ -1,9 +1,10 @@
-.central {
+@import "../../../../u1-assets/mixins/mixins";
+
+.postWrapper {
+   @include display(flex, $f-der: column);
    background: #fff;
    border: 1px solid #ede9e9;
    border-radius: 5px;
-   display: flex;
-   flex-direction: column;
    max-width: 100%;
    margin-bottom: 20px;
    padding: 20px;
@@ -11,7 +12,7 @@
    .info {
       display: flex;
 
-      figure {
+      .senderImg {
          margin: 0;
          width: 60px;
 
@@ -22,9 +23,7 @@
       }
 
       .name {
-         display: flex;
-         flex-direction: column;
-         justify-content: center;
+         @include display(flex, center, $f-der: column);
          width: 100%;
          padding-left: 10px;
 
@@ -60,7 +59,7 @@
       .detail {
          width: 74%;
 
-         p {
+         .messageText {
             margin: 10px 0 16px 0;
             font-size: 14px;
             letter-spacing: 0.1px;
@@ -77,7 +76,7 @@
       width: 100%;
       z-index: 0;
 
-      ul {
+      .infoList {
          float: left;
          line-height: 27px;
          margin-bottom: 0;
@@ -85,7 +84,7 @@
          padding-left: 0;
          width: 66%;
 
-         li {
+         .infoItem {
             display: inline-block;
             font-size: 13px;
             margin-right: 32px;
@@ -94,8 +93,13 @@
             .like {
                position: relative;
 
-               img {
+               .likesImg {
+                  cursor: pointer;
                   width: 20px;
+                  transition: all 200ms;
+                  &:hover {
+                     transform: scale(1.2);
+                  }
                }
 
                span {
