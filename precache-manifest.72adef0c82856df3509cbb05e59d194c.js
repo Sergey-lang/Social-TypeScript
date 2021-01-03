@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cd71368cded0b561f3a0c44fec0c1f18",
+    "revision": "d29d3b98c5fc383297ecf88ea8a4e85d",
     "url": "/Social-TypeScript/index.html"
   },
   {
-    "revision": "49fb05fc61814f265620",
+    "revision": "06c79f44ad1b9ae2d24c",
     "url": "/Social-TypeScript/static/css/4.bdbdbfff.chunk.css"
   },
   {
@@ -36,12 +36,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Social-TypeScript/static/js/3.c9d7c714.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "49fb05fc61814f265620",
-    "url": "/Social-TypeScript/static/js/4.f89e8a16.chunk.js"
+    "revision": "06c79f44ad1b9ae2d24c",
+    "url": "/Social-TypeScript/static/js/4.ced8f51d.chunk.js"
   },
   {
     "revision": "81896c98bac7b5b16ab1d3790da5b937",
-    "url": "/Social-TypeScript/static/js/4.f89e8a16.chunk.js.LICENSE.txt"
+    "url": "/Social-TypeScript/static/js/4.ced8f51d.chunk.js.LICENSE.txt"
   },
   {
     "revision": "2084825cc51705a9ff38",
@@ -68,8 +68,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Social-TypeScript/static/js/main.88bb6cd7.chunk.js"
   },
   {
-    "revision": "71c0b9f597f9237988d8",
-    "url": "/Social-TypeScript/static/js/runtime-main.d4e256aa.js"
+    "revision": "7d30f6026bd69cca739c",
+    "url": "/Social-TypeScript/static/js/runtime-main.a6ade9a8.js"
   },
   {
     "revision": "9dc3825792d508bf23ef411d8e0ca7e9",
