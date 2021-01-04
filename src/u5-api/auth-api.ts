@@ -1,23 +1,22 @@
-import {axiosInstance, ResultCodes} from './api'
+import {axiosInstance, APIResponseType, ResultCodeCaptcha, ResultCodes} from './api'
 
-
-type MeResponseType = {
-   data: {
+type MeResponseDataType = {
       id: number,
       email: string,
       login: string
-   }
-   resultCode: ResultCodes
-   messages: string[]
+}
+
+type LoginResponseDataType = {
+   userId: number
 }
 
 export const authAPI = {
    me() {
-      return axiosInstance.get<MeResponseType>(`auth/me`)
+      return axiosInstance.get<APIResponseType<MeResponseDataType>>(`auth/me`)
           .then(res => res.data)
    },
    login(email: string, password: string, rememberMe: boolean = false, captcha: null | string = null) {
-      return axiosInstance.post(`auth/login`, {email, password, rememberMe, captcha})
+      return axiosInstance.post<APIResponseType<LoginResponseDataType, ResultCodeCaptcha | ResultCodes>>(`auth/login`, {email, password, rememberMe, captcha})
           .then(res => res.data)
    },
    logout() {

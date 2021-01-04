@@ -3,16 +3,19 @@ import React from 'react'
 import s from './Main.module.scss'
 import undefinedUserImg from './../../u1-assets/images/header/question-mark-128.png'
 import {NavLink} from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {AppStateType} from '../../u4-redux/store'
+import {savePhoto} from '../../u4-redux/profile-reducer'
 
 export const Main = () => {
 
-   // const mainPhotoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-   //    if (e.target.files !== null && e.target.files.length) {
-   //       savePhoto(e.target.files[0])
-   //    }
-   // }
+   const dispatch = useDispatch()
+
+   const mainPhotoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files !== null && e.target.files.length) {
+         dispatch(savePhoto(e.target.files[0]))
+      }
+   }
 
    const largeProfileImg = useSelector<AppStateType, string | null | undefined>(state => state.profileState.profile?.photos.large)
 
@@ -33,7 +36,7 @@ export const Main = () => {
                                isOwner &&
                                <div className={s.imageUpload}>
                                   <label className={s.inputLabel}>
-                                     <input className={s.photoLoad} type="file"/>
+                                     <input className={s.photoLoad} type="file" onChange={mainPhotoSelect}/>
                                   </label>
                                </div>
                             }
