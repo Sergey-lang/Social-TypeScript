@@ -1,6 +1,7 @@
 import React, {FC} from 'react'
 import s from './FormControl.module.scss'
 import {Field, WrappedFieldMetaProps, WrappedFieldProps} from 'redux-form'
+import {FieldValidatorType} from '../../utils/validator'
 
 type FormControlPropsType = {
    meta: WrappedFieldMetaProps
@@ -46,7 +47,12 @@ export const Checkbox: React.FC<WrappedFieldProps> = (props) => {
 }
 
 //create wrapper
-export const CreateField = (placeholder: string | null, name: string, component: FC<WrappedFieldProps>, validators: Array<any>, props = {}, text = '') => (
+export const createField = <FormKeysType extends string>(placeholder: string | null,
+                                                         name: FormKeysType,
+                                                         component: React.FC<WrappedFieldProps>,
+                                                         validators: Array<FieldValidatorType>,
+                                                         props = {},
+                                                         text = '') => (
     <div>
        <Field placeholder={placeholder}
               name={name}

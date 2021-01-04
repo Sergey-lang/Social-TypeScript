@@ -7,3 +7,9 @@ export const axiosInstance = axios.create({
         'API-KEY': 'ec9092bf-d7c1-484e-b4e6-892ed49a92ea'
     },
 })
+
+export enum ResultCodes {
+    Success = 0,
+    Error = 1,
+    CaptchaIsRequired= 10
+}

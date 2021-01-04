@@ -1,7 +1,7 @@
 import React from 'react'
 import {InjectedFormProps, reduxForm} from 'redux-form'
 import {connect} from 'react-redux'
-import {CreateField, Input} from '../../u2-components/FormControl/FormControl'
+import {createField, Input} from '../../u2-components/FormControl/FormControl'
 import {required} from '../../utils/validator'
 import {Redirect} from 'react-router-dom'
 import {login} from '../../u4-redux/auth-reducer'
@@ -25,15 +25,15 @@ export const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType,
           <p>Use test data</p>
           <p>Email: free@samuraijs.com</p>
           <p>Password: free</p>
-          {CreateField('email', 'email', Input, [required])}
-          {CreateField('password', 'password', Input, [required], {type: 'password'})}
-          {CreateField(null, 'rememberMe', Input, [], {type: 'checkbox'}, 'remember me')}
+          {createField('email', 'email', Input, [required])}
+          {createField('password', 'password', Input, [required], {type: 'password'})}
+          {createField(null, 'rememberMe', Input, [], {type: 'checkbox'}, 'remember me')}
           <div>
              {/*captchaUrl without '&&' check don't work! Because null*/}
              {captchaUrl && <img src={captchaUrl && captchaUrl} alt="captcha"/>}
           </div>
           <div>
-             {captchaUrl && CreateField('Symbol of captcha', 'captcha', Input, [required], {})}
+             {captchaUrl && createField('Symbol of captcha', 'captcha', Input, [required], {})}
           </div>
           <div>
              <button>Login</button>

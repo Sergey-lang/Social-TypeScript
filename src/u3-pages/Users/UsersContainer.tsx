@@ -1,7 +1,7 @@
 import React, {ComponentType} from 'react'
 import {connect} from 'react-redux'
 import {AppStateType} from '../../u4-redux/store'
-import {follow, requestUsers, setCurrentPage, unfollow, UsersType,} from '../../u4-redux/users-reducer'
+import {follow, requestUsers, unfollow, UsersType} from '../../u4-redux/users-reducer'
 import {Users} from './Users'
 import {Preloader} from '../../u2-components/Preloader/Preloader'
 import {compose} from 'redux'
@@ -10,7 +10,8 @@ import {
    getFollowingInProgress,
    getIsFetching,
    getPageSize,
-   getTotalUsersCount, getUsers
+   getTotalUsersCount,
+   getUsers
 } from '../../u4-redux/users-selectors'
 
 type UsersContainerType = MapStateType & MapDispatchType
@@ -55,7 +56,6 @@ type MapStateType = {
 }
 
 type MapDispatchType = {
-   setCurrentPage: (currentPage: number) => void
    requestUsers: (requestPage: number, pageSize: number) => void
    follow: (id: number) => void
    unfollow: (id: number) => void
@@ -73,8 +73,6 @@ const mapState = (state: AppStateType): MapStateType => ({
 export default compose<ComponentType>(
     connect<MapStateType, MapDispatchType, {}, AppStateType>(
         mapState,
-        {
-           setCurrentPage, requestUsers, follow, unfollow,
-        }
+        {requestUsers, follow, unfollow}
     ),
 )(UsersContainer)

@@ -3,6 +3,7 @@ import {AppStateType} from './store'
 import {authAPI} from '../u5-api/auth-api'
 import {FormAction, stopSubmit} from 'redux-form'
 import {securityAPI} from '../u5-api/security-api'
+import {ResultCodes} from '../u5-api/api'
 
 export type AuthInitPageType = {
    id: number | null
@@ -44,9 +45,9 @@ export const getCaptchaUrlSuccess = (captchaUrl: string) => ({
 //Thunk
 export const getAuthUserData = (): ThunkType =>
     async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
-       const data = await authAPI.me()
-       if (data.resultCode === 0) {
-          let {id, email, login} = data.data
+       const meData = await authAPI.me()
+       if (meData.resultCode === ResultCodes.Success) {
+          let {id, email, login} = meData.data
           dispatch(setUserData(id, email, login, true))
        }
     }
@@ -54,11 +55,11 @@ export const getAuthUserData = (): ThunkType =>
 export const login = (email: string, password: string, rememberMe: boolean, captcha: string | null = null): ThunkType =>
     async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType | FormAction>) => {
        const data = await authAPI.login(email, password, rememberMe, captcha)
-       if (data.resultCode === 0) {
+       if (data.resultCode === ResultCodes.Success) {
           dispatch(getAuthUserData())
        } else {
-          //captcha
-          if (data.resultCode === 10) {
+          //captcha = result code 10
+          if (data.resultCode === ResultCodes.CaptchaIsRequired) {
              dispatch(getCaptchaUrl())
           }
           //incorrect form value
@@ -77,7 +78,7 @@ export const getCaptchaUrl = (): ThunkType =>
 export const logout = (): ThunkType =>
     async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
        const response = await authAPI.logout()
-       if (response.resultCode === 0) {
+       if (response.resultCode === ResultCodes.Success) {
           dispatch(setUserData(null, null, null, false))
        }
     }
