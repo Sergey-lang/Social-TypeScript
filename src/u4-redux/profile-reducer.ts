@@ -1,5 +1,5 @@
 import {ThunkDispatch} from 'redux-thunk'
-import {AppStateType, BaseThunkType, InferActionsType} from './store'
+import {AppStateType, BaseThunkType, InferActionsTypes} from './store'
 import {profileAPI} from '../u5-api/profile-api'
 import {FormAction, stopSubmit} from 'redux-form'
 import {ResultCodes} from '../u5-api/api'
@@ -15,7 +15,7 @@ let initialState = {
 }
 
 export type ProfileInitialStateType = typeof initialState
-type ActionsType = InferActionsType<typeof actions>
+type ActionsType = InferActionsTypes<typeof actions>
 type ThunkType = BaseThunkType<ActionsType>
 
 export const profileReducer = (state: ProfileInitialStateType = initialState,

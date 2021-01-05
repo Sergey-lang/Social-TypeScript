@@ -3,7 +3,7 @@ import {AppStateType} from '../../u4-redux/store'
 import {connect} from 'react-redux'
 import {Dialogs} from './Dialogs'
 import {ComponentType} from 'react'
-import {withAuthRedirect} from '../../u7-hoc/WithAuthRedirect'
+import {withAuthRedirect} from '../../u7-hoc/withAuthRedirect'
 import {compose} from 'redux'
 
 export type mapDispatchType = {

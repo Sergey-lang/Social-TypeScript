@@ -1,4 +1,4 @@
-import {AppStateType, BaseThunkType, InferActionsType} from './store'
+import {AppStateType, BaseThunkType, InferActionsTypes} from './store'
 import {ThunkDispatch} from 'redux-thunk'
 import {usersAPI} from '../u5-api/users-api'
 
@@ -12,7 +12,7 @@ let initializeState = {
 }
 
 export type UsersInitializeStateType = typeof initializeState
-type ActionsType = InferActionsType<typeof actions>
+type ActionsType = InferActionsTypes<typeof actions>
 type ThunkType = BaseThunkType<ActionsType>
 
 

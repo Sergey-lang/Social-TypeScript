@@ -1,4 +1,4 @@
-import {InferActionsType} from './store'
+import {InferActionsTypes} from './store'
 
 let initializeState = {
    dialogs: [
@@ -14,7 +14,7 @@ let initializeState = {
 }
 
 export type DialogInitStateType = typeof initializeState
-type ActionsTypes = InferActionsType<typeof actions>
+type ActionsTypes = InferActionsTypes<typeof actions>
 
 export const dialogsReducer = (state: DialogInitStateType = initializeState,
                                action: ActionsTypes): DialogInitStateType => {

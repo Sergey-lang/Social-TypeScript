@@ -63,3 +63,6 @@ export const createField = <FormKeysType extends string>(placeholder: string | n
        {text}
     </div>
 )
+
+//get all props keys for form without mistakes
+export type GetStringKeys<T> = Extract<keyof T, string>

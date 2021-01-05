@@ -22,7 +22,7 @@ type PropertiesTypes<T> = T extends { [key: string]: infer U } ? U : never
 
 //AC get type of Action which can be object with 'key:string' ang function with (...args) which return something
 //example! followSuccess: (userID: number) => ({type: 'USERS/FOLLOW', userID} as const)
-export type InferActionsType<T extends { [key: string]: (...args: any) => any }> = ReturnType<PropertiesTypes<T>>
+export type InferActionsTypes<T extends { [key: string]: (...args: any) => any }> = ReturnType<PropertiesTypes<T>>
 
 //Thunk...
 export type BaseThunkType<A extends Action,R = Promise<void>> = ThunkAction<R, AppStateType, unknown, A>

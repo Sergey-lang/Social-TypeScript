@@ -4,8 +4,8 @@ import {Dialog} from './Dialog/Dialog'
 import {Message} from './Message/Message'
 import {mapDispatchType, MapStateType} from './DialogsContainer'
 import {maxLengthCreator, required} from '../../utils/validator'
-import {Field, InjectedFormProps, reduxForm} from 'redux-form'
-import {Textarea} from '../../u2-components/FormControl/FormControl'
+import {InjectedFormProps, reduxForm} from 'redux-form'
+import {createField, Textarea} from '../../u2-components/FormControl/FormControl'
 import {Button} from '../../u2-components/Button/Button'
 
 type OwnProps = {}
@@ -50,12 +50,7 @@ export const AddMessage: React.FC<InjectedFormProps<DialogFormValuesType, Dialog
        <form onSubmit={handleSubmit}>
           <div className={s.add_new_message}>
              <div className={s.area_wrapper}>
-                <Field placeholder='Send message'
-                       component={Textarea}
-                       className={s.area}
-                       name="dialogNewMessageText"
-                       validate={[required, maxLength50]}
-                />
+                {createField('Send message', 'dialogNewMessageText', Textarea, [required, maxLength50])}
              </div>
              <div className={s.button_wrapper}>
                 <Button className={s.btn}>Send message</Button>

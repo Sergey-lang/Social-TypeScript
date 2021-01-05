@@ -3,14 +3,16 @@ import {InjectedFormProps, reduxForm} from 'redux-form'
 import {Info} from '../../../../u2-components/Info/Info'
 import {Button} from '../../../../u2-components/Button/Button'
 import {ContactType, PhotosType, ProfileType} from '../../../../u4-redux/profile-reducer'
-import {createField, Input, Textarea} from '../../../../u2-components/FormControl/FormControl'
+import {createField, GetStringKeys, Input, Textarea} from '../../../../u2-components/FormControl/FormControl'
 
 import s from './ProfileDescriptionForm.module.scss'
 
 type ProfileDescriptionFormOwnProps = {
    profile: ProfileType
-   initialValues: any
+   // initialValues: any
 }
+
+type ProfileDescriptionFormOwnPropsKeys = GetStringKeys<ProfileType>
 
 export const ProfileForm: React.FC<InjectedFormProps<ProfileFormType,
     ProfileDescriptionFormOwnProps> & ProfileDescriptionFormOwnProps>
@@ -24,6 +26,7 @@ export const ProfileForm: React.FC<InjectedFormProps<ProfileFormType,
        <Info name={key}
              className={s.wrapper}
              key={index}>
+          {/*todo:create some solution for object*/}
           {createField(key, 'contacts.' + key, Input, [])}
        </Info>
    )
@@ -36,16 +39,16 @@ export const ProfileForm: React.FC<InjectedFormProps<ProfileFormType,
                 </span>
              <form className={s.editProfileForm} onSubmit={handleSubmit}>
                 <Info name='Name' className={s.wrapper}>
-                   {createField('Your name...', 'fullName', Input, [])}
+                   {createField<ProfileDescriptionFormOwnPropsKeys>('Your name...', 'fullName', Input, [])}
                 </Info>
                 <Info name='About me' className={s.textArea}>
-                   {createField('About me', 'aboutMe', Textarea, [])}
+                   {createField<ProfileDescriptionFormOwnPropsKeys>('About me', 'aboutMe', Textarea, [])}
                 </Info>
                 <Info name='Looking for a job' className={s.checkbox}>
-                   {createField('What are you looking for?', 'lookingForAJob', Input, [], {type: 'checkbox'})}
+                   {createField<ProfileDescriptionFormOwnPropsKeys>('What are you looking for?', 'lookingForAJob', Input, [], {type: 'checkbox'})}
                 </Info>
                 <Info name='Skills' className={s.wrapper}>
-                   {createField('Skills...', 'lookingForAJobDescription', Input, [])}
+                   {createField<ProfileDescriptionFormOwnPropsKeys>('Skills...', 'lookingForAJobDescription', Input, [])}
                 </Info>
                 {/*nextFields*/}
                 {
@@ -67,7 +70,7 @@ export const ProfileForm: React.FC<InjectedFormProps<ProfileFormType,
 
 export const ProfileDescriptionForm = reduxForm<ProfileFormType, ProfileDescriptionFormOwnProps>({form: 'profile-data'})(ProfileForm)
 
-//dada from form = form name = ProfileType obj.
+//data from form = form name = ProfileType obj.
 export type ProfileFormType = {
    userId: number
    lookingForAJob: boolean

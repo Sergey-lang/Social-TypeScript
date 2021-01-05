@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component, ReactNodeArray, ReactPortal} from 'react'
 
 import s from './Info.module.scss'
 

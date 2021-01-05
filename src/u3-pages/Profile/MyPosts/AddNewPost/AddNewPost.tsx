@@ -1,13 +1,14 @@
 import React from 'react'
-import {Field, InjectedFormProps, reduxForm} from 'redux-form'
+import {InjectedFormProps, reduxForm} from 'redux-form'
 import {Button} from '../../../../u2-components/Button/Button'
 import posterImg from './../../../../u1-assets/images/user.jpg'
-import {Textarea} from '../../../../u2-components/FormControl/FormControl'
-import {maxLengthCreator, required} from '../../../../utils/validator'
+import {createField, GetStringKeys, Textarea} from '../../../../u2-components/FormControl/FormControl'
+import {required} from '../../../../utils/validator'
 
 import s from './AddNewPost.module.scss'
 
-const maxLength10 = maxLengthCreator(10)
+type PostFormValuesTypeKeys = GetStringKeys<PostFormValuesType>
+
 export const AddPost: React.FC<InjectedFormProps<PostFormValuesType, PostFormOwnProps> & PostFormOwnProps> =
     ({handleSubmit, error}) => {
 
@@ -18,11 +19,7 @@ export const AddPost: React.FC<InjectedFormProps<PostFormValuesType, PostFormOwn
                     <img className={s.posterImg} src={posterImg} alt="post"/>
                  </figure>
                  <div className={s.input}>
-                    <Field placeholder="Share some what you are thinking?"
-                           component={Textarea}
-                           name='postNewMessageText'
-                           validate={[required, maxLength10]}
-                    />
+                    {createField<PostFormValuesTypeKeys>('Share some what you are thinking?', 'postNewMessageText', Textarea, [required])}
                  </div>
               </div>
               <div>

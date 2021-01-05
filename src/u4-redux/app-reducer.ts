@@ -1,5 +1,5 @@
 import {ThunkAction, ThunkDispatch} from 'redux-thunk'
-import {AppStateType, InferActionsType} from './store'
+import {AppStateType, InferActionsTypes} from './store'
 import {getAuthUserData} from './auth-reducer'
 
 let initializeState = {
@@ -7,7 +7,7 @@ let initializeState = {
 }
 
 export type AppInitStateType = typeof initializeState
-type ActionsType = InferActionsType<typeof actions>
+type ActionsType = InferActionsTypes<typeof actions>
 
 export const appReducer = (state: AppInitStateType = initializeState, action: ActionsType): AppInitStateType => {
    switch (action.type) {

@@ -11,7 +11,7 @@ import {withSuspense} from '../u7-hoc/withSuspense'
 import {Main} from '../u3-pages/01-Main/Main'
 import {Page404} from '../u3-pages/404/Page404'
 
-type PropsType = MapStateType & MapDispatch
+type PropsType = MapStateType & MapDispatchToProps
 
 const Login = React.lazy(() => import('../u3-pages/Login/Login'))
 const ProfileContainer = React.lazy(() => import('../u3-pages/Profile/ProfileContainer'))
@@ -20,8 +20,13 @@ const UsersContainer = React.lazy(() => import('../u3-pages/Users/UsersContainer
 
 class App extends React.Component<PropsType> {
 
+   catchAllUnhandledErrors = (e: PromiseRejectionEvent) => {
+      alert('Some error occurred')
+   }
+
    componentDidMount() {
       this.props.initializeApp()
+      window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
    }
 
    render() {
@@ -51,7 +56,7 @@ class App extends React.Component<PropsType> {
    }
 }
 
-type MapDispatch = {
+type MapDispatchToProps = {
    initializeApp: () => void
 }
 
@@ -59,11 +64,11 @@ type MapStateType = {
    initialized: boolean
 }
 
-const mapState = (state: AppStateType): MapStateType => ({
+const mapStateToProps = (state: AppStateType): MapStateType => ({
    initialized: state.app.initialized
 })
 
 export default compose<ComponentType>(
     withRouter,
-    connect<MapStateType, MapDispatch, {}, AppStateType>(mapState, {initializeApp}),
+    connect<MapStateType, MapDispatchToProps, {}, AppStateType>(mapStateToProps, {initializeApp}),
 )(App)

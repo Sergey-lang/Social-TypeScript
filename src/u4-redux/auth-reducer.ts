@@ -1,5 +1,5 @@
 import {ThunkDispatch} from 'redux-thunk'
-import {AppStateType, BaseThunkType, InferActionsType} from './store'
+import {AppStateType, BaseThunkType, InferActionsTypes} from './store'
 import {authAPI} from '../u5-api/auth-api'
 import {FormAction, stopSubmit} from 'redux-form'
 import {securityAPI} from '../u5-api/security-api'
@@ -13,7 +13,7 @@ let initializeState = {
    captchaUrl: null as string | null
 }
 export type AuthInitStateType = typeof initializeState
-type ActionsType = InferActionsType<typeof actions>
+type ActionsType = InferActionsTypes<typeof actions>
 type ThunkType = BaseThunkType<ActionsType>
 
 export const authReducer = (state: AuthInitStateType = initializeState, action: ActionsType): AuthInitStateType => {
