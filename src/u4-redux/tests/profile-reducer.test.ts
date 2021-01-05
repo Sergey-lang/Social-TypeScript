@@ -1,6 +1,6 @@
-import {addPost, getUserStatus, ProfilePageInitType, profileReducer, setOwnProfileStatus} from '../profile-reducer'
+import {profileReducer, actions, ProfileInitialStateType} from '../profile-reducer'
 
-let startState: ProfilePageInitType
+let startState: ProfileInitialStateType
 beforeEach(() => {
    startState = {
       posts: [
@@ -37,7 +37,7 @@ test('add new post in own wall', () => {
 
    const postMessage = 'This is new post text from u4-redux-form'
 
-   const endState = profileReducer(startState, addPost(postMessage))
+   const endState = profileReducer(startState, actions.addPost(postMessage))
    expect(endState.posts.length).toBe(4)
 })
 
@@ -45,7 +45,7 @@ test('get status from another user', () => {
 
    const status = 'New status from user'
 
-   const endState = profileReducer(startState, getUserStatus(status))
+   const endState = profileReducer(startState, actions.getUserStatus(status))
    expect(endState.status).toBe('New status from user')
 })
 
@@ -53,6 +53,6 @@ test('set own status in profile', () => {
 
    const ownStatus = 'Own status in profile status'
 
-   const endState = profileReducer(startState, setOwnProfileStatus(ownStatus))
+   const endState = profileReducer(startState, actions.setOwnProfileStatus(ownStatus))
    expect(endState.status).toBe('Own status in profile status')
 })

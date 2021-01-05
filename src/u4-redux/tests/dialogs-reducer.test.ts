@@ -1,9 +1,9 @@
-import {addMessage, DialogInitPageType, dialogsReducer} from '../dialogs-reducer'
+import {DialogInitStateType, dialogsReducer, actions} from '../dialogs-reducer'
 
 
 test('reducer should be add new message', () => {
 
-   const startState: DialogInitPageType = {
+   const startState: DialogInitStateType = {
       dialogs: [
          {id: 1, name: 'Dima Ivanov'},
       ],
@@ -14,7 +14,7 @@ test('reducer should be add new message', () => {
 
    const messageText = 'This is dialogs message for another user'
 
-   const endState = dialogsReducer(startState, addMessage(messageText))
+   const endState = dialogsReducer(startState, actions.addMessage(messageText))
 
    expect(endState.messages.length).toBe(2)
 })

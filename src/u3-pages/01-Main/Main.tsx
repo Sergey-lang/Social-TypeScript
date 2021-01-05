@@ -20,7 +20,12 @@ export const Main = () => {
    const largeProfileImg = useSelector<AppStateType, string | null | undefined>(state => state.profileState.profile?.photos.large)
 
    const userName = useSelector<AppStateType, string | null | undefined>(state => state.profileState.profile?.fullName)
-   const isOwner = true
+
+   //get id for editPhoto, show or hide input file
+   const profileId = useSelector<AppStateType, number | any>(state => state.profileState.profile?.userId)
+   const authId = useSelector<AppStateType, number | any>(state => state.authState.id)
+   //edit mode = isOwner
+   const isOwner = profileId === authId ? true : false //compare id from profile and auth
 
    return (
        <div className={s.mainBlockWrapper}>

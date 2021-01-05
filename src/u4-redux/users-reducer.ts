@@ -11,11 +11,12 @@ let initializeState = {
    followingInProgress: [] as number[] //array of users id
 }
 
-type ActionsTypes = InferActionsType<typeof actions>
-type ThunkType = BaseThunkType<ActionsTypes>
-type UsersInitializeStateType = typeof initializeState
+export type UsersInitializeStateType = typeof initializeState
+type ActionsType = InferActionsType<typeof actions>
+type ThunkType = BaseThunkType<ActionsType>
 
-export const usersReducer = (state: UsersInitializeStateType = initializeState, action: ActionsTypes): UsersInitializeStateType => {
+
+export const usersReducer = (state: UsersInitializeStateType = initializeState, action: ActionsType): UsersInitializeStateType => {
    switch (action.type) {
       case 'SN/USERS/FOLLOW':
          return {
@@ -84,7 +85,7 @@ export const actions = {
 
 //Thunk
 export const requestUsers = (requestPage: number, pageSize: number): ThunkType =>
-    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes>) => {
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
        dispatch(actions.toggleIsFetching(true))
        dispatch(actions.setCurrentPage(requestPage))
        const data = await usersAPI.getUsers(requestPage, pageSize)
@@ -94,7 +95,7 @@ export const requestUsers = (requestPage: number, pageSize: number): ThunkType =
     }
 
 export const follow = (id: number): ThunkType =>
-    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes>) => {
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
        dispatch(actions.toggleFollowingProgress(true, id))
        const data = await usersAPI.follow(id)
        if (data.resultCode === 0) {
@@ -104,7 +105,7 @@ export const follow = (id: number): ThunkType =>
     }
 
 export const unfollow = (id: number): ThunkType =>
-    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes>) => {
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
        dispatch(actions.toggleFollowingProgress(true, id))
        const data = await usersAPI.unfollow(id)
        if (data.resultCode === 0) {

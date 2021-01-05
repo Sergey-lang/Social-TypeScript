@@ -15,11 +15,11 @@ let initialState = {
 }
 
 export type ProfileInitialStateType = typeof initialState
-type ActionsTypes = InferActionsType<typeof actions>
-type ThunkType = BaseThunkType<ActionsTypes>
+type ActionsType = InferActionsType<typeof actions>
+type ThunkType = BaseThunkType<ActionsType>
 
 export const profileReducer = (state: ProfileInitialStateType = initialState,
-                               action: ActionsTypes): ProfileInitialStateType => {
+                               action: ActionsType): ProfileInitialStateType => {
    switch (action.type) {
       case 'SN/PROFILE/ADD-POST':
          return {
@@ -54,19 +54,19 @@ export const actions = {
 
 //Thunk
 export const getUserProfileData = (userId: number): ThunkType =>
-    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes>) => {
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
        const data = await profileAPI.getProfile(userId)
        dispatch(actions.setUserProfileData(data))
     }
 
 export const getStatusFromUser = (userId: number): ThunkType =>
-    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes>) => {
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
        const data = await profileAPI.getUserStatus(userId)
        dispatch(actions.getUserStatus(data))
     }
 
 export const updateOwnProfileStatus = (status: string): ThunkType =>
-    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes>) => {
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
        const data = await profileAPI.updateOwnProfileStatus(status)
        if (data.resultCode === ResultCodes.Success) {
           dispatch(actions.setOwnProfileStatus(status))
@@ -74,7 +74,7 @@ export const updateOwnProfileStatus = (status: string): ThunkType =>
     }
 
 export const savePhoto = (file: File): ThunkType =>
-    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes>) => {
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
        const data = await profileAPI.savePhoto(file)
        if (data.resultCode === ResultCodes.Success) {
           dispatch(actions.savePhotoSuccess(data.data.photos))
@@ -82,11 +82,15 @@ export const savePhoto = (file: File): ThunkType =>
     }
 
 export const saveProfileData = (profile: ProfileType): ThunkType =>
-    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes | FormAction>, getState) => {
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType | FormAction>, getState) => {
        const userId = getState().authState.id
        const data = await profileAPI.saveProfile(profile)
        if (data.resultCode === ResultCodes.Success) {
-          dispatch(getUserProfileData(userId as number))
+          if(userId !== null) {
+             dispatch(getUserProfileData(userId))
+          } else {
+             throw new Error(`userId can't be null`)
+          }
        } else {
           //need changing error for different fields
           // dispatch(stopSubmit('edit-profile', {'contacts': {'facebook': messages}}))

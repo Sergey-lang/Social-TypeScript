@@ -1,10 +1,7 @@
 import {
-   followSuccess,
-   setCurrentPage,
-   setUsers, toggleFollowingProgress, toggleIsFetching,
-   unfollowSuccess,
    UsersInitializeStateType,
-   usersReducer
+   usersReducer,
+   actions
 } from '../users-reducer'
 
 let startState: UsersInitializeStateType
@@ -66,19 +63,19 @@ const usersArray = [
 
 test('check user follow', () => {
 
-   const endState = usersReducer(startState, followSuccess(1))
+   const endState = usersReducer(startState, actions.followSuccess(1))
    expect(endState.users[0].followed).toBeTruthy()
 })
 
 test('check user unfollow', () => {
 
-   const endState = usersReducer(startState, unfollowSuccess(1))
+   const endState = usersReducer(startState, actions.unfollowSuccess(1))
    expect(endState.users[1].followed).toBeTruthy()
 })
 
 test('set users data', () => {
 
-   const endState = usersReducer(startState, setUsers(usersArray))
+   const endState = usersReducer(startState, actions.setUsers(usersArray))
    expect(endState.users[0].name).toBe('Sergey Ivanov')
    expect(endState.users[0].status).toBe('Test status')
    expect(endState.users[1].id).toBe(46)
@@ -87,6 +84,6 @@ test('set users data', () => {
 
 test('toggle is fetching', () => {
 
-   const endState = usersReducer(startState, toggleIsFetching(true))
+   const endState = usersReducer(startState, actions.toggleIsFetching(true))
    expect(endState.isFetching).toBeTruthy()
 })

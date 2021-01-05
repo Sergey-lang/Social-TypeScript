@@ -1,20 +1,25 @@
-let initializeState: DialogInitPageType = {
+import {InferActionsType} from './store'
+
+let initializeState = {
    dialogs: [
       {id: 1, name: 'Stanislav Ivanov'},
       {id: 2, name: 'Egor Ivanov'},
       {id: 3, name: 'Sergey Ivanov'},
-   ],
+   ] as Array<DialogType>,
    messages: [
       {id: 1, message: 'Detract yet delight written farther'},
       {id: 2, message: 'An stairs as be lovers'},
       {id: 3, message: 'Unpleasant in in insensible favourable'},
-   ],
+   ] as Array<MessageType>,
 }
 
-export const dialogsReducer = (state: DialogInitPageType = initializeState,
-                               action: ActionsType): DialogInitPageType => {
+export type DialogInitStateType = typeof initializeState
+type ActionsTypes = InferActionsType<typeof actions>
+
+export const dialogsReducer = (state: DialogInitStateType = initializeState,
+                               action: ActionsTypes): DialogInitStateType => {
    switch (action.type) {
-      case 'DIALOGS/ADD-NEW-MESSAGE':
+      case 'SN/DIALOGS/ADD-NEW-MESSAGE':
          return {
             ...state,
             messages: [...state.messages, {id: 5, message: action.dialogNewMessageText}]
@@ -25,11 +30,13 @@ export const dialogsReducer = (state: DialogInitPageType = initializeState,
 }
 
 //Action
-export const addMessage = (dialogNewMessageText: string) =>
-    ({type: 'DIALOGS/ADD-NEW-MESSAGE', dialogNewMessageText} as const)
+export const actions = {
+   addMessage: (dialogNewMessageText: string) =>
+       ({type: 'SN/DIALOGS/ADD-NEW-MESSAGE', dialogNewMessageText} as const)
+}
 
 //Types
-type ActionsType = ReturnType<typeof addMessage>
+
 export type DialogType = {
    id: number
    name: string
@@ -37,9 +44,5 @@ export type DialogType = {
 export type MessageType = {
    id: number
    message: string
-}
-export type DialogInitPageType = {
-   dialogs: Array<DialogType>
-   messages: Array<MessageType>
 }
 

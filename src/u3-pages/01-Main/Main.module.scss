@@ -38,19 +38,19 @@
 
                   .imageUpload {
                      display: flex;
-                     height: 40px;
-                     width: 40px;
+                     height: 30%;
+                     width: 30%;
                      background: hsla(0, 0%, 100%, .7) none no-repeat scroll 50%;
                      background-size: 50%;
                      border: 1px solid #b3b3b3;
                      border-radius: 50%;
                      position: absolute;
-                     right: 10px;
+                     right: 0;
                      bottom: 0;
 
                      .inputLabel {
                         cursor: pointer;
-                        @include display(flex, center, center);
+                        //@include display(flex, center, center);
                         height: 100%;
                         width: 100%;
                         background-image: url("../../u1-assets/images/main/camera-96.png");

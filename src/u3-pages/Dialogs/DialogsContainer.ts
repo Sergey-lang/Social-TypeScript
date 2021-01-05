@@ -1,4 +1,4 @@
-import {addMessage, DialogInitPageType} from '../../u4-redux/dialogs-reducer'
+import {actions, DialogInitStateType} from '../../u4-redux/dialogs-reducer'
 import {AppStateType} from '../../u4-redux/store'
 import {connect} from 'react-redux'
 import {Dialogs} from './Dialogs'
@@ -10,13 +10,14 @@ export type mapDispatchType = {
    addMessage: (dialogNewMessageText: any) => void
 }
 export type MapStateType = {
-   dialogsPage: DialogInitPageType
+   dialogsPage: DialogInitStateType
 }
+
 let mapState = (state: AppStateType): MapStateType => ({dialogsPage: state.dialogsState})
 
 export default compose<ComponentType>(
     connect<MapStateType, mapDispatchType, {}, AppStateType>
-    (mapState, {addMessage}),
+    (mapState, {addMessage: actions.addMessage}),
     withAuthRedirect
 )(Dialogs)
 

@@ -12,15 +12,15 @@ let initializeState = {
    isAuth: false,
    captchaUrl: null as string | null
 }
-export type AuthInitPageType  = typeof initializeState
-type ActionsTypes = InferActionsType<typeof actions>
-type ThunkType = BaseThunkType<ActionsTypes>
+export type AuthInitStateType = typeof initializeState
+type ActionsType = InferActionsType<typeof actions>
+type ThunkType = BaseThunkType<ActionsType>
 
-export const authReducer = (state: AuthInitPageType = initializeState, action: ActionsTypes): AuthInitPageType => {
+export const authReducer = (state: AuthInitStateType = initializeState, action: ActionsType): AuthInitStateType => {
    switch (action.type) {
       case 'SN/AUTH/SET-USER-DATA':
       case 'SN/AUTH/GET-CAPTCHA-URL':
-         return {...state, ...action.data}
+         return {...state, ...action.payload}
       default:
          return state
    }
@@ -30,17 +30,17 @@ export const authReducer = (state: AuthInitPageType = initializeState, action: A
 export const actions = {
    setUserData: (id: number | null, email: string | null, login: string | null, isAuth: boolean) => ({
       type: 'SN/AUTH/SET-USER-DATA',
-      data: {id, email, login, isAuth},
+      payload: {id, email, login, isAuth},
    } as const),
    getCaptchaUrlSuccess: (captchaUrl: string) => ({
       type: 'SN/AUTH/GET-CAPTCHA-URL',
-      data: {captchaUrl},
+      payload: {captchaUrl},
    } as const)
 }
 
 //Thunk
 export const getAuthUserData = (): ThunkType =>
-    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes>) => {
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
        const meData = await authAPI.me()
        if (meData.resultCode === ResultCodes.Success) {
           let {id, email, login} = meData.data
@@ -49,7 +49,7 @@ export const getAuthUserData = (): ThunkType =>
     }
 
 export const login = (email: string, password: string, rememberMe: boolean, captcha: string | null = null): ThunkType =>
-    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes | FormAction>) => {
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType | FormAction>) => {
        const data = await authAPI.login(email, password, rememberMe, captcha)
        if (data.resultCode === ResultCodes.Success) {
           dispatch(getAuthUserData())
@@ -65,14 +65,14 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
     }
 
 export const getCaptchaUrl = (): ThunkType =>
-    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes>) => {
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
        const data = await securityAPI.getCaptchaUrl()
        const captchaUrl: string = data.url
        dispatch(actions.getCaptchaUrlSuccess(captchaUrl))
     }
 
 export const logout = (): ThunkType =>
-    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsTypes>) => {
+    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
        const response = await authAPI.logout()
        if (response.resultCode === ResultCodes.Success) {
           dispatch(actions.setUserData(null, null, null, false))

@@ -9,7 +9,7 @@ import {compose} from 'redux'
 import {Preloader} from '../u2-components/Preloader/Preloader'
 import {withSuspense} from '../u7-hoc/withSuspense'
 import {Main} from '../u3-pages/01-Main/Main'
-import { Page404 } from '../u3-pages/404/Page404'
+import {Page404} from '../u3-pages/404/Page404'
 
 type PropsType = MapStateType & MapDispatch
 
@@ -47,7 +47,6 @@ class App extends React.Component<PropsType> {
                 </div>
              </div>
           </div>
-
       )
    }
 }
