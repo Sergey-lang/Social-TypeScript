@@ -3,10 +3,10 @@ import {ProfileType} from '../../u4-redux/profile-reducer'
 import {MyPostsContainer} from './MyPosts/MyPostsContainer'
 import {Preloader} from '../../u2-components/Preloader/Preloader'
 import {ProfileDescription} from './MyProfileInfo/ProfileDescription/ProfileDescription'
-
-import s from './Profile.module.scss'
 import {ProfileDescriptionForm, ProfileFormType} from './MyProfileInfo/ProfileDescriptionForm/ProfileDescriptionForm'
 import {ProfileStatusWithHooks} from './MyProfileInfo/Status/NewProfileStatus'
+
+import s from './Profile.module.scss'
 
 type ProfileProps = {
    profile: ProfileType | null

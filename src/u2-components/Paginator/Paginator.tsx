@@ -2,17 +2,19 @@ import React, {useState} from 'react'
 import classnames from 'classnames'
 
 import s from './Paginator.module.css'
-import { Button } from '../Button/Button'
+import {Button} from '../Button/Button'
 
-type PaginatorProps = {
+type PropsType = {
    currentPage: number
    onPageChanged: (p: number) => void
    pageSize: number
-   totalItemsCount:number
-   portionSize?:number
+   totalItemsCount: number
+   portionSize?: number
 }
 
-export const Paginator: React.FC<PaginatorProps> = ({currentPage, onPageChanged, pageSize,totalItemsCount,portionSize = 10}) => {
+export const Paginator: React.FC<PropsType> = (
+    {currentPage, onPageChanged, pageSize, totalItemsCount, portionSize = 10}
+) => {
 
    const pageCount = Math.ceil(totalItemsCount / pageSize)
 
@@ -38,7 +40,7 @@ export const Paginator: React.FC<PaginatorProps> = ({currentPage, onPageChanged,
           && <Button onClick={prevPortionNumberHandler}>PREV</Button>}
           {pages
               .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
-              .map((p,i) => {
+              .map((p, i) => {
                  return <span key={`number_items${i}`}
                               className={classnames({
                                  [s.selected]: currentPage === p

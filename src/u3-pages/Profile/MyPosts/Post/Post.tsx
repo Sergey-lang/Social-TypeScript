@@ -4,12 +4,12 @@ import likeImg from '../../../../u1-assets/images/post/love.svg'
 
 import s from './Post.module.scss'
 
-type MessageType = {
+type PostType = {
    message: string
    likeCount: number
 }
 
-export const Post: React.FC<MessageType> = ({message, likeCount}) => {
+export const Post: React.FC<PostType> = ({message, likeCount}) => {
    return (
        <div className={s.postWrapper}>
           <div className={s.info}>

@@ -26,7 +26,7 @@ class App extends React.Component<PropsType> {
 
    componentDidMount() {
       this.props.initializeApp()
-      window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
+      // window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
    }
 
    render() {

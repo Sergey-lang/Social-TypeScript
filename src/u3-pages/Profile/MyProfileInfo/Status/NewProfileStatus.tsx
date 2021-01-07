@@ -3,13 +3,13 @@ import {Button} from '../../../../u2-components/Button/Button'
 
 import s from './ProfileStatus.module.scss'
 
-type ProfileStatusWithHooksProps = {
+type PropsType = {
    status: string
    updateOwnProfileStatus: (status: string) => void
    isOwner: boolean
 }
 
-export const ProfileStatusWithHooks = (props: ProfileStatusWithHooksProps) => {
+export const ProfileStatusWithHooks = (props: PropsType) => {
 
    let [editMode, setEditMode] = useState<boolean>(false)
    let [status, setStatus] = useState<string>(props.status)
@@ -44,7 +44,7 @@ export const ProfileStatusWithHooks = (props: ProfileStatusWithHooksProps) => {
                  </div>
                  : <div className={s.editStatus}>
                     <span className={s.status}
-                          onDoubleClick={activateEditMode}>{props.status || 'unfortunately the status is empty'}</span>
+                          onDoubleClick={activateEditMode}>{props.status || '------'}</span>
                     {props.isOwner &&
                     <div className={s.btnWrapper}>
                        <Button onClick={() => setEditMode(true)}>Edit</Button>

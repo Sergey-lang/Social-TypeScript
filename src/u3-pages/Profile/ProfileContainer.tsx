@@ -19,14 +19,15 @@ type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType
 class ProfileContainer extends React.Component<PropsType> {
 
    updateProfile() {
-      let id = Number(this.props.match.params.userid)
-      let userId = id ? id : this.props.authorizedUserId
+      let id = +this.props.match.params.userid
+      let userId: number | null = id ? id : this.props.authorizedUserId
       if (!userId) {
+         //todo:replace push redirect
          this.props.history.push('/login')
       }
 
-      this.props.getUserProfileData(userId!)
-      this.props.getStatusFromUser(userId!)
+      this.props.getUserProfileData(userId as number)
+      this.props.getStatusFromUser(userId as number)
    }
 
    componentDidMount() {
