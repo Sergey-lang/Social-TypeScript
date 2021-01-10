@@ -11,10 +11,14 @@ let initializeState = {
     pageSize: 5,
     currentPage: 5,
     isFetching: false,
-    followingInProgress: [] as number[] //array of users id
+    followingInProgress: [] as number[], //array of users id
+    filter: {
+        term: ''
+    }
 };
 
 export type UsersInitializeStateType = typeof initializeState
+export type FilterType = typeof initializeState.filter
 type ActionsType = InferActionsTypes<typeof actions>
 type ThunkType = BaseThunkType<ActionsType>
 
@@ -46,6 +50,11 @@ export const usersReducer = (state: UsersInitializeStateType = initializeState, 
                     ? [...state.followingInProgress, action.payload.userId]
                     : state.followingInProgress.filter(id => id !== action.payload.userId)
             };
+        case "SN/USERS/SET-FILTER":
+            return {
+                ...state,
+                filter: action.payload
+            }
         default:
             return state;
     }
@@ -73,15 +82,21 @@ export const actions = {
             isFetching,
             userId
         }
+    } as const),
+    setFilter: (term: string) => ({
+        type: 'SN/USERS/SET-FILTER',
+        payload: {term}
     } as const)
 };
 
 //Thunk
-export const requestUsers = (requestPage: number, pageSize: number): ThunkType =>
+export const requestUsers = (requestPage: number, pageSize: number, term: string): ThunkType =>
     async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
         dispatch(actions.toggleIsFetching(true));
         dispatch(actions.setCurrentPage(requestPage));
-        const data = await usersAPI.getUsers(requestPage, pageSize);
+        dispatch(actions.setFilter(term));
+
+        const data = await usersAPI.getUsers(requestPage, pageSize, term);
         dispatch(actions.toggleIsFetching(false));
         dispatch(actions.setUsers(data.items));
         dispatch(actions.setUsersTotalCount(data.totalCount));
