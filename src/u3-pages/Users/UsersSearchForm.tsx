@@ -1,6 +1,6 @@
-import {Formik} from "formik";
-import React from "react";
-import {FilterType} from "../../u4-redux/users-reducer";
+import {Form, Formik, Field} from 'formik';
+import React from 'react';
+import {FilterType} from '../../u4-redux/users-reducer';
 
 const usersSearchValidateForm = (values: any) => {
     const errors = {};
@@ -11,41 +11,44 @@ type PropsType = {
     onFilterChanged: (filter: FilterType) => void
 }
 
-export const UsersSearchForm: React.FC<PropsType> = (props) => {
+type FormType = {
+    term: string,
+    friend: 'true' | 'false' | 'null'
+}
 
-    const submit = (values: FilterType, {setSubmitting}: { setSubmitting: (isSubmitting: boolean) => void }) => {
-        props.onFilterChanged(values)
+export const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
+
+    const submit = (values: FormType, {setSubmitting}: { setSubmitting: (isSubmitting: boolean) => void }) => {
+        //convert string to boolean
+        const filter: FilterType = {
+            term: values.term,
+            friend: values.friend === 'null' ? null : values.friend === 'true' ? true : false
+        }
+        //onFilterChanged get filter and include this value in requestUsers(1, pageSize, filter)
+        //requestUsers do request in redux
+        props.onFilterChanged(filter)
         setSubmitting(false)
     }
 
-    return (
-        <div>
-            <Formik
-                initialValues={{term: ''}}
-                validate={usersSearchValidateForm}
-                onSubmit={submit}
-            >
-                {({
-                      values,
-                      handleChange,
-                      handleBlur,
-                      handleSubmit,
-                      isSubmitting,
-                  }) => (
-                    <form onSubmit={handleSubmit}>
-                        <input
-                            type="text"
-                            name="term"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.term}
-                        />
-                        <button type="submit" disabled={isSubmitting}>
-                            Find
-                        </button>
-                    </form>
-                )}
-            </Formik>
-        </div>
-    )
-}
+    return <Formik
+        //from redux
+        initialValues={{term: '', friend: 'null'}}
+        validate={usersSearchValidateForm}
+        onSubmit={submit}>
+
+        {({isSubmitting}) => (
+            <Form>
+                <Field type="text" name="term"/>
+
+                <Field name="friend" as="select">
+                    <option value="null">All</option>
+                    <option value="true">Only following</option>
+                    <option value="false">Only unfollowing</option>
+                </Field>
+                <button type="submit" disabled={isSubmitting}>
+                    Find
+                </button>
+            </Form>
+        )}
+    </Formik>
+})

@@ -1,8 +1,9 @@
 import {axiosInstance, GetItemsType, APIResponseType} from './api'
 
 export const usersAPI = {
-   getUsers(currentPage: number, pageSize: number, term: string = '') {
-      return axiosInstance.get<GetItemsType>(`users?page=${currentPage}&count=${pageSize}&term=${term}`)
+   getUsers(currentPage: number, pageSize: number, term: string = '', friend: null | boolean = null) {
+      return axiosInstance.get<GetItemsType>
+      (`users?page=${currentPage}&count=${pageSize}&term=${term}`+(friend === null ? '':`&friend=${friend}`))
           .then(res => res.data)
    },
 

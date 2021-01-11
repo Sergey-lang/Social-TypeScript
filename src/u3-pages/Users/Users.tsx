@@ -2,9 +2,9 @@ import React from 'react'
 import {FilterType, UsersType} from '../../u4-redux/users-reducer'
 import {Paginator} from '../../u2-components/Paginator/Paginator'
 import {User} from './User/User'
+import {UsersSearchForm} from "./UsersSearchForm";
 
 import s from './Users.module.css'
-import {UsersSearchForm} from "./UsersSearchForm";
 
 type UsersPageType = {
     pageSize: number

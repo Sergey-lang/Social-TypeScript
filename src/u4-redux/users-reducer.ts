@@ -13,7 +13,8 @@ let initializeState = {
     isFetching: false,
     followingInProgress: [] as number[], //array of users id
     filter: {
-        term: ''
+        term: '',
+        friend: null as null | boolean
     }
 };
 
@@ -50,10 +51,10 @@ export const usersReducer = (state: UsersInitializeStateType = initializeState, 
                     ? [...state.followingInProgress, action.payload.userId]
                     : state.followingInProgress.filter(id => id !== action.payload.userId)
             };
-        case "SN/USERS/SET-FILTER":
+        case 'SN/USERS/SET-FILTER':
             return {
                 ...state,
-                filter: action.payload
+                filter: action.payload.filter
             }
         default:
             return state;
@@ -83,22 +84,23 @@ export const actions = {
             userId
         }
     } as const),
-    setFilter: (term: string) => ({
+    setFilter: (filter: FilterType) => ({
         type: 'SN/USERS/SET-FILTER',
-        payload: {term}
+        payload: {filter}
     } as const)
 };
 
 //Thunk
-export const requestUsers = (requestPage: number, pageSize: number, term: string): ThunkType =>
+export const requestUsers = (requestPage: number, pageSize: number, filter: FilterType): ThunkType =>
     async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
         dispatch(actions.toggleIsFetching(true));
         dispatch(actions.setCurrentPage(requestPage));
-        dispatch(actions.setFilter(term));
-
-        const data = await usersAPI.getUsers(requestPage, pageSize, term);
+        dispatch(actions.setFilter(filter));
+debugger
+        const data = await usersAPI.getUsers(requestPage, pageSize, filter.term, filter.friend);
         dispatch(actions.toggleIsFetching(false));
         dispatch(actions.setUsers(data.items));
+        debugger
         dispatch(actions.setUsersTotalCount(data.totalCount));
     };
 
@@ -133,6 +135,7 @@ export type PhotosType = {
     small: string | null
     large: string | null
 }
+
 export type UsersType = {
     id: number
     name: string
