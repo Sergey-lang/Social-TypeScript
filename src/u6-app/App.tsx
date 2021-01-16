@@ -1,71 +1,76 @@
 import React, {ComponentType} from 'react'
-import s from './App.module.scss'
 import HeaderContainer from '../u3-pages/00-Header/HeaderContainer'
 import {Route, withRouter, Switch, Redirect} from 'react-router-dom'
-import {AppStateType} from '../u4-redux/store'
-import {connect} from 'react-redux'
-import {initializeApp} from '../u4-redux/app-reducer'
-import {compose} from 'redux'
 import {Preloader} from '../u2-components/Preloader/Preloader'
+import {initializeApp} from '../u4-redux/app-reducer'
 import {withSuspense} from '../u7-hoc/withSuspense'
-import {Main} from '../u3-pages/01-Main/Main'
 import {Page404} from '../u3-pages/404/Page404'
+import {AppStateType} from '../u4-redux/store'
+import {Main} from '../u3-pages/01-Main/Main'
+import {connect} from 'react-redux'
+import {compose} from 'redux'
+
+import s from './App.module.scss'
 
 type PropsType = MapStateType & MapDispatchToProps
 
-const Login = React.lazy(() => import('../u3-pages/Login/Login'))
+const Login = React.lazy(
+    () => import('../u3-pages/Login/LoginPage').then(({LoginPage}) => ({default: LoginPage})),
+);
 const ProfileContainer = React.lazy(() => import('../u3-pages/Profile/ProfileContainer'))
 const DialogsContainer = React.lazy(() => import('../u3-pages/Dialogs/DialogsContainer'))
-const UsersContainer = React.lazy(() => import('../u3-pages/Users/UsersContainer'))
+const UsersPage = React.lazy(
+    () => import('../u3-pages/Users/UsersContainer').then(({UsersPage}) => ({default: UsersPage})),
+);
 
 class App extends React.Component<PropsType> {
 
-   catchAllUnhandledErrors = (e: PromiseRejectionEvent) => {
-      alert('Some error occurred')
-   }
+    catchAllUnhandledErrors = (e: PromiseRejectionEvent) => {
+        alert('Some error occurred')
+    }
 
-   componentDidMount() {
-      this.props.initializeApp()
-      // window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
-   }
+    componentDidMount() {
+        this.props.initializeApp()
+        // window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
+    }
 
-   render() {
+    render() {
 
-      if (this.props.initialized) {
-         return <Preloader/>
-      }
+        if (this.props.initialized) {
+            return <Preloader/>
+        }
 
-      return (
-          <div className={s.app}>
-             <HeaderContainer/>
-             <div className={s.container}>
-                <Main/>
-                <div className={s.content}>
-                   <Switch>
-                      <Route exact path="/" render={() => <Redirect to='/profile'/>}/>
-                      <Route path="/profile/:userid?" render={withSuspense(ProfileContainer)}/>
-                      <Route path="/dialogs" render={withSuspense(DialogsContainer)}/>
-                      <Route path="/users" render={withSuspense(UsersContainer)}/>
-                      <Route path="/login" render={withSuspense(Login)}/>
-                      <Route render={withSuspense(Page404)}/>
-                   </Switch>
+        return (
+            <div className={s.app}>
+                <HeaderContainer/>
+                <div className={s.container}>
+                    <Main/>
+                    <div className={s.content}>
+                        <Switch>
+                            <Route exact path="/" render={() => <Redirect to='/profile'/>}/>
+                            <Route path="/profile/:userid?" render={withSuspense(ProfileContainer)}/>
+                            <Route path="/dialogs" render={withSuspense(DialogsContainer)}/>
+                            <Route path="/users" render={withSuspense(UsersPage)}/>
+                            <Route path="/login" render={withSuspense(Login)}/>
+                            <Route render={withSuspense(Page404)}/>
+                        </Switch>
+                    </div>
                 </div>
-             </div>
-          </div>
-      )
-   }
+            </div>
+        )
+    }
 }
 
 type MapDispatchToProps = {
-   initializeApp: () => void
+    initializeApp: () => void
 }
 
 type MapStateType = {
-   initialized: boolean
+    initialized: boolean
 }
 
 const mapStateToProps = (state: AppStateType): MapStateType => ({
-   initialized: state.app.initialized
+    initialized: state.app.initialized
 })
 
 export default compose<ComponentType>(

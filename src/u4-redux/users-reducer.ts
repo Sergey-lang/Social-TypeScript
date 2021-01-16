@@ -96,11 +96,10 @@ export const requestUsers = (requestPage: number, pageSize: number, filter: Filt
         dispatch(actions.toggleIsFetching(true));
         dispatch(actions.setCurrentPage(requestPage));
         dispatch(actions.setFilter(filter));
-debugger
+
         const data = await usersAPI.getUsers(requestPage, pageSize, filter.term, filter.friend);
         dispatch(actions.toggleIsFetching(false));
         dispatch(actions.setUsers(data.items));
-        debugger
         dispatch(actions.setUsersTotalCount(data.totalCount));
     };
 
