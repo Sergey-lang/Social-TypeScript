@@ -23,7 +23,6 @@ export type FilterType = typeof initializeState.filter
 type ActionsType = InferActionsTypes<typeof actions>
 type ThunkType = BaseThunkType<ActionsType>
 
-
 export const usersReducer = (state: UsersInitializeStateType = initializeState, action: ActionsType): UsersInitializeStateType => {
     switch (action.type) {
         case 'SN/USERS/FOLLOW':

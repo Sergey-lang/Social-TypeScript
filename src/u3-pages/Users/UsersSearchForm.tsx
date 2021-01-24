@@ -1,6 +1,8 @@
 import {Form, Formik, Field} from 'formik';
 import React from 'react';
 import {FilterType} from '../../u4-redux/users-reducer';
+import {useSelector} from 'react-redux';
+import {getUsersFilter} from '../../u4-redux/users-selectors';
 
 const usersSearchValidateForm = (values: any) => {
     const errors = {};
@@ -11,12 +13,16 @@ type PropsType = {
     onFilterChanged: (filter: FilterType) => void
 }
 
+type FriendFormType = 'true' | 'false' | 'null';
+
 type FormType = {
     term: string,
-    friend: 'true' | 'false' | 'null'
+    friend: FriendFormType
 }
 
 export const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
+
+    const filter = useSelector(getUsersFilter)
 
     const submit = (values: FormType, {setSubmitting}: { setSubmitting: (isSubmitting: boolean) => void }) => {
         //convert string to boolean
@@ -31,8 +37,11 @@ export const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
     }
 
     return <Formik
-        //from redux
-        initialValues={{term: '', friend: 'null'}}
+        //initial values === redux filter values
+        //useEffect work after first render and current values take later, so
+        //the enableReinitialize prop resets form if initialValues is changed
+        enableReinitialize
+        initialValues={{term: filter.term, friend: String(filter.friend) as FriendFormType}}
         validate={usersSearchValidateForm}
         onSubmit={submit}>
 
