@@ -1,8 +1,11 @@
 import {Form, Formik, Field} from 'formik';
 import React from 'react';
-import {FilterType} from '../../u4-redux/users-reducer';
+import {FilterType} from '../../../u4-redux/users-reducer';
 import {useSelector} from 'react-redux';
-import {getUsersFilter} from '../../u4-redux/users-selectors';
+import {getUsersFilter} from '../../../u4-redux/users-selectors';
+
+import s from './UsersSearchForm.module.scss'
+import {Button} from '../../../u2-components/Button/Button';
 
 const usersSearchValidateForm = (values: any) => {
     const errors = {};
@@ -46,18 +49,19 @@ export const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
         onSubmit={submit}>
 
         {({isSubmitting}) => (
-            <Form>
-                <Field type="text" name="term"/>
-
-                <Field name="friend" as="select">
-                    <option value="null">All</option>
-                    <option value="true">Only following</option>
-                    <option value="false">Only unfollowing</option>
-                </Field>
-                <button type="submit" disabled={isSubmitting}>
-                    Find
-                </button>
-            </Form>
+            <div className={s.formWrapper}>
+                <Form className={s.usersForm}>
+                    <Field type="text" name="term" className={s.usersSearchInput}/>
+                    <Field name="friend" as="select" className={s.usersSelector}>
+                        <option value="null">All</option>
+                        <option value="true">Only following</option>
+                        <option value="false">Only unfollowing</option>
+                    </Field>
+                    <Button type="submit" disabled={isSubmitting} className={s.searchBtn}>
+                        Find
+                    </Button>
+                </Form>
+            </div>
         )}
     </Formik>
 })

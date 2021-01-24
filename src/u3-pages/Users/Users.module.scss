@@ -1,0 +1,8 @@
+@import '../../u1-assets/mixins/mixins';
+//@include display(flex, $f-der: column);
+//@include position(absolute, -5px, $l: -21px);
+
+.usersPageWrapper {
+  flex: 0 0 100%;
+  max-width: 100%;
+}

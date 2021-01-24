@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import {User} from './User/User'
-import {UsersSearchForm} from './UsersSearchForm';
+import {UsersSearchForm} from './UsersSearchForm/UsersSearchForm';
 import {useDispatch, useSelector} from 'react-redux';
 import {FilterType, requestUsers} from '../../u4-redux/users-reducer'
 import {Paginator} from '../../u2-components/Paginator/Paginator'
@@ -15,7 +15,8 @@ import {
 import {useHistory} from 'react-router-dom';
 import * as queryString from 'querystring';
 
-import s from './Users.module.css'
+import s from './Users.module.scss'
+import { UsersPageHeader } from './UsersPageHeader/UsersPageHeader';
 
 type QueryParamsType = { term?: string, page?: string, friend?: string };
 
@@ -85,24 +86,20 @@ export const Users: React.FC =
         const onPageChanged = (currentPage: number) => {
             dispatch(requestUsers(currentPage, pageSize, filter))
         }
-
         const onFilterChanged = (filter: FilterType) => {
             dispatch(requestUsers(1, pageSize, filter))
         }
-
         const follow = (id: number) => {
             dispatch(follow(id))
         }
-
         const unfollow = (id: number) => {
             dispatch(unfollow(id))
         }
 
         return (
-            <div className={s.users_container}>
-                <div className={s.users_headline}>Users</div>
+            <div className={s.usersPageWrapper}>
+                <UsersPageHeader onFilterChanged={onFilterChanged}/>
                 <div>
-                    <UsersSearchForm onFilterChanged={onFilterChanged}/>
                     <Paginator currentPage={currentPage}
                                onPageChanged={onPageChanged}
                                pageSize={pageSize}

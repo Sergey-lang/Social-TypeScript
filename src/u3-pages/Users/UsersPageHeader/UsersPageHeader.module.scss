@@ -1,0 +1,40 @@
+.centralMeta {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #fff none repeat scroll 0 0;
+  border: 1px solid #ede9e9;
+  border-radius: 5px;
+  width: auto;
+
+  .leftBlock {
+    display: flex;
+    align-items: center;
+    padding-right: 15px;
+    padding-left: 15px;
+
+    .pageTitle {
+      position: relative;
+      color: #515365;
+      font-size: 16px;
+      margin-bottom: 0;
+      font-weight: 500;
+
+      .followCount {
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        margin: 0 10px;
+        background: #7750f8;
+        border-radius: 100%;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 30px;
+        text-align: center;
+        top: -5px;
+      }
+    }
+  }
+}
