@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
 import {User} from './User/User'
-import {UsersSearchForm} from './UsersSearchForm/UsersSearchForm';
 import {useDispatch, useSelector} from 'react-redux';
 import {FilterType, requestUsers} from '../../u4-redux/users-reducer'
 import {Paginator} from '../../u2-components/Paginator/Paginator'
@@ -16,7 +15,7 @@ import {useHistory} from 'react-router-dom';
 import * as queryString from 'querystring';
 
 import s from './Users.module.scss'
-import { UsersPageHeader } from './UsersPageHeader/UsersPageHeader';
+import {UsersPageHeader} from './UsersPageHeader/UsersPageHeader';
 
 type QueryParamsType = { term?: string, page?: string, friend?: string };
 
@@ -105,13 +104,15 @@ export const Users: React.FC =
                                pageSize={pageSize}
                                totalItemsCount={totalUsersCount}
                     />
-                    <div className={s.users_page}>
-                        {users.map(u => <User key={u.id}
-                                              user={u}
-                                              follow={follow}
-                                              unfollow={unfollow}
-                                              followingInProgress={followingInProgress}/>
-                        )}
+                    <div className={s.centralUsersMeta}>
+                        <div className={s.row}>
+                            {users.map(u => <User key={u.id}
+                                                  user={u}
+                                                  follow={follow}
+                                                  unfollow={unfollow}
+                                                  followingInProgress={followingInProgress}/>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

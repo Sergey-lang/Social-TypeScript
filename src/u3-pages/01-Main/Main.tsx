@@ -1,11 +1,11 @@
 import React from 'react'
-
-import s from './Main.module.scss'
-import undefinedUserImg from './../../u1-assets/images/header/question-mark-128.png'
 import {NavLink} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {AppStateType} from '../../u4-redux/store'
 import {savePhoto} from '../../u4-redux/profile-reducer'
+
+import undefinedUserImg from './../../u1-assets/images/users/no-image-100.png'
+import s from './Main.module.scss'
 
 export const Main = () => {
 

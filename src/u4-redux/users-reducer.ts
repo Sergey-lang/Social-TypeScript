@@ -8,8 +8,8 @@ import {updateObjectInArray} from '../utils/objectHelpers';
 let initializeState = {
     users: [] as UsersType[],
     totalUsersCount: 0,
-    pageSize: 5,
-    currentPage: 5,
+    pageSize: 16,
+    currentPage: 555,
     isFetching: false,
     followingInProgress: [] as number[], //array of users id
     filter: {
@@ -128,7 +128,6 @@ export const unfollow = (id: number): ThunkType => {
 };
 
 //Type
-
 export type PhotosType = {
     small: string | null
     large: string | null

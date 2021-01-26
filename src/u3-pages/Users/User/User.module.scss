@@ -1,0 +1,114 @@
+.userWrapper {
+  display: flex;
+  width: 100%;
+
+  .userBox {
+    min-width: 220px;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #ede9e9;
+    margin-bottom: 20px;
+
+    .background {
+      background-position: 50%;
+      background-size: cover;
+      border-radius: 5px 5px 0 0;
+      position: relative;
+      height: 119px;
+      padding-bottom: 10px;
+
+      &:before {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        background: rgba(0, 0, 0, 0.2) none repeat scroll 0 0;
+        bottom: 0;
+        content: "";
+        border-radius: 4px;
+      }
+
+      .followers {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+
+    .friendMeta {
+      padding: 0 15px 20px;
+      position: relative;
+      width: 100%;
+      box-sizing: border-box;
+
+      .userPhoto {
+        border: 2px solid #fff;
+        border-radius: 50%;
+        position: relative;
+        margin-top: -40px;
+        height: auto;
+        max-width: 88px;
+      }
+
+      .friendName {
+        display: inline-block;
+        position: absolute;
+        text-align: left;
+        top: 10px;
+        left: 117px;
+
+        a {
+          display: inline-block;
+          width: 100%;
+          color: #313345;
+          font-size: 15px;
+          font-weight: 500;
+          word-break: break-all;
+          transition: all 0.2s linear 0s;
+
+          &:hover {
+            color: #fa6342;
+          }
+        }
+
+        .country {
+          display: inline-block;
+          font-size: 12px;
+          color: #757a95;
+        }
+      }
+
+      .friendInfo {
+        display: inline-block;
+        margin: 20px 0;
+        padding: 0;
+        width: 100%;
+
+        .frndInfoItem {
+          display: inline-block;
+          width: 100%;
+          font-size: 13px;
+          color: #757a95;
+          padding: 2px 0;
+
+          .fieldName {
+            display: inline-block;
+            width: 70px;
+            color: #515365;
+            font-weight: 500;
+
+            .linkToProfile {
+
+            }
+          }
+        }
+      }
+    }
+  }
+}
