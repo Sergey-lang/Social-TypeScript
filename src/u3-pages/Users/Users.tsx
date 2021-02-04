@@ -16,6 +16,7 @@ import * as queryString from 'querystring';
 
 import s from './Users.module.scss'
 import {UsersPageHeader} from './UsersPageHeader/UsersPageHeader';
+import {path} from '../../u6-app/App';
 
 type QueryParamsType = { term?: string, page?: string, friend?: string };
 
@@ -77,7 +78,7 @@ export const Users: React.FC =
             if (currentPage !== 1) query.page = String(currentPage)
 
             history.push({
-                pathname: '/users',
+                pathname: path.DEVELOPERS,
                 search: queryString.stringify(query)
             })
         }, [filter, currentPage])

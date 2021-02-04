@@ -19,9 +19,18 @@ const Login = React.lazy(
 );
 const ProfileContainer = React.lazy(() => import('../u3-pages/Profile/ProfileContainer'))
 const DialogsContainer = React.lazy(() => import('../u3-pages/Dialogs/DialogsContainer'))
+const ChatPage = React.lazy(() => import('../u3-pages/Chat/ChatPage'))
 const UsersPage = React.lazy(
     () => import('../u3-pages/Users/UsersContainer').then(({UsersPage}) => ({default: UsersPage})),
 );
+
+export const path = {
+    PROFILE: '/profile',
+    DIALOGS: '/dialogs',
+    CHAT: '/chat',
+    DEVELOPERS: '/developers',
+    LOGIN: '/login',
+}
 
 class App extends React.Component<PropsType> {
 
@@ -47,11 +56,12 @@ class App extends React.Component<PropsType> {
                     <Main/>
                     <div className={s.content}>
                         <Switch>
-                            <Route exact path="/" render={() => <Redirect to='/profile'/>}/>
-                            <Route path="/profile/:userid?" render={withSuspense(ProfileContainer)}/>
-                            <Route path="/dialogs" render={withSuspense(DialogsContainer)}/>
-                            <Route path="/users" render={withSuspense(UsersPage)}/>
-                            <Route path="/login" render={withSuspense(Login)}/>
+                            <Route exact path="/" render={() => <Redirect to={path.PROFILE}/>}/>
+                            <Route path={path.PROFILE + ':userid?'} render={withSuspense(ProfileContainer)}/>
+                            <Route path={path.DIALOGS} render={withSuspense(DialogsContainer)}/>
+                            <Route path={path.CHAT}  render={withSuspense(ChatPage)}/>
+                            <Route path={path.DEVELOPERS} render={withSuspense(UsersPage)}/>
+                            <Route path={path.LOGIN} render={withSuspense(Login)}/>
                             <Route render={withSuspense(Page404)}/>
                         </Switch>
                     </div>

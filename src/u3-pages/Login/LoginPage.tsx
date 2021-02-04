@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {InjectedFormProps, reduxForm} from 'redux-form'
 
 import s from './Login.module.css'
+import {path} from '../../u6-app/App';
 
 type LoginFormOwnProps = {
     captchaUrl: string | null
@@ -66,7 +67,7 @@ export const LoginPage: React.FC = () => {
     }
 
     if (isAuth) {
-        return <Redirect to={'/profile'}/>
+        return <Redirect to={path.PROFILE}/>
     }
 
     return (

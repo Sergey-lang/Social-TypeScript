@@ -1,11 +1,12 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, Route} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {AppStateType} from '../../u4-redux/store'
 import {savePhoto} from '../../u4-redux/profile-reducer'
 
 import undefinedUserImg from './../../u1-assets/images/users/no-image-100.png'
 import s from './Main.module.scss'
+import {path} from '../../u6-app/App';
 
 export const Main = () => {
 
@@ -56,19 +57,16 @@ export const Main = () => {
                          </div>
                          <ul className={s.navLinks}>
                             <li className={s.active}>
-                               <NavLink to="/profile" activeClassName={s.active}>About</NavLink>
+                               <NavLink to={path.PROFILE} activeClassName={s.active}>Profile</NavLink>
                             </li>
                             <li>
-                               <NavLink to="/followers" activeClassName={s.active}>Followers</NavLink>
+                               <NavLink to={path.DIALOGS} activeClassName={s.active}>Dialogs</NavLink>
                             </li>
                             <li>
-                               <NavLink to="/follow" activeClassName={s.active}>Follow</NavLink>
+                               <NavLink to={path.CHAT}  activeClassName={s.active}>Chat</NavLink>
                             </li>
                             <li>
-                               <NavLink to="/dialogs" activeClassName={s.active}>Dialogs</NavLink>
-                            </li>
-                            <li>
-                               <NavLink to="/users" activeClassName={s.active}>Users</NavLink>
+                               <NavLink to={path.DEVELOPERS}  activeClassName={s.active}>Developers</NavLink>
                             </li>
                          </ul>
                       </div>
