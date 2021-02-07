@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavLink, Route} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {AppStateType} from '../../u4-redux/store'
 import {savePhoto} from '../../u4-redux/profile-reducer'
