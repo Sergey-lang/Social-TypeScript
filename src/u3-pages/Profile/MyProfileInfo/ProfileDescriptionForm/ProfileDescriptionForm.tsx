@@ -32,7 +32,7 @@ export const ProfileForm: React.FC<InjectedFormProps<ProfileFormType,
    )
 
    return (
-       <aside className={s.sidebar}>
+       <div className={s.sidebar}>
           <div className={s.central}>
                 <span className={s.personal}>
                    Personal Info Edit
@@ -60,7 +60,7 @@ export const ProfileForm: React.FC<InjectedFormProps<ProfileFormType,
                 </div>
              </form>
           </div>
-       </aside>
+       </div>
    )
 }
 
