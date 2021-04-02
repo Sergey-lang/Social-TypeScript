@@ -3,10 +3,11 @@ import {ChatMessageType} from '../../api/chat-api';
 import {useDispatch, useSelector} from 'react-redux';
 import {sendMessage, startMessagesListening, stopMessagesListening} from '../../redux/chat-reducer';
 import {AppStateType} from '../../redux/store';
+import s from './ChatPage.module.scss'
 
 const ChatPage: React.FC = () => {
     return (
-        <div>
+        <div className={s.chat_page}>
             <Chat/>
         </div>
     )
@@ -14,7 +15,6 @@ const ChatPage: React.FC = () => {
 
 export const Chat: React.FC = () => {
     const dispatch = useDispatch()
-
 
     useEffect(() => {
         dispatch(startMessagesListening())
@@ -36,7 +36,7 @@ export const Messages: React.FC<{}> = ({}) => {
     const messages = useSelector((state: AppStateType) => state.chat.messages)
 
     return (
-        <div style={{height: '400px', overflowY: 'auto'}}>
+        <div className={s.messages_block}>
             {messages.map((m, i) => <Message message={m} key={i}/>)}
         </div>
     )
@@ -44,11 +44,15 @@ export const Messages: React.FC<{}> = ({}) => {
 
 export const Message: React.FC<{ message: ChatMessageType }> = ({message}) => {
     return (
-        <div>
-            <img src={message.photo} width={30} alt=""/><b>{message.userName}</b>
-            <br/>
-            {message.message}
-            <hr/>
+        <div className={s.message}>
+            <div className={s.topic_data}>
+                <img src={message.photo}/>
+                <span className={s.user_name}>{message.userName}</span>
+                <em>Developer</em>
+            </div>
+            <div className={s.topic_detail}>
+                {message.message}
+            </div>
         </div>
     )
 }
@@ -56,7 +60,7 @@ export const Message: React.FC<{ message: ChatMessageType }> = ({message}) => {
 export const AddMessageForm: React.FC<{}> = () => {
     const dispatch = useDispatch()
     const [message, setMessage] = useState('')
-    const [readyStatus, setReadyStatus] = useState<'pending' | 'ready'>('pending')
+    // const [readyStatus, setReadyStatus] = useState<'pending' | 'ready'>('pending')
 
     const sendMessageHandler = () => {
         if (!message) {

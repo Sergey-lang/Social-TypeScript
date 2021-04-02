@@ -4,7 +4,6 @@ import React from 'react'
 import {NavLink} from 'react-router-dom'
 import {UsersType} from '../../../redux/users-reducer'
 import {Button} from '../../../components/Button/Button'
-
 import s from './User.module.scss'
 
 type UserType = {

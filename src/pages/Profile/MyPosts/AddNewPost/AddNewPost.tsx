@@ -4,7 +4,6 @@ import {Button} from '../../../../components/Button/Button'
 import posterImg from '../../../../assets/images/user.jpg'
 import {createField, GetStringKeys, Textarea} from '../../../../components/FormControl/FormControl'
 import {required} from '../../../../utils/validator'
-
 import s from './AddNewPost.module.scss'
 
 type PostFormValuesTypeKeys = GetStringKeys<PostFormValuesType>

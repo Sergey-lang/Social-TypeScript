@@ -1,7 +1,5 @@
 import {ThunkDispatch} from 'redux-thunk'
 import {AppStateType, BaseThunkType, InferActionsTypes} from './store'
-import {authAPI} from '../api/auth-api'
-import {ResultCodes} from '../api/api'
 import {chatAPI, ChatMessageType} from '../api/chat-api';
 import {Dispatch} from 'redux';
 
@@ -26,7 +24,7 @@ export const actions = {
     messagesReceived: (messages: ChatMessageType[]) => ({
         type: 'SN/CHAT/MESSAGES_RECEIVED',
         payload: {messages},
-    } as const),
+    } as const)
 }
 
 let _newMessageHandler: ((messages: ChatMessageType[]) => void) | null = null
