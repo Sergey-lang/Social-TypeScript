@@ -1,0 +1,117 @@
+@import "../../../../assets/mixins/mixins";
+
+.postWrapper {
+   @include display(flex, $f-der: column);
+   background: #fff;
+   border: 1px solid #ede9e9;
+   border-radius: 5px;
+   max-width: 100%;
+   margin-bottom: 20px;
+   padding: 20px;
+
+   .info {
+      display: flex;
+
+      .senderImg {
+         margin: 0;
+         width: 60px;
+
+         img {
+            border-radius: 100%;
+            width: 60px;
+         }
+      }
+
+      .name {
+         @include display(flex, center, $f-der: column);
+         width: 100%;
+         padding-left: 10px;
+
+         ins {
+            display: inline-block;
+            width: 90%;
+            font-size: 12px;
+            text-decoration: none;
+
+            a {
+               color: #fa6342;
+               font-size: 13.5px;
+               font-weight: 500;
+            }
+         }
+
+         span {
+            color: #999;
+            float: left;
+            font-size: 12px;
+            text-transform: capitalize;
+            width: 90%;
+         }
+      }
+   }
+
+   .postMeta {
+      float: left;
+      margin-top: 15px;
+      width: 100%;
+      position: relative;
+
+      .detail {
+         width: 74%;
+
+         .messageText {
+            margin: 10px 0 16px 0;
+            font-size: 14px;
+            letter-spacing: 0.1px;
+            color: #959ab5;
+            font-weight: 500;
+         }
+      }
+   }
+
+   .moreInfo {
+      border-top: 1px solid #ede9e9;
+      float: left;
+      padding: 8px 0 0;
+      width: 100%;
+      z-index: 0;
+
+      .infoList {
+         float: left;
+         line-height: 27px;
+         margin-bottom: 0;
+         margin-top: 13px;
+         padding-left: 0;
+         width: 66%;
+
+         .infoItem {
+            display: inline-block;
+            font-size: 13px;
+            margin-right: 32px;
+            vertical-align: middle;
+
+            .like {
+               position: relative;
+
+               .likesImg {
+                  cursor: pointer;
+                  width: 20px;
+                  transition: all 200ms;
+                  &:hover {
+                     transform: scale(1.2);
+                  }
+               }
+
+               span {
+                  color: #999999;
+                  font-size: 11px;
+                  left: 20px;
+                  position: absolute;
+                  top: -10px;
+                  font-weight: 400;
+               }
+            }
+         }
+      }
+   }
+}

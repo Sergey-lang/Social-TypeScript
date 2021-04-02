@@ -1,0 +1,38 @@
+@import "../../../../assets/mixins/mixins";
+
+.statusWrapper {
+   .status {
+      @include display(flex, $f-der: column);
+      width: 100%;
+      margin-bottom: 10px;
+
+      .btnWrapper {
+         @include display(flex, center);
+         width: auto;
+      }
+
+      .statusInput {
+         width: 98%;
+         border: 1px solid #dbd6d6;
+         border-radius: 5px;
+         margin-bottom: 10px;
+         padding: 5px;
+      }
+   }
+
+   .editStatus {
+      @include display(flex, $f-der: column);
+      width: 100%;
+      margin-bottom: 10px;
+
+      .btnWrapper {
+         @include display(flex, center);
+         width: 100%;
+      }
+
+      span {
+         width: 100%;
+         margin-bottom: 10px;
+      }
+   }
+}

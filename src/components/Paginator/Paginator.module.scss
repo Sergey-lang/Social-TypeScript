@@ -1,0 +1,51 @@
+@import "../../assets/mixins/mixins";
+
+.paginationWrapper {
+  @include display(flex, center, center);
+  padding: 5px;
+
+  .numberItem {
+    @include display(flex, center);
+    font-size: 13px;
+    padding: 2px;
+    cursor: pointer;
+
+    &:first-of-type {
+      margin-left: 5px;
+    }
+
+    &:last-of-type {
+      margin-right: 5px;
+    }
+  }
+}
+
+.selected {
+  font-weight: 600;
+}
+
+.pagBtn {
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+  background-image: url("../../assets/images/users/collapse-arrow-100.png");
+  background-size: 60%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-color: #3b3131;
+  border-radius: 50%;
+  border: 1px;
+  outline: none;
+  transition: all 0.2s linear 0s;
+  transform: rotate(90deg);
+
+  &.prevBtn {
+    transform: rotate(-90deg);
+  }
+
+  &:hover {
+    background-color: #ef492a;
+  }
+}
+
+

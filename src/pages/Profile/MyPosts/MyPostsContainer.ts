@@ -1,0 +1,16 @@
+import {MyPosts} from './MyPosts'
+import {connect} from 'react-redux'
+import {AppStateType} from '../../../redux/store'
+import {actions, ProfileInitialStateType} from '../../../redux/profile-reducer'
+
+export type MapStateType = {
+   profilePage: ProfileInitialStateType
+}
+export type MapDispatchType = {
+   addPost: (postNewMessage: string) => void
+}
+
+const mapState = (state: AppStateType): MapStateType => ({profilePage: state.profileState})
+
+export const MyPostsContainer = connect<MapStateType, MapDispatchType, {}, AppStateType>
+(mapState, {addPost: actions.addPost})(MyPosts)

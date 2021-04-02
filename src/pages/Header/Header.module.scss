@@ -1,0 +1,94 @@
+@import "../../assets/mixins/mixins";
+
+.topBar {
+   @include display(flex, $a-items: center);
+   z-index: 1;
+   background: #34465d;
+   height: 66px;
+   padding: 0 16px;
+   position: fixed;
+   width: 100%;
+   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+   .logoWrapper {
+      @include display(flex, $a-items: center);
+      width: 20%;
+
+      .logoLink {
+         display: flex;
+
+         .logoName {
+            color: white;
+            font-size: 16px;
+         }
+
+         .logoImg {
+            width: 50px;
+            padding: 0 5px;
+         }
+      }
+   }
+
+   .topArea {
+      @include display(flex, flex-end, center);
+      height: 100%;
+      width: 80%;
+
+      .pageNameWrapper {
+         @include display(flex, $a-items: center);
+         height: 100%;
+         border-right: 1px solid rgba(255, 255, 255, 0.1);
+
+         .pageName {
+            padding-right: 20px;
+            color: #fff;
+            font-size: 14px;
+            text-transform: uppercase;
+         }
+      }
+
+      .userImg {
+         height: 100%;
+         padding-left: 30px;
+         display: flex;
+         align-items: center;
+
+         .isAuthState {
+            color: #fff;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 10px 0 0;
+            vertical-align: middle;
+         }
+
+         img {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid hsla(0,0%,100%,.8);
+            cursor: pointer;
+         }
+
+         .login {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+         }
+      }
+
+      .exitIconWrapper {
+         display: flex;
+         width: 50px;
+         padding: 0 20px;
+
+         .exit {
+            .exitIcon {
+               width: 20px;
+            }
+         }
+      }
+   }
+
+}
