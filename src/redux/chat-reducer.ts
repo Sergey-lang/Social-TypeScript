@@ -1,7 +1,7 @@
 import {ThunkDispatch} from 'redux-thunk'
-import {AppStateType, BaseThunkType, InferActionsTypes} from './store'
 import {chatAPI, ChatMessageType} from '../api/chat-api';
 import {Dispatch} from 'redux';
+import {AppStateType, BaseThunkType, InferActionsTypes} from '../app/store';
 
 let initializeState = {
     messages: [] as ChatMessageType[]

@@ -6,7 +6,7 @@ import logoImg from '../../assets/images/logo.svg'
 import undefinedUserImg from '../../assets/images/header/question-mark-128.png'
 import exit from '../../assets/images/header/exit-100.png'
 import {useSelector} from 'react-redux'
-import {AppStateType} from '../../redux/store'
+import {AppStateType} from '../../app/store';
 
 type HeaderPropsType = {
    isAuth: boolean

@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {ChatMessageType} from '../../api/chat-api';
 import {useDispatch, useSelector} from 'react-redux';
 import {sendMessage, startMessagesListening, stopMessagesListening} from '../../redux/chat-reducer';
-import {AppStateType} from '../../redux/store';
 import s from './ChatPage.module.scss'
+import {AppStateType} from '../../app/store';
 
 const ChatPage: React.FC = () => {
     return (

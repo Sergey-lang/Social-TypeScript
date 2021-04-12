@@ -1,8 +1,8 @@
 import React from 'react'
 import {Header} from './Header'
-import {AppStateType} from '../../redux/store'
 import {connect} from 'react-redux'
 import {getAuthUserData, logout} from '../../redux/auth-reducer'
+import {AppStateType} from '../../app/store';
 
 type OwnPropsType = MapStateType & MapDispatchType
 

@@ -1,12 +1,15 @@
 import {Action, applyMiddleware, combineReducers, compose, createStore} from 'redux'
-import {profileReducer} from './profile-reducer'
-import {dialogsReducer} from './dialogs-reducer'
-import {usersReducer} from './users-reducer'
-import {authReducer} from './auth-reducer'
 import thunkMiddleware, {ThunkAction} from 'redux-thunk'
 import {reducer as formReducer} from 'redux-form'
-import {appReducer} from './app-reducer'
-import {chatReducer} from './chat-reducer';
+import {profileReducer} from '../redux/profile-reducer';
+import {dialogsReducer} from '../redux/dialogs-reducer';
+import {usersReducer} from '../redux/users-reducer';
+import {authReducer} from '../redux/auth-reducer';
+import {appReducer} from '../redux/app-reducer';
+import {chatReducer} from '../redux/chat-reducer';
+import createSagaMiddleware from 'redux-saga'
+import {all} from 'redux-saga/effects';
+import {usersWatcherSaga} from '../redux/redux-sagas/users-sagas';
 
 const rootReducer = combineReducers({
    profileState: profileReducer,
@@ -32,5 +35,12 @@ export type BaseThunkType<A extends Action,R = Promise<void>> = ThunkAction<R, A
 //@ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-export let store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware)))
+const sagaMiddleware = createSagaMiddleware()
 
+export let store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware,sagaMiddleware)))
+
+sagaMiddleware.run(rootWatcher)
+
+function* rootWatcher() {
+   yield all([usersWatcherSaga()])
+}

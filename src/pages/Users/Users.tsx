@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {User} from './User/User'
 import {useDispatch, useSelector} from 'react-redux';
-import {FilterType, follow, requestUsers, unfollow} from '../../redux/users-reducer'
+import {FilterType, follow, unfollow} from '../../redux/users-reducer'
 import {Paginator} from '../../components/Paginator/Paginator'
 import {
     getCurrentPage,
@@ -17,12 +17,12 @@ import * as queryString from 'querystring';
 import s from './Users.module.scss'
 import {UsersPageHeader} from './UsersPageHeader/UsersPageHeader';
 import {path} from '../../app/App';
+import {requestUsersAction} from '../../redux/redux-sagas/users-sagas';
 
 type QueryParamsType = { term?: string, page?: string, friend?: string };
 
 export const Users: React.FC =
     (props) => {
-
         const followingInProgress = useSelector(getFollowingInProgress)
         const totalUsersCount = useSelector(getTotalUsersCount)
         const currentPage = useSelector(getCurrentPage)
@@ -62,7 +62,7 @@ export const Users: React.FC =
                     break
             }
 
-            dispatch(requestUsers(actualPage, pageSize, actualFilter))
+            dispatch(requestUsersAction(actualPage, pageSize, actualFilter))
         }, [])
 
         // this effect get filter from redux after changing and push settings to url from search(term,friend)
@@ -84,10 +84,10 @@ export const Users: React.FC =
         }, [filter, currentPage])
 
         const onPageChanged = (currentPage: number) => {
-            dispatch(requestUsers(currentPage, pageSize, filter))
+            dispatch(requestUsersAction(currentPage, pageSize, filter))
         }
         const onFilterChanged = (filter: FilterType) => {
-            dispatch(requestUsers(1, pageSize, filter))
+            dispatch(requestUsersAction(1, pageSize, filter))
         }
         const followUser = (id: number) => {
             dispatch(follow(id))

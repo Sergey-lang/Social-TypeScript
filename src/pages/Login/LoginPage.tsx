@@ -3,13 +3,12 @@ import {createField, Input} from '../../components/FormControl/FormControl'
 import {Redirect} from 'react-router-dom'
 import {required} from '../../utils/validator'
 import {login} from '../../redux/auth-reducer'
-import {AppStateType} from '../../redux/store'
 import {useDispatch, useSelector} from 'react-redux'
 import {InjectedFormProps, reduxForm} from 'redux-form'
-
 import s from './LoginPage.module.scss'
 import {path} from '../../app/App';
 import { Button } from '../../components/Button/Button'
+import {AppStateType} from '../../app/store';
 
 type LoginFormOwnProps = {
     captchaUrl: string | null

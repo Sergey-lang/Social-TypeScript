@@ -1,4 +1,4 @@
-import {InferActionsTypes} from './store'
+import {InferActionsTypes} from '../app/store';
 
 let initializeState = {
    dialogs: [

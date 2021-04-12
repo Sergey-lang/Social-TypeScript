@@ -1,9 +1,8 @@
-import {AppStateType, BaseThunkType, InferActionsTypes} from './store';
-import {ThunkDispatch} from 'redux-thunk';
 import {usersAPI} from '../api/users-api';
 import {Dispatch} from 'redux';
 import {APIResponseType, ResultCodes} from '../api/api';
 import {updateObjectInArray} from '../utils/objectHelpers';
+import {BaseThunkType, InferActionsTypes} from '../app/store';
 
 let initializeState = {
     users: [] as UsersType[],
@@ -90,18 +89,6 @@ export const actions = {
 };
 
 //Thunk
-export const requestUsers = (requestPage: number, pageSize: number, filter: FilterType): ThunkType =>
-    async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
-        dispatch(actions.toggleIsFetching(true));
-        dispatch(actions.setCurrentPage(requestPage));
-        dispatch(actions.setFilter(filter));
-
-        const data = await usersAPI.getUsers(requestPage, pageSize, filter.term, filter.friend);
-        dispatch(actions.toggleIsFetching(false));
-        dispatch(actions.setUsers(data.items));
-        dispatch(actions.setUsersTotalCount(data.totalCount));
-    };
-
 const _followUnfollowFlow = async (dispatch: Dispatch<ActionsType>,
                                    userId: number,
                                    apiMethod: (userId: number) => Promise<APIResponseType>,

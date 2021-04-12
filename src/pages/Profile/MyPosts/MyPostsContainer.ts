@@ -1,7 +1,7 @@
 import {MyPosts} from './MyPosts'
 import {connect} from 'react-redux'
-import {AppStateType} from '../../../redux/store'
 import {actions, ProfileInitialStateType} from '../../../redux/profile-reducer'
+import {AppStateType} from '../../../app/store';
 
 export type MapStateType = {
    profilePage: ProfileInitialStateType
