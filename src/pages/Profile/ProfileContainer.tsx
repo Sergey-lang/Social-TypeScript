@@ -6,9 +6,8 @@ import {
    savePhoto, saveProfileData, updateOwnProfileStatus
 } from '../../redux/profile-reducer'
 import React, {ComponentType} from 'react'
-import {AppStateType} from '../../redux/store'
 import {RouteComponentProps, withRouter} from 'react-router-dom'
-
+import {AppStateType} from '../../app/store';
 
 type PathParamsType = {
    userid: string

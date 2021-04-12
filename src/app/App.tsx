@@ -5,11 +5,11 @@ import {Redirect, Route, Switch, withRouter} from 'react-router-dom'
 import {Preloader} from '../components/Preloader/Preloader'
 import {initializeApp} from '../redux/app-reducer'
 import {Page404} from '../pages/404/Page404'
-import {AppStateType} from '../redux/store'
 import {Main} from '../pages/Main/Main'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {withSuspense} from '../hoc/withSuspenseH';
+import {AppStateType} from './store';
 
 type PropsType = MapStateType & MapDispatchToProps
 

@@ -1,8 +1,8 @@
 import {ThunkDispatch} from 'redux-thunk'
-import {AppStateType, BaseThunkType, InferActionsTypes} from './store'
 import {profileAPI} from '../api/profile-api'
 import {FormAction, stopSubmit} from 'redux-form'
 import {ResultCodes} from '../api/api'
+import {AppStateType, BaseThunkType, InferActionsTypes} from '../app/store';
 
 let initialState = {
    posts: [

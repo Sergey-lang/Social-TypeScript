@@ -1,10 +1,10 @@
 import {actions, DialogInitStateType} from '../../redux/dialogs-reducer'
-import {AppStateType} from '../../redux/store'
 import {connect} from 'react-redux'
 import {Dialogs} from './Dialogs'
 import {ComponentType} from 'react'
 import {withAuthRedirect} from '../../hoc/withAuthRedirect'
 import {compose} from 'redux'
+import {AppStateType} from '../../app/store';
 
 export type mapDispatchType = {
    addMessage: (dialogNewMessageText: any) => void

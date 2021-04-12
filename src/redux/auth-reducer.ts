@@ -1,9 +1,9 @@
 import {ThunkDispatch} from 'redux-thunk'
-import {AppStateType, BaseThunkType, InferActionsTypes} from './store'
 import {authAPI} from '../api/auth-api'
 import {FormAction, stopSubmit} from 'redux-form'
 import {securityAPI} from '../api/security-api'
 import {ResultCodeCaptcha, ResultCodes} from '../api/api'
+import {AppStateType, BaseThunkType, InferActionsTypes} from '../app/store';
 
 let initializeState = {
    id: null as (number | null),
