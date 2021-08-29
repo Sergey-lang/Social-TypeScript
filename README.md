@@ -1,6 +1,6 @@
 `Social network`
 
-**React Js version https://github.com/Sergey-lang/Social-JS**
+**React Js version https://github.com/Sergey-lang/Social-JS** not supported
 
 ## https://sergey-lang.github.io/Social-TypeScript/
 
